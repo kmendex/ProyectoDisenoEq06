@@ -1,5 +1,4 @@
 {
-
   "name": "oais",
   "version": "0.0.1",
   "private": true,
@@ -17,6 +16,5 @@
   "devDependencies": {
     "nodemon": "^2.0.5",
     "pg": "^8.4.1"
-
   }
 }
