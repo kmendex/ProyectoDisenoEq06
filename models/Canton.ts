@@ -1,4 +1,4 @@
-class Canton { 
+export class Canton { 
   //field 
   id:number;
   nombre:string;

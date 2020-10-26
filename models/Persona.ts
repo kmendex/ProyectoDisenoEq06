@@ -7,7 +7,7 @@ const eEstado = {
 }
 
 // Con Javascript
-class Canton { 
+class Persona { 
   //field 
   identificacion:number;
   nombreCompleto:string;

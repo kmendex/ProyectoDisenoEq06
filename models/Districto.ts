@@ -1,4 +1,4 @@
-class Districto { 
+export class Districto { 
   //field 
   id:number;
   nombre:string;

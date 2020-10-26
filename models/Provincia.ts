@@ -1,4 +1,4 @@
-class Provincia { 
+export class Provincia { 
   //field 
   id:number;
   nombre:string;

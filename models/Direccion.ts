@@ -1,12 +1,16 @@
+import { Provincia } from "../models/Provincia";
+import { Canton } from "../models/Canton";
+import { Districto } from "../models/Districto";
+
 export class Direccion { 
   //field 
-  provincia:string;
-  canton:string;
-  districto:string;
+  provincia:Provincia;
+  canton:Canton;
+  districto:Districto;
   info:string; 
   
   //constructor 
-  constructor(provincia:string, canton:string, districto:string, info:string) {
+  constructor(provincia:Provincia, canton:Canton, districto:Districto, info:string) {
     this.provincia = provincia;
     this.canton = canton;
     this.districto = districto;
