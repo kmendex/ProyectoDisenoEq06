@@ -3,17 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "stype": "ts-node ./bin/www"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.4",
+    "@types/sizzle": "^2.3.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "pg": "^8.4.1",    
-    "ts-node": "^9.0.0"
+    "pg": "^8.4.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.5",
