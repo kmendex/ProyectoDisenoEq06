@@ -1,81 +1,41 @@
 import { Direccion } from "../models/Direccion";
+import { Provincia, Canton, Districto } from "../models/Direccion";
 
-const eEstado = {
-  ACTIVO: 'activo',
-  INACTIVO: 'inactivo',
-  DE_BAJA: 'de_baja'
+export enum eEstado {
+  activo = "ACTIVO",
+  inactivo = "INACTIVO",
+  de_baja = "DE_BAJA"
 }
 
-// Con Javascript
-class Persona { 
+export class Persona { 
   //field 
-  identificacion:number;
-  nombreCompleto:string;
-  celular:number;
-  correo:string;
-  direccion:Direccion;
-  estado:typeof eEstado;
-  
+  identificacion :number;
+  nombreCompleto: string;
+  celular: number;
+  correo: string;
+  direccion: Direccion;
+  estado: eEstado;
   
   //constructor 
-  constructor(identificacion:number, nombreCompleto:string, celular:number, correo:string, direccion:Direccion, estado:typeof eEstado) {
+  constructor(identificacion: number, nombreCompleto: string, celular: number, correo: string, direccion: Direccion, estado: eEstado) {
     this.identificacion = identificacion;
     this.nombreCompleto = nombreCompleto;
     this.celular = celular;
     this.correo = correo;
     this.direccion = direccion;
     this.estado = estado;
-  }  
+  }
+
+  toString() {
+    console.log(this.nombreCompleto + " con identificacion " + this.identificacion + ", vive en la provincia de " + this.direccion.provincia);
+  }
 }
 
-//------------------------
-// Otra opcion pero no recomendada
+let provinciaV:Provincia = {id: 1, nombre: "Heredia"};
+let cantonV:Canton = {id: 1, nombre: "San Isidro"};
+let districtoV:Districto = {id: 1, nombre: "Calle Chaves"};
+let direccion = new Direccion(provinciaV, cantonV, districtoV, "Que bonito lugar");
 
-// import { model, Schema, Document } from "mongoose"; // Se usa pg para postgresql
-// import { Direccion } from "../models/Direccion.js";
+let persona = new Persona(1111, "Tony", 12345678, "tony@gmail.com", direccion, eEstado.activo);
 
-
-// export interface IPersona extends Document {
-//   identificacion: String;
-//   nombreCompleto: String;
-//   celular: String;
-//   correo: String;
-//   direccion: Direccion;
-//   estado: eEstado;
-// }
-
-// const personaSchema = new Schema({
-//     identificacion: {
-//     type: String,
-//     unique: true,
-//     require: true,
-//     lowercase: true,
-//   },
-//   nombreCompleto: {
-//     type: String,
-//     require: true,
-//     lowercase: true,
-//   },
-//   celular: {
-//     type: String,
-//     required: true,
-//     lowercase: true,
-//   },
-//   correo: {
-//     type: String,
-//     required: true,
-//     lowercase: true,
-//   },
-//   direccion: {
-//     type: Direccion,
-//     required: true,
-//     lowercase: true,
-//   },
-//   estado: {
-//     type: eEstado,
-//     required: true,
-//     lowercase: true,
-//   },
-// });
-
-// export default model<IPersona>("persona", personaSchema);
+//console.log(persona.nombreCompleto);
