@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const dbConnection = require("./dao/DAOSource.js");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var defineRouter = require('./routes/define')
+var queryRouter = require('./routes/query')
 
 var app = express();
 
@@ -20,7 +22,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/define', defineRouter);
+app.use('/query', queryRouter);
+
+app.use(function (req, res, next){
+    req.dbConnection = dbConnection;
+    next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
