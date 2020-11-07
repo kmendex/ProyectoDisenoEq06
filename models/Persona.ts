@@ -17,7 +17,7 @@ export class Persona {
   private _estado: eEstado;
   
   //constructor 
-  constructor(identificacion: number, nombreCompleto: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado) {
+  constructor(identificacion: number, nombreCompleto: string, celular: number, correo: string, direccion: Direccion, estado: eEstado) {
     this._identificacion = identificacion;
     this._nombreCompleto = nombreCompleto;
     this._celular = celular;
@@ -78,14 +78,3 @@ export class Persona {
     console.log(this.nombreCompleto + " con identificacion " + this.identificacion + ", vive en la provincia de " + this.direccion.provincia);
   }
 }
-
-let provinciaV:Provincia = {id: 1, nombre: "Heredia"};
-let cantonV:Canton = {id: 1, nombre: "San Isidro"};
-let districtoV:Districto = {id: 1, nombre: "Calle Chaves"};
-let direccion = new Direccion(provinciaV, cantonV, districtoV, "Que bonito lugar");
-
-let persona = new Persona(1111, "Tony", 12345678, "tony@gmail.com", direccion, eEstado.activo);
-
-let persona1 = new Persona(1, "Juan"); 
-
-//console.log(persona.nombreCompleto);

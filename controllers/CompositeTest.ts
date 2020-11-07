@@ -7,15 +7,14 @@
 //Debe habilitar en el powershell como administrador, la ejecución de scripts Set-ExecutionPolicy Unrestricted
 //Digitar en la terminal ts-node CompositePruebas.ts
 //Recordar deshabilitar ésta opción después de terminar de hacer pruebas Set-ExecutionPolicy Restricted
-//OPCIONAL: npm install express @types/express
-//OPCIONAL: npm install -g javascript-to-typescript COMMAND: js-to-ts --filter './file1.js'
+
 
 import { Canton } from "../models/Canton";
-import { CompositeComponent } from "../models/Composite/CompositeComponent";
-import { SimpleComponent } from "../models/Composite/SimpleComponent";
+import { CompositeComponent } from "../models/composite/CompositeComponent";
+import { SimpleComponent } from "../models/composite/SimpleComponent";
 import { Direccion } from "../models/Direccion";
 import { Districto } from "../models/Districto";
-import { Persona } from "../models/Persona";
+import { eEstado, Persona } from "../models/Persona";
 import { Provincia } from "../models/Provincia";
 
 const provincia = new Provincia(3,"Cartago");
@@ -23,42 +22,42 @@ const canton = new Canton(1, "Central");
 const distrito = new Districto(2,"Oriental");
 const direccionUnica = new Direccion(provincia,canton,distrito,"Los Ángeles");
 
-const miembro0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica);
-const miembro1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica);
-const miembro2 = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica);
-const miembro3 = new Persona(3,"Miembro3",74479112,"@gmail.com",direccionUnica);
-const miembro4 = new Persona(4,"Miembro4",74479112,"@gmail.com",direccionUnica);
-const miembro5 = new Persona(5,"Miembro5",74479112,"@gmail.com",direccionUnica);
-const miembro6 = new Persona(6,"Miembro6",74479112,"@gmail.com",direccionUnica);
-const miembro7 = new Persona(7,"Miembro7",74479112,"@gmail.com",direccionUnica);
-const miembro8 = new Persona(8,"Miembro8",74479112,"@gmail.com",direccionUnica);
-const miembro9 = new Persona(9,"Miembro9",74479112,"@gmail.com",direccionUnica);
+const miembro0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro2 = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro3 = new Persona(3,"Miembro3",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro4 = new Persona(4,"Miembro4",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro5 = new Persona(5,"Miembro5",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro6 = new Persona(6,"Miembro6",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro7 = new Persona(7,"Miembro7",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro8 = new Persona(8,"Miembro8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro9 = new Persona(9,"Miembro9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
-const monitor0 = new Persona(20,"Monitor0",74479112,"@gmail.com",direccionUnica);
-const monitor1 = new Persona(21,"Monitor1",74479112,"@gmail.com",direccionUnica);
-const monitor2 = new Persona(22,"Monitor2",74479112,"@gmail.com",direccionUnica);
-const monitor3 = new Persona(23,"Monitor3",74479112,"@gmail.com",direccionUnica);
-const monitor4 = new Persona(24,"Monitor4",74479112,"@gmail.com",direccionUnica);
-const monitor5 = new Persona(25,"Monitor5",74479112,"@gmail.com",direccionUnica);
-const monitor6 = new Persona(26,"Monitor6",74479112,"@gmail.com",direccionUnica);
-const monitor7 = new Persona(27,"Monitor7",74479112,"@gmail.com",direccionUnica);
-const monitor8 = new Persona(28,"Monitor8",74479112,"@gmail.com",direccionUnica);
-const monitor9 = new Persona(29,"Monitor9",74479112,"@gmail.com",direccionUnica);
+const monitor0 = new Persona(20,"Monitor0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor1 = new Persona(21,"Monitor1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor2 = new Persona(22,"Monitor2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor3 = new Persona(23,"Monitor3",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor4 = new Persona(24,"Monitor4",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor5 = new Persona(25,"Monitor5",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor6 = new Persona(26,"Monitor6",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor7 = new Persona(27,"Monitor7",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor8 = new Persona(28,"Monitor8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor9 = new Persona(29,"Monitor9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
-const jefe0 = new Persona(10,"Jefe0",74479112,"@gmail.com",direccionUnica);
-const jefe1 = new Persona(11,"Jefe1",74479112,"@gmail.com",direccionUnica);
-const jefe2 = new Persona(12,"Jefe2",74479112,"@gmail.com",direccionUnica);
-const jefe3 = new Persona(13,"Jefe3",74479112,"@gmail.com",direccionUnica);
-const jefe4 = new Persona(14,"Jefe4",74479112,"@gmail.com",direccionUnica);
-const jefe5 = new Persona(15,"Jefe5",74479112,"@gmail.com",direccionUnica);
-const jefe6 = new Persona(16,"Jefe6",74479112,"@gmail.com",direccionUnica);
-const jefe7 = new Persona(17,"Jefe7",74479112,"@gmail.com",direccionUnica);
-const jefe8 = new Persona(18,"Jefe8",74479112,"@gmail.com",direccionUnica);
-const jefe9 = new Persona(19,"Jefe9",74479112,"@gmail.com",direccionUnica);
+const jefe0 = new Persona(10,"Jefe0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe1 = new Persona(11,"Jefe1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe2 = new Persona(12,"Jefe2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe3 = new Persona(13,"Jefe3",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe4 = new Persona(14,"Jefe4",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe5 = new Persona(15,"Jefe5",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe6 = new Persona(16,"Jefe6",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe7 = new Persona(17,"Jefe7",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe8 = new Persona(18,"Jefe8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe9 = new Persona(19,"Jefe9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
 
 
-const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccionUnica);
+const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
 //Grupo 1 (1 Monitor 1 Miembro)
 const componente0 = new SimpleComponent("MIEMBRO", monitor0);
