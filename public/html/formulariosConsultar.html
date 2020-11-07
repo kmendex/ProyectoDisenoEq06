@@ -16,7 +16,7 @@
 <body>
     <div class="wrap">
         <ul class="tabs">
-            <li><a href="index.html"><span class="fas fa-home"></span><span class="tabTex">Inicio</span></a></li>
+            <li><a href="/"><span class="fas fa-home"></span><span class="tabTex">Inicio</span></a></li>
             <li><a href="#tab0"><span class="fas fa-landmark"></span><span class="tabTex">Organizacion</span></a></li>
             <li><a href="#tab1"><span class="fas fa-sitemap"></span><span class="tabTex">Coordinacion</span></a></li>
             <li><a href="#tab2"><span class="fas fa-mountain"></span><span class="tabTex">Zona</span></a></li>
@@ -28,13 +28,13 @@
             <!-- Organizacion -->
             <article id="tab0">
                 <h1>Organizacion</h1>
-                <label for="">Organizacion:</label>
-                <label for="" id="nameOrganizacion">Nombre de la Organizacion</label>
+                <label>Organizacion:</label>
+                <label for="" id="name_Organizacion">Nombre de la Organizacion</label>
                 <br>
-                <label for="">Asesor General:</label>
-                <label for="" id="nameAsesor">Nombre del Asesor</label>
+                <label>Asesor General:</label>
+                <label for="" id="nameAsesor_Organizacion">Nombre del Asesor</label>
                 <br>
-                <ul>
+                <ul id="organigrama_Organizacion">
                     <li>Coordinacion</li>
                     <ul>
                         <li>Zona-01</li>
@@ -66,7 +66,7 @@
             <!-- Coordinacion -->
             <article id="tab1">
                 <h1>Coordinacion</h1>
-                <table style="width: 50%">
+                <table style="width: 50%" id="tablaMiembros_Coordinacion">
                     <tr>
                         <th>Miembros</th>
                         <th>Tipo</th>
@@ -92,8 +92,8 @@
             <!-- Zona -->
             <article id="tab2">
                 <h1>Zona</h1>
-                <label for="Zona">Zona:</label>
-                <select name="Zona" id="Zona" class="listas">
+                <label>Zona:</label>
+                <select name="Zona" id="listadoZonas_Zona" class="listas">
                     <option value="Atlantica">Atlantica</option>
                     <option value="Central">Central</option>
                     <option value="Sur">Sur</option>
@@ -101,7 +101,7 @@
                 </select>
                 <br>
                 <br>
-                <table style="width: 50%">
+                <table id="tablaMiembros_Zona" style="width: 50%">
                     <tr>
                         <th>Miembros</th>
                         <th>Tipo</th>
@@ -125,7 +125,7 @@
                 </table>
                 <br>
                 <br>
-                <table style="width: 50%">
+                <table id="tablaRamas_Zona" style="width: 50%">
                     <tr>
                         <th>Rama</th>
                         <th>Cantidad Miembros</th>
@@ -151,16 +151,16 @@
             <!-- Rama -->
             <article id="tab3">
                 <h1>Rama</h1>
-                <label for="Zona">Zona:</label>
-                <select name="Zona" id="Zona" class="listas">
+                <label>Zona:</label>
+                <select name="Zona" id="listadoZonas_Rama" class="listas">
                     <option value="Atlantica">Atlantica</option>
                     <option value="Central">Central</option>
                     <option value="Sur">Sur</option>
                     <option value="Norte">Norte</option>
                 </select>
                 <br>
-                <label for="Rama">Rama:</label>
-                <select name="Rama" id="Rama" class="listas">
+                <label>Rama:</label>
+                <select name="Rama" id="listadoRamas_Rama" class="listas">
                     <option value="Juvenil">Juvenil</option>
                     <option value="Medicos">Medicos</option>
                     <option value="Abogados">Abogados</option>
@@ -168,7 +168,7 @@
                 </select>
                 <br>
                 <br>
-                <table style="width: 50%">
+                <table id="tablaMiembros_Rama" style="width: 50%">
                     <tr>
                         <th>Miembros</th>
                         <th>Tipo</th>
@@ -192,7 +192,7 @@
                 </table>
                 <br>
                 <br>
-                <table style="width: 50%">
+                <table id="tablaGrupos_Rama" style="width: 50%">
                     <tr>
                         <th>Grupo</th>
                         <th>Cantidad Miembros</th>
@@ -218,23 +218,23 @@
             <!-- Grupo -->
             <article id="tab4">
                 <h1>Grupo</h1>
-                <label for="Zona">Zona:</label>
-                <select name="Zona" id="Zona" class="listas">
+                <label>Zona:</label>
+                <select name="Zona" id="listadoZonas_Grupo" class="listas">
                     <option value="Atlantica">Atlantica</option>
                     <option value="Central">Central</option>
                     <option value="Sur">Sur</option>
                     <option value="Norte">Norte</option>
                 </select>
                 <br>
-                <label for="Rama">Rama:</label>
-                <select name="Rama" id="Rama" class="listas">
+                <label>Rama:</label>
+                <select name="Rama" id="listadoRamas_Grupo" class="listas">
                     <option value="Juvenil">Juvenil</option>
                     <option value="Medicos">Medicos</option>
                     <option value="Abogados">Abogados</option>
                     <option value="Sicarios">Sicarios</option>
                 </select>
-                <label for="Grupo">Grupo:</label>
-                <select name="Grupo" id="Grupo" class="listas">
+                <label>Grupo:</label>
+                <select name="Grupo" id="listadoGrupos_Grupo" class="listas">
                     <option value="Lobos">Lobos</option>
                     <option value="Mapaches">Mapaches</option>
                     <option value="Oso">Osos</option>
@@ -242,7 +242,7 @@
                 </select>
                 <br>
                 <br>
-                <table style="width: 50%">
+                <table id="tablaMiembros_Grupo" style="width: 50%">
                     <tr>
                         <th>Miembros</th>
                         <th>Tipo</th>
@@ -268,14 +268,14 @@
             <!-- Miembro -->
             <article id="tab5">
                 <h1>Miembro</h1>
-                <label for="idMiembroB">Miembro buscado[Desabilitado]</label>
-                <input type="text" class="textBox" placeholder="ID" id="idMiembroB">
-                <button class="Boton" id="btnBuscarMiembro">Buscar</button>
+                <label>Miembro buscado</label>
+                <input type="text" class="textBox" placeholder="ID" id="id_Miembro">
+                <button class="Boton" id="btnBuscar_Miembro">Buscar</button>
                 <br>
                 <br>
-                <table style="width: 50%">
+                <table id="tablaMiembros_Miembro" style="width: 50%">
                     <tr>
-                        <th>Codgio</th>
+                        <th>Codigo</th>
                         <th>Rol</th>
                         <th>Fecha Nombramiento</th>
                     </tr>
