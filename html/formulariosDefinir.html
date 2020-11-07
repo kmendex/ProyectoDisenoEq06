@@ -29,27 +29,27 @@
             <article id="tab1">
                 <!-- Aqui va un grid de los miembros-->
                 <h1>Organizacion</h1>
-                <label for="nameOrganizacion">Nombre de la Organizacion</label>
-                <input type="text" class="textBox" placeholder="Nombre" id="nameOrganizacion">
+                <label>Nombre de la Organizacion</label>
+                <input type="text" class="textBox" placeholder="Nombre" id="name_Organizacion">
                 <br>
-                <label for="AsesorGeneral">Asesor General</label>
-                <input type="text" class="textBox" placeholder="Asesor" id="AsesorGeneral">
+                <label>Asesor General</label>
+                <input type="text" class="textBox" placeholder="Asesor" id="asesorGeneral_Organizacion">
                 <br>
-                <label for="direccionWeb">Direccion Web</label>
-                <input type="text" class="textBox" placeholder="Sitio Web" id="direccionWeb">
+                <label>Direccion Web</label>
+                <input type="text" class="textBox" placeholder="Sitio Web" id="direccionWeb_Organizacion">
                 <br>
-                <label for="CedulaJurd">Cedula Juridica</label>
-                <input type="text" class="textBox" placeholder="Cedula Juridica" id="CedulaJurd">
+                <label>Cedula Juridica</label>
+                <input type="text" class="textBox" placeholder="Cedula Juridica" id="cedulaJurd_Organizacion">
                 <br>
-                <label for="Telefono">Telefono</label>
-                <input type="text" class="textBox" placeholder="Nº Telefono" id="Telefono">
+                <label>Telefono</label>
+                <input type="text" class="textBox" placeholder="Nº Telefono" id="telefono_Organizacion">
                 <br>
-                <label for="Correo">Correo</label>
-                <input type="text" class="textBox" placeholder="Correo" id="Correo">
+                <label>Correo</label>
+                <input type="text" class="textBox" placeholder="Correo" id="correo_Organizacion">
                 <br>
                 <br>
-                <label for="Provincia">Provincia:</label>
-                <select name="Provincia" id="Provincia" class="listas">
+                <label>Provincia:</label>
+                <select name="Provincia" id="provincia_Organizacion" class="listas">
                     <option value="Limon">Limon</option>
                     <option value="San Jose">San Jose</option>
                     <option value="Heredia">Heredia</option>
@@ -57,8 +57,8 @@
                 </select>
                 <br>
                 <br>
-                <label for="Canton">Canton:</label>
-                <select name="Canton" id="Canton" class="listas">
+                <label>Canton:</label>
+                <select name="Canton" id="canton_Organizacion" class="listas">
                     <option value="Canton#1">Canton#1</option>
                     <option value="Canton#2">Canton#2</option>
                     <option value="Canton#3">Canton#3</option>
@@ -66,31 +66,26 @@
                 </select>
                 <br>
                 <br>
-                <label for="Distrito">Distrito:</label>
-                <select name="Distrito" id="Distrito" class="listas">
+                <label>Distrito:</label>
+                <select name="Distrito" id="distrito_Organizacion" class="listas">
                     <option value="Distrito#1">Distrito#1</option>
                     <option value="Distrito#2">Distrito#2</option>
                     <option value="Distrito#3">Distrito#3</option>
                     <option value="Distrito#4">Distrito#4</option>
                 </select>
                 <br>
-                <label for="Especificacion">Otras Señas</label>
-                <input type="text" class="textBox" placeholder="Otras Señas" id="Especificacion">
+                <label>Otras Señas</label>
+                <input type="text" class="textBox" placeholder="Otras Señas" id="especificacion_Organizacion">
                 <br>
-                <button class="Boton" id="btnGuardarOrg">Guardar</button>
+                <button class="Boton" id="btnGuardar_Organizacion">Guardar</button>
             </article>
             <!-- Zona -->
             <article id="tab2">
                 <h1>Zona</h1>
-                <!-- <label for="idZonaB">Zona buscada[Desabilitado]</label>
-                <input type="text" class="textBox" placeholder="ID" id="idZonaB">
-                <button class="Boton">Buscar</button>
-                <br>
-                <br> -->
-                <input type="text" class="textBox" placeholder="Nombre" id="nameZona">
-                <input type="text" class="textBox" placeholder="Identificador" id="IdZona">
-                <button class="Boton" id="btnGuardarZona">Agregar</button>
-                <table style="width: 50%">
+                <input type="text" class="textBox" placeholder="Nombre" id="name_Zona">
+                <input type="text" class="textBox" placeholder="Identificador" id="id_Zona">
+                <button class="Boton" id="btnGuardar_Zona">Agregar</button>
+                <table id="tabla_Zona" style="width: 50%">
                     <tr>
                         <th>Nombre</th>
                         <th>Identificacion</th>
@@ -116,8 +111,8 @@
             <!-- Rama -->
             <article id="tab3">
                 <h1>Rama</h1>
-                <label for="Zona">Zona:</label>
-                <select name="Zona" id="Zona" class="listas">
+                <label>Zona:</label>
+                <select name="Zona" id="zona_Rama" class="listas">
                     <option value="Atlantica">Atlantica</option>
                     <option value="Central">Central</option>
                     <option value="Sur">Sur</option>
@@ -125,10 +120,10 @@
                 </select>
                 <br>
                 <br>
-                <input type="text" class="textBox" placeholder="Nombre" id="nameRama">
-                <input type="text" class="textBox" placeholder="Identificador" id="IdRama">
-                <button class="Boton" id="btnGuardarRama">Agregar</button>
-                <table style="width: 50%">
+                <input type="text" class="textBox" placeholder="Nombre" id="name_Rama">
+                <input type="text" class="textBox" placeholder="Identificador" id="id_Rama">
+                <button class="Boton" id="btnGuardar_Rama">Agregar</button>
+                <table id="tabla_Rama" style="width: 50%">
                     <tr>
                         <th>Nombre</th>
                         <th>Identificacion</th>
@@ -154,16 +149,16 @@
             <!-- Grupo -->
             <article id="tab4">
                 <h1>Grupo</h1>
-                <label for="Zona">Zona:</label>
-                <select name="Zona" id="Zona" class="listas">
+                <label>Zona:</label>
+                <select name="Zona" id="zona_Grupo" class="listas">
                     <option value="Atlantica">Atlantica</option>
                     <option value="Central">Central</option>
                     <option value="Sur">Sur</option>
                     <option value="Norte">Norte</option>
                 </select>
                 <br>
-                <label for="Rama">Rama:</label>
-                <select name="Rama" id="Rama" class="listas">
+                <label>Rama:</label>
+                <select name="Rama" id="rama_Grupo" class="listas">
                     <option value="Juvenil">Juvenil</option>
                     <option value="Medicos">Medicos</option>
                     <option value="Abogados">Abogados</option>
@@ -171,13 +166,13 @@
                 </select>
                 <br>
                 <br>
-                <input type="text" class="textBox" placeholder="Nombre" id="nameGrupo">
-                <input type="text" class="textBox" placeholder="Identificador" id="IdGrupo">
-                <button class="Boton" id="btnGuardarGrupo">Agregar</button>
+                <input type="text" class="textBox" placeholder="Nombre" id="name_Grupo">
+                <input type="text" class="textBox" placeholder="Identificador" id="id_Grupo">
+                <button class="Boton" id="btnGuardar_Grupo">Agregar</button>
                 <br>
                 <br>
-                <label for="jefe">Designar Jefe:</label>
-                <select name="jefe" id="jefe" class="listas">
+                <label>Designar Jefe:</label>
+                <select name="jefe" id="jefe_Grupo" class="listas">
                     <option value="Miembro#1">Miembro#1</option>
                     <option value="Miembro#2">Miembro#2</option>
                     <option value="Miembro#3">Miembro#3</option>
@@ -185,14 +180,14 @@
                 </select>
                 <br>
                 <br>
-                <label for="monitor">Designar Monitor:</label>
-                <select name="monitor" id="monitor" class="listas">
+                <label>Designar Monitor:</label>
+                <select name="monitor" id="monitor_Grupo" class="listas">
                     <option value="Miembro#1">Miembro#1</option>
                     <option value="Miembro#2">Miembro#2</option>
                     <option value="Miembro#3">Miembro#3</option>
                     <option value="Miembro#4">Miembro#4</option>
                 </select>
-                <table style="width: 50%">
+                <table id="tabla_Grupo" style="width: 50%">
                     <tr>
                         <th>Nombre</th>
                         <th>Identificacion</th>
@@ -218,29 +213,24 @@
             <!-- Miembro -->
             <article id="tab5">
                 <h1>Miembro</h1>
-                <!-- <label for="idMiembroB">Miembro buscado[Desabilitado]</label>
-                <input type="text" class="textBox" placeholder="ID" id="idMiembroB">
-                <button class="Boton">Buscar</button>
+                <label>Nombre</label>
+                <input type="text" class="textBox" placeholder="Nombre" id="name_Miembro">
                 <br>
-                <br> -->
-                <label for="nameMiembro">Nombre</label>
-                <input type="text" class="textBox" placeholder="Nombre" id="nameMiembro">
+                <label>Apellidos</label>
+                <input type="text" class="textBox" placeholder="Apellidos" id="apellidos_Miembro">
                 <br>
-                <label for="Apellidos">Apellidos</label>
-                <input type="text" class="textBox" placeholder="Apellidos" id="Apellidos">
+                <label>Numero de Identificacion</label>
+                <input type="text" class="textBox" placeholder="Nº Identificacion" id="identificacion_Miembro">
                 <br>
-                <label for="Identificacion">Numero de Identificacion</label>
-                <input type="text" class="textBox" placeholder="Nº Identificacion" id="Identificacion">
+                <label>Telefono</label>
+                <input type="text" class="textBox" placeholder="Nº Telefono" id="telefono_Miembro">
                 <br>
-                <label for="Telefono">Telefono</label>
-                <input type="text" class="textBox" placeholder="Nº Telefono" id="Telefono">
-                <br>
-                <label for="Correo">Correo</label>
-                <input type="text" class="textBox" placeholder="Correo" id="Correo">
+                <label>Correo</label>
+                <input type="text" class="textBox" placeholder="Correo" id="correo_Miembro">
                 <br>
                 <br>
-                <label for="Provincia">Provincia:</label>
-                <select name="Provincia" id="Provincia" class="listas">
+                <label>Provincia:</label>
+                <select name="Provincia" id="provincia_Miembro" class="listas">
                     <option value="Limon">Limon</option>
                     <option value="San Jose">San Jose</option>
                     <option value="Heredia">Heredia</option>
@@ -248,8 +238,8 @@
                 </select>
                 <br>
                 <br>
-                <label for="Canton">Canton:</label>
-                <select name="Canton" id="Canton" class="listas">
+                <label>Canton:</label>
+                <select name="Canton" id="canton_Miembro" class="listas">
                     <option value="Canton#1">Canton#1</option>
                     <option value="Canton#2">Canton#2</option>
                     <option value="Canton#3">Canton#3</option>
@@ -257,32 +247,32 @@
                 </select>
                 <br>
                 <br>
-                <label for="Distrito">Distrito:</label>
-                <select name="Distrito" id="Distrito" class="listas">
+                <label>Distrito:</label>
+                <select name="Distrito" id="distrito_Miembro" class="listas">
                     <option value="Distrito#1">Distrito#1</option>
                     <option value="Distrito#2">Distrito#2</option>
                     <option value="Distrito#3">Distrito#3</option>
                     <option value="Distrito#4">Distrito#4</option>
                 </select>
                 <br>
-                <label for="Especificacion">Otras Señas</label>
-                <input type="text" class="textBox" placeholder="Otras Señas" id="Especificacion">
+                <label>Otras Señas</label>
+                <input type="text" class="textBox" placeholder="Otras Señas" id="especificacion_Miembro">
                 <br>
-                <button class="Boton" id="btnGuardarMiembro">Agregar</button>
+                <button class="Boton" id="btnGuardar_Miembro">Agregar</button>
             </article>
             <!-- Rol -->
             <article id="tab6">
                 <h1>Rol</h1>
-                <label for="idMiembroB">Miembro buscado</label>
-                <input type="text" class="textBox" placeholder="ID" id="idMiembroB">
-                <button class="Boton" id="btnBuscarRol">Buscar</button>
+                <label>Miembro buscado</label>
+                <input type="text" class="textBox" placeholder="ID" id="id_Rol">
+                <button class="Boton" id="btnBuscar_Rol">Buscar</button>
                 <br>
                 <br>
-                <label for="nameMiembro">Nombre</label>
-                <input type="text" class="textBox" placeholder="Nombre" id="nameMiembro">
+                <label>Nombre</label>
+                <input type="text" class="textBox" placeholder="Nombre" id="name_Rol">
                 <br>
-                <label for="Identificacion">Numero de Identificacion</label>
-                <input type="text" class="textBox" placeholder="Nº Identificacion" id="Identificacion">
+                <label>Numero de Identificacion</label>
+                <input type="text" class="textBox" placeholder="Nº Identificacion" id="identificacion_Rol">
             </article>
         </div>
     </div>
