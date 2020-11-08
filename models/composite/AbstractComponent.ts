@@ -35,11 +35,7 @@ export abstract class AbstractComponent {
     }
 
     public abstract isComposite(): boolean;
-
-    public abstract addComponent(component: AbstractComponent): void;
     
-    public abstract removeComponent(component: AbstractComponent): void;
-
     public abstract toString(tab:string):string;
 
 }

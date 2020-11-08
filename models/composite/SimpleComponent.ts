@@ -21,12 +21,13 @@ export class SimpleComponent extends AbstractComponent {
     public isComposite(): boolean {
         return false;
     }
-    public addComponent(component: AbstractComponent): void {
 
-    }
-    public removeComponent(component: AbstractComponent): void {
-        
-    }
+    /**
+     * Nombre: toString
+     * Entrada: Un tabulador (string)
+     * Salida: El tabulador, id, nombre y tipo en un sólo string       
+     * Restricciones: Sólo acepta string
+     */
     public toString(tab:string): string {
         return tab + `id ${this.getId()} ${this.getName()} -> ${this.getType()}` + "\n";
     }
