@@ -1,10 +1,24 @@
+export enum Roles {
+    Asesor = "ASESOR",
+    Jefe = "JEFE",
+    //JefeZ = "JEFE_ZONA",
+    //JefeR = "JEFE_RAMA",
+    //JefeG = "JEFE_GRUPO",
+    Monitor = "MONITOR",
+    Miembro = "MIEMBRO",
+    Coordinacion = "COORDINACION",
+    Zona = "ZONA",
+    Rama = "RAMA",
+    Grupo = "GRUPO"
+}
+
 export abstract class AbstractComponent {
     
     protected id:number;
     protected name:string;
-    protected type:string;
+    protected type:Roles;
 
-    public constructor(id:number, name:string, type:string) {
+    public constructor(id:number, name:string, type:Roles) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -26,11 +40,11 @@ export abstract class AbstractComponent {
         this.name = name;
     }
 
-    public getType(): string {
+    public getType(): Roles {
         return this.type;
     }
 
-    public setType(type:string): void {
+    public setType(type:Roles): void {
         this.type = type;
     }
 

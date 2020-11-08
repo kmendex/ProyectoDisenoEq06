@@ -1,5 +1,8 @@
 //import CPersona from "../controllers/CPersona";
 import { CComposite } from "../controllers/CComposite";
+import { CompositeComponent } from "../models/composite/CompositeComponent";
+import { SimpleComponent } from "../models/composite/SimpleComponent";
+import { Persona } from "../models/Persona";
 //import { COrganizacion } from "../controllers/COrganizacion";
 import * as Collections from 'typescript-collections';
 
@@ -24,48 +27,33 @@ function definirGrupo(): {} {
     return null;
 }
 
-function definirJefeZ(): {} {
-    return null;
-}
-
-function definirJefeR(): {} {
-    return null;
-}
-
-function definirMonitor(): {} {
-    return null;
-}
-
-function definirMiembro(): {} {
-    return null;
-}
-
 //--------------------Consultar--------------------//
-function consultarZonas(id: number, nombre: string): Collections.Set<String> {
+function consultarZonas(): Collections.Set<CompositeComponent> {
+    //Collections.Set<CompositeComponent> zona = CComposite.listarZonas();
+    return zona;
+}
+
+function consultarRamas(): Collections.Set<CompositeComponent> {
     return null;
 }
 
-function consultarRamas(id: number, nombre: string): Collections.Set<String> {
-    return null;
-}
-
-function consultarGrupos(id: number, nombre: string): Collections.Set<String> {
+function consultarGrupos(): Collections.Set<CompositeComponent> {
     return null;
 }
 
 //--------------------Designar--------------------//
-function designarAsesor(id: number, nombre: string): {} {
+function designarAsesor(id: number, nombre: string): Collections.Set<SimpleComponent> {
     return null;
 }
 
-function designarJefeZ(id: number, nombre: string): {} {
+function designarJefeZ(id: number, nombre: string): Collections.Set<SimpleComponent> {
     return null;
 }
 
-function designarJefeR(id: number, nombre: string): {} {
+function designarJefeR(id: number, nombre: string): Collections.Set<SimpleComponent> {
     return null;
 }
 
-function designarMonitor(id: number, nombre: string): {} {
+function designarMonitor(id: number, nombre: string): Collections.Set<SimpleComponent> {
     return null;
 }

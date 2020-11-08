@@ -1,10 +1,10 @@
-import {AbstractComponent} from "./AbstractComponent"
+import {AbstractComponent, Roles} from "./AbstractComponent"
 
 export class CompositeComponent extends AbstractComponent {
 
     private level:AbstractComponent[] = []; 
 
-    public constructor(id:number, nombre:string, type:string) {
+    public constructor(id:number, nombre:string, type:Roles) {
         super(id,nombre,type);
     }
 
