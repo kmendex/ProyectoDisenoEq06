@@ -20,8 +20,8 @@ export class CompositeComponent extends AbstractComponent {
         this.level.push(component);
     }
 
-    public removeComponent(id:number, name:string):boolean {        
-        const componentIndex:number = this.findIndexComponent(id, name);
+    public removeComponent(id:number, name:string, type:Roles):boolean {        
+        const componentIndex = this.findIndexComponent(id, name, type);
         if(componentIndex >= 0) {
             this.level.splice(componentIndex, 1);
             return true;
@@ -38,10 +38,10 @@ export class CompositeComponent extends AbstractComponent {
      *          retorna el indice donde se encuentra el componente    
      * Restricciones: N/A.
      */
-    public findIndexComponent(id:number, name:string):number {
+    public findIndexComponent(id:number, name:string, type:Roles):number {
         var index = 0;
         for(var component of this.level) {
-            if (component.getId() === id && component.getName().localeCompare(name) == 0) {
+            if (component.getId() === id && component.getName().localeCompare(name) == 0 && component.getType() === type) {
                 return  index;
             }
             index += 1;
@@ -104,7 +104,7 @@ export class CompositeComponent extends AbstractComponent {
      * Salida: Cantidad de elementos con ese tipo.        
      * Restricciones: N/A.
      */
-    public count(type:string):number {
+    public count(type:Roles):number {
         var account = 0;
         for(var component of this.level) {
             if (!component.getType().localeCompare(type)) {

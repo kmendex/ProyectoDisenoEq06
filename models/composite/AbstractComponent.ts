@@ -1,9 +1,6 @@
 export enum Roles {
     Asesor = "ASESOR",
     Jefe = "JEFE",
-    //JefeZ = "JEFE_ZONA",
-    //JefeR = "JEFE_RAMA",
-    //JefeG = "JEFE_GRUPO",
     Monitor = "MONITOR",
     Miembro = "MIEMBRO",
     Coordinacion = "COORDINACION",

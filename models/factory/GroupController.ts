@@ -1,5 +1,6 @@
 import { CompositeComponent } from "../composite/CompositeComponent";
 import { SimpleComponent } from "../composite/SimpleComponent";
+import { Roles } from "../composite/AbstractComponent";
 
 export class GroupController {
 
@@ -26,7 +27,7 @@ export class GroupController {
             return -1;
         }
         else {
-            if (member.getType().localeCompare("MIEMBRO") == 0) {
+            if (member.getType().localeCompare(Roles.Miembro) == 0) {
                 this.group.addComponent(member);
                 return 1;
             }
@@ -49,7 +50,7 @@ export class GroupController {
             return -1;
         }
         else {
-            if (member.getType().localeCompare("MONITOR") == 0) {
+            if (member.getType().localeCompare(Roles.Miembro) == 0) {
                 this.group.addComponent(member);
                 return 1;
             }
