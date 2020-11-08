@@ -1,11 +1,11 @@
-import {AbstractComponent} from "./AbstractComponent"
+import {AbstractComponent, Roles} from "./AbstractComponent"
 import {Persona} from "../Persona";
 
 export class SimpleComponent extends AbstractComponent {
 
     protected member: Persona;
 
-    public constructor(type:string, member:Persona) {
+    public constructor(type:Roles, member:Persona) {
         super(member.identificacion, member.nombreCompleto, type);
         this.member = member;
     }

@@ -8,19 +8,21 @@
 //Digitar en la terminal ts-node CompositePruebas.ts
 //Recordar deshabilitar ésta opción después de terminar de hacer pruebas Set-ExecutionPolicy Restricted
 
+//import { Provincia } from "../models/Provincia";
+//import { Canton } from "../models/Canton";
+//import { Districto } from "../models/Distrito";
 
-import { Canton } from "../models/Canton";
+import { Roles } from "../models/composite/AbstractComponent";
 import { CompositeComponent } from "../models/composite/CompositeComponent";
 import { SimpleComponent } from "../models/composite/SimpleComponent";
-import { Direccion } from "../models/Direccion";
-import { Districto } from "../models/Districto";
+import { Direccion, Provincia, Canton, Distrito } from "../models/Direccion";
 import { eEstado, Persona } from "../models/Persona";
-import { Provincia } from "../models/Provincia";
 
-const provincia = new Provincia(3,"Cartago");
-const canton = new Canton(1, "Central");
-const distrito = new Districto(2,"Oriental");
-const direccionUnica = new Direccion(provincia,canton,distrito,"Los Ángeles");
+
+const provincia: Provincia = {id: 3, nombre: "Cartago"};
+const canton: Canton = {id: 1, nombre: "Central"};
+const distrito: Distrito = {id: 2, nombre: "Oriental"};
+const direccionUnica = new Direccion(provincia, canton, distrito, "Los Ángeles");
 
 const miembro0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const miembro1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
@@ -60,19 +62,19 @@ const jefe9 = new Persona(19,"Jefe9",74479112,"@gmail.com",direccionUnica, eEsta
 const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
 //Grupo 1 (1 Monitor 1 Miembro)
-const componente0 = new SimpleComponent("MIEMBRO", monitor0);
-const componente1 = new SimpleComponent("MIEMBRO", miembro0);
-const grupo1 = new CompositeComponent(111,"Grupo 1", "GRUPO");
+const componente0 = new SimpleComponent(Roles.Monitor, monitor0);
+const componente1 = new SimpleComponent(Roles.Miembro, miembro0);
+const grupo1 = new CompositeComponent(111, "Grupo 1", Roles.Grupo);
 grupo1.addComponent(componente0);
 grupo1.addComponent(componente1);
 
 // Grupo 2 (2 Monitores, 3 Miembros)
-const componente2 = new SimpleComponent("MONITOR", monitor1);
-const componente3 = new SimpleComponent("MONITOR", monitor2);
-const componente4 = new SimpleComponent("MIEMBRO", miembro1);
-const componente5 = new SimpleComponent("MIEMBRO", miembro2);
-const componente6 = new SimpleComponent("MIEMBRO", miembro3);
-const grupo2 = new CompositeComponent(112,"Grupo 2", "GRUPO");
+const componente2 = new SimpleComponent(Roles.Monitor, monitor1);
+const componente3 = new SimpleComponent(Roles.Monitor, monitor2);
+const componente4 = new SimpleComponent(Roles.Miembro, miembro1);
+const componente5 = new SimpleComponent(Roles.Miembro, miembro2);
+const componente6 = new SimpleComponent(Roles.Miembro, miembro3);
+const grupo2 = new CompositeComponent(112, "Grupo 2", Roles.Grupo);
 grupo2.addComponent(componente2);
 grupo2.addComponent(componente3);
 grupo2.addComponent(componente4);
@@ -80,19 +82,19 @@ grupo2.addComponent(componente5);
 grupo2.addComponent(componente6);
 
 //Rama 1 (Grupo 1, Grupo 2)
-const rama1 = new CompositeComponent(1, "Rama 1", "RAMA");
+const rama1 = new CompositeComponent(1, "Rama 1", Roles.Rama);
 rama1.addComponent(grupo1);
 rama1.addComponent(grupo2);
 
 
 //Grupo 3 (2 Jefe, 4 Miembros)
-const componente7 = new SimpleComponent("JEFE", jefe0);
-const componente8 = new SimpleComponent("JEFE", jefe1);
-const componente9 = new SimpleComponent("MIEMBRO", miembro4);
-const componente10 = new SimpleComponent("MIEMBRO", miembro5);
-const componente11 = new SimpleComponent("MIEMBRO", miembro6);
-const componente12 = new SimpleComponent("MIEMBRO", miembro7);
-const grupo3 = new CompositeComponent(123,"Grupo 3", "GRUPO");
+const componente7 = new SimpleComponent(Roles.Jefe, jefe0);
+const componente8 = new SimpleComponent(Roles.Jefe, jefe1);
+const componente9 = new SimpleComponent(Roles.Miembro, miembro4);
+const componente10 = new SimpleComponent(Roles.Miembro, miembro5);
+const componente11 = new SimpleComponent(Roles.Miembro, miembro6);
+const componente12 = new SimpleComponent(Roles.Miembro, miembro7);
+const grupo3 = new CompositeComponent(123, "Grupo 3", Roles.Grupo);
 grupo3.addComponent(componente7);
 grupo3.addComponent(componente8);
 grupo3.addComponent(componente9);
@@ -101,17 +103,17 @@ grupo3.addComponent(componente11);
 grupo3.addComponent(componente12);
 
 //Rama 1 (Grupo 3)
-const rama2 = new CompositeComponent(2, "Rama 2", "RAMA");
+const rama2 = new CompositeComponent(2, "Rama 2", Roles.Rama);
 rama2.addComponent(grupo3);
 
 //Zona 1 (Rama 1, Rama 2)
-const zona1 = new CompositeComponent(1, "Zona 1", "ZONA");
+const zona1 = new CompositeComponent(1, "Zona 1", Roles.Zona);
 zona1.addComponent(rama1);
 zona1.addComponent(rama2);
 
 //COORDINACION (asesor general, zona1)
-const componente13 = new SimpleComponent("Asesor General", miembro30);
-const coordinacion = new CompositeComponent(1, "Coordinación", "COORDINACION");
+const componente13 = new SimpleComponent(Roles.Asesor, miembro30);
+const coordinacion = new CompositeComponent(1, "Coordinación", Roles.Coordinacion);
 coordinacion.addComponent(zona1);
 
 
@@ -183,5 +185,3 @@ process.stdin.on('keypress', (str, key) => {
     }
 });
 //imprimirMenuPrincipal();*/
-
-

@@ -12,7 +12,7 @@ export interface Canton {
   nombre: string;
 }
 
-export interface Districto {
+export interface Distrito {
   id: number;
   nombre: string;
 }
@@ -21,14 +21,14 @@ export class Direccion {
   //field 
   private _provincia: Provincia;
   private _canton: Canton;
-  private _districto: Districto;
+  private _distrito: Distrito;
   private _info: string; 
   
   //constructor 
-  constructor(provincia: Provincia, canton: Canton, districto: Districto, info: string) {
+  constructor(provincia: Provincia, canton: Canton, distrito: Distrito, info: string) {
     this._provincia = provincia;
     this._canton = canton;
-    this._districto = districto;
+    this._distrito = distrito;
     this._info = info;
   }
   
@@ -49,12 +49,12 @@ export class Direccion {
     this._canton = canton;
   }
 
-  get districto() : Districto{
-    return this._districto;
+  get districto() : Distrito{
+    return this._distrito;
   }
 
-  set districto(districto: Districto){
-    this._districto = districto;
+  set districto(districto: Distrito){
+    this._distrito = districto;
   }
 
   get info() : string{
@@ -68,7 +68,7 @@ export class Direccion {
 
 let provinciaV:Provincia = {id: 1, nombre: "Heredia"};
 let cantonV:Canton = {id: 1, nombre: "San Isidro"};
-let districtoV:Districto = {id: 1, nombre: "Calle Chaves"};
-let direccion = new Direccion(provinciaV, cantonV, districtoV, "Que bonito lugar");
+let distritoV:Distrito = {id: 1, nombre: "Calle Chaves"};
+let direccion = new Direccion(provinciaV, cantonV, distritoV, "Que bonito lugar");
 
 //console.log(direccion.provincia);

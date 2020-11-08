@@ -1,5 +1,5 @@
 import { Direccion } from "../models/Direccion";
-import { Provincia, Canton, Districto } from "../models/Direccion";
+import { Provincia, Canton, Distrito } from "../models/Direccion";
 
 export enum eEstado {
   activo = "ACTIVO",
