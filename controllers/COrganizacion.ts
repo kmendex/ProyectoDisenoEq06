@@ -1,26 +1,22 @@
+import { Direccion } from "../models/Direccion";
 import { Organizacion } from "../models/Organizacion";
+import { CompositeComponent } from "../models/composite/CompositeComponent";
 
-interface Coordinacion{
-  prueba: string;
-}
-
-module controller {
-  export interface ControlOrganizacion extends Organizacion {
-    organizacion: string;
+export class COrganizacion extends Organizacion{
+  static crearOrganizacion (nombreCompany: string, cedulaJuridica: number, direccionWeb: string, direccion: Direccion, telefono: number, coordinacion: Array<CompositeComponent>): Organizacion{
+    return new Organizacion(nombreCompany, cedulaJuridica, direccionWeb, direccion, telefono, coordinacion);
   }
   
-  export class COrganizacion {
-
-    constructor(private organizacion: ControlOrganizacion) {
-      this.organizacion = this.organizacion;
-    }
-    
-    private _actualizarOrganizacion (organizacion: Organizacion){
-      return null;
-    }
-
-    private _mostrarCoordinacion(coordinacion: Coordinacion): Coordinacion {
-      return null;
-    }
+  static actualizarDatos(nombre?: string, cedulaJuridica?: number, direccionWeb?: string, direccion?: Direccion, telefono?: number): void {
+    if(nombre !== undefined)
+      COrganizacion.nombreCompany = nombre;
+    if(cedulaJuridica !== undefined)
+      COrganizacion.cedulaJuridica = cedulaJuridica;
+    if(direccionWeb !== undefined)
+      COrganizacion.direccionWeb = direccionWeb;
+    if(direccion !== undefined)
+      COrganizacion.direccion = direccion;
+    if(telefono !== undefined)
+      COrganizacion.telefono = telefono;
   }
 }

@@ -1,16 +1,14 @@
-//import { Composite } from "../models/Composite";
-import * as Collections from 'typescript-collections';
 import { CompositeComponent } from "../models/composite/CompositeComponent";
 import { SimpleComponent } from "../models/composite/SimpleComponent";
-import { eEstado, Persona } from '../models/Persona';
+import { COrganizacion } from '../controllers/COrganizacion';
+import { CPersona } from '../controllers/CPersona';
 import { Roles } from "../models/composite/AbstractComponent";
 
-let coordinaciones: Array<CompositeComponent> = [];
 let zonas: Array<CompositeComponent> = [];
 let ramas: Array<CompositeComponent> = [];
 let grupos: Array<CompositeComponent> = [];
 
-let personas: Array<Persona> = [];
+//let personas: Array<Persona> = [];
 
 export class CComposite{
   //fields
@@ -18,8 +16,7 @@ export class CComposite{
 
 //--------------------Insertar--------------------//
 function insertarCoordinador(id: number, nombreCoordinacion: string): void {
-    let nuevaCoordinacion = new CompositeComponent(id, nombreCoordinacion, Roles.Coordinacion);
-    coordinaciones.push(nuevaCoordinacion);
+    COrganizacion.coordinaciones.push(new CompositeComponent(id, nombreCoordinacion, Roles.Coordinacion));
 }
 
 function insertarZona(id: number, nombreZona: string): void {
@@ -58,16 +55,16 @@ function listarGrupos(rama: string): Array<CompositeComponent> {
 // Cambiar tipo a un miembro, monitor, jefe e incluso asesor
 function nombrarAsesor(id: number, nombre: string, coordinacion: string): void {
     
-    let nuevoAsesor = personas.filter(x => x.identificacion == id)[0];
+    let nuevoAsesor = CPersona.getPersonas(id);
     let buscarCoordinacion = zonas.filter(x => x.getName() == coordinacion)[0];
-    let asesor = new SimpleComponent(Roles.Jefe, nuevoAsesor);
+    let asesor = new SimpleComponent(Roles.Asesor, nuevoAsesor);
 
     buscarCoordinacion.addComponent(asesor);
 }
 
 function nombrarJefeZ(id: number, nombre: string, zona: string): void {
     
-    let nuevoJefe = personas.filter(x => x.identificacion == id)[0];
+    let nuevoJefe = CPersona.getPersonas(id);
     let buscarZona = zonas.filter(x => x.getName() == zona)[0];
     let jefeZ = new SimpleComponent(Roles.Jefe, nuevoJefe);
 
@@ -76,7 +73,7 @@ function nombrarJefeZ(id: number, nombre: string, zona: string): void {
 
 function nombrarJefeR(id: number, nombre: string, rama: string): void {
     
-    let nuevoJefe = personas.filter(x => x.identificacion == id)[0];
+    let nuevoJefe = CPersona.getPersonas(id);
     let buscarRama = ramas.filter(x => x.getName() == rama)[0];
     let jefeR = new SimpleComponent(Roles.Jefe, nuevoJefe);
 
@@ -84,7 +81,7 @@ function nombrarJefeR(id: number, nombre: string, rama: string): void {
 }
 
 function nombrarMonitor(id: number, nombre: string, grupo: string): void {
-    let nuevoMonitor = personas.filter(x => x.identificacion == id)[0];
+    let nuevoMonitor = CPersona.getPersonas(id);
     let buscarGrupo = grupos.filter(x => x.getName() == grupo)[0];
     let monitor = new SimpleComponent(Roles.Monitor, nuevoMonitor);
 
