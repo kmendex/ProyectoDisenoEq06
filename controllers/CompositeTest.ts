@@ -6,6 +6,7 @@
 //Ejecutar en la terminal npx tsc --init
 //Debe habilitar en el powershell como administrador, la ejecución de scripts Set-ExecutionPolicy Unrestricted
 //Digitar en la terminal ts-node CompositePruebas.ts
+//Digitar en la terminal ts-node CompositeTest.ts
 //Recordar deshabilitar ésta opción después de terminar de hacer pruebas Set-ExecutionPolicy Restricted
 
 
