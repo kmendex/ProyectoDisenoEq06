@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/define', defineRouter);
-app.use('/query', queryRouter);
+app.use('/consulta', queryRouter);
 
 app.use(function (req, res, next){
     req.dbConnection = dbConnection;

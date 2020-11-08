@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-
 //const { Client } = require('pg');
 //require('dotenv/config')
 
@@ -12,18 +11,17 @@ router.get('/', function(req, res, next) {
 /*
   const client = new Client({connectionString: process.env.DATABASE_URL, ssl:{rejectUnauthorized: false}});
   client.connect();
-  client.query('select textaqui from test where id = 1', (err, res1) => {
+  client.query('select readOrganization(1)', (err, resQ) => {
       if (err) throw err
-      console.log (res1.rows[0].textaqui);
-  client.end();
-
+      console.log (resQ.rows[0]);
   });
+  client.end();
 */
 //
 
     // paso de documentos estaticos
-    let p = path.join(__dirname, '../public/html/index.html')
-    res.sendFile(p);
+    let page = path.join(__dirname, '../public/html/index.html')
+    res.sendFile(page);
 
 });
 
