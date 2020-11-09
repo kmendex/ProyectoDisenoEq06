@@ -1,27 +1,36 @@
 import { Persona, eEstado } from "../models/Persona";
-import * as Collections from 'typescript-collections';
+import { Direccion } from "../models/Direccion";
 
-module controller {
-  export interface ControlPersona extends Persona {
-    personas: Collections.Set<Persona>;
+export class CPersona{
+  static personas: Array<Persona>;
+
+  constructor(personas: Array<Persona>) {}
+
+  static crearPersonas (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
+    this.personas.push(new Persona(id, nombre, celular, correo, direccion, estado));
   }
   
-  export class CPersona {
+  static getPersonas (id: number): Persona{
+    let buscarPersona = this.personas.filter(x => x.identificacion == id)[0];
+    return buscarPersona;
+  }
 
-    constructor(private personas: ControlPersona) {
-      this.personas = this.personas;
-    }
-    
-    private _getPersonas ():  Collections.Set<Persona>{
-      return null;
-    }
-
-    private _cambiarEstado(id: number, nombre: string, estado: eEstado): boolean {
-      return true;
-    }
-    
-    private _actualizarDatos(id: number, nombre: string) {
-      return null;
-    }
+  static cambiarEstado(id: number, estado: eEstado): void {
+    let persona = this.getPersonas(id);
+    persona.estado = estado;
+  }
+  
+  static actualizarDatos(id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
+    let persona = this.getPersonas(id);
+    if(nombre !== undefined)
+      persona.nombreCompleto = nombre;
+    if(celular !== undefined)
+      persona.celular = celular;
+    if(correo !== undefined)
+      persona.correo = correo;
+    if(direccion !== undefined)
+      persona.direccion = direccion;
+    if(estado !== undefined)
+      persona.estado = estado;
   }
 }
