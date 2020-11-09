@@ -18,6 +18,8 @@ import { SimpleComponent } from "../models/composite/SimpleComponent";
 import { GroupController } from "../models/factory/GroupController";
 import { Direccion, Provincia, Canton, Distrito } from "../models/Direccion";
 import { eEstado, Persona } from "../models/Persona";
+import { CComposite } from "../controllers/CComposite";
+import { CPersona } from "../controllers/CPersona";
 
 
 const provincia: Provincia = {id: 3, nombre: "Cartago"};
@@ -57,7 +59,6 @@ const jefe6 = new Persona(16,"Jefe6",74479112,"@gmail.com",direccionUnica, eEsta
 const jefe7 = new Persona(17,"Jefe7",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const jefe8 = new Persona(18,"Jefe8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const jefe9 = new Persona(19,"Jefe9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-
 
 
 const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccionUnica, eEstado.activo);
