@@ -1,16 +1,19 @@
 import { Provincia } from "../models/Provincia";
 
-export class Pais { 
+export interface P {
+  provincias: Array<Provincia>;
+}
+
+export class Pais implements P { 
   //field 
   private _id: number;
   private _nombre: string;
-  private _provincias: Array<Provincia>;
   
   //constructor 
-  constructor(id: number, nombre: string, provincias: Array<Provincia>) {
+  constructor(id: number, nombre: string) {
     this._id = id;
     this._nombre = nombre;
-    this._provincias = provincias;
+    this.addProvincia(id, nombre);
   }  
   
   //functions
@@ -31,10 +34,14 @@ export class Pais {
   }
 
   get provincias (): Array<Provincia> {
-    return this._provincias;
+    return this.provincias;
   }
 
-  set provincias (provincias: Array<Provincia>) {
-    this._provincias = provincias;
+  addProvincia(id: number, nombre: string) {
+    this.provincias.push(new Provincia(id, nombre));
+  }
+
+  getProvincia (id: number): Provincia {
+    return this.provincias.filter(x => x.id == id)[0];
   }
 }  

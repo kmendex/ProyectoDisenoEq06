@@ -4,8 +4,6 @@ import { Direccion } from "../models/Direccion";
 export class CPersona{
   static personas: Array<Persona>;
 
-  constructor(personas: Array<Persona>) {}
-
   static crearPersonas (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
     this.personas.push(new Persona(id, nombre, celular, correo, direccion, estado));
   }

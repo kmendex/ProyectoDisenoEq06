@@ -1,15 +1,20 @@
-function agregar(registro: Object): boolean {
+import { Organizacion } from "../models/Organizacion";
+
+export class IControlador {
+
+  static agregar(registro: Object): boolean {
     return true;
   }
   
-  function consultar(llave: Object): {} {
-    return null;
+  static consultar(llave: Object): void {
+    
   }
   
-  function modificar(registro: Object): boolean {
+  static modificar(registro: Object): boolean {
     return true;
   }
   
-  function eliminar(registro: Object): boolean {
+  static eliminar(registro: Object): boolean {
     return true;
   }
+}

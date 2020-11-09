@@ -32,9 +32,9 @@ const provincias = new Array<Provincia>();
 const paises = new Array<Pais>();
 
 distritos.push(new Distrito(2, "Oriental"));
-cantones.push(new Canton(1, "Central", distritos));
-provincias.push(new Provincia(3, "Cartago", cantones));
-paises.push(new Pais(1, "Costa Rica", provincias));
+cantones.push(new Canton(1, "Central"));
+provincias.push(new Provincia(3, "Cartago"));
+paises.push(new Pais(1, "Costa Rica"));
 
 const direccionUnica = new Direccion(paises[0], provincias[0], cantones[0], distritos[0], "Los Ángeles");
 
