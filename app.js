@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const dbConnection = require("./dao/DAOSource.js");
 
 var indexRouter = require('./routes/index');
 var defineRouter = require('./routes/define')
@@ -24,11 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/define', defineRouter);
 app.use('/consulta', queryRouter);
-
-app.use(function (req, res, next){
-    req.dbConnection = dbConnection;
-    next();
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
