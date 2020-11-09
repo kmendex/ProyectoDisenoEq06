@@ -14,6 +14,7 @@ export abstract class AbstractComponent {
     protected id:number;
     protected name:string;
     protected type:Roles;
+    protected enable: boolean = true;
 
     public constructor(id:number, name:string, type:Roles) {
         this.id = id;
@@ -45,12 +46,20 @@ export abstract class AbstractComponent {
         this.type = type;
     }
 
+    public getEnable(): boolean {
+        return this.enable;
+    }
+
+    public setEnable(enable:boolean):void {
+        this.enable = enable;
+    }
+
     public abstract isComposite(): boolean;
 
-    public abstract addComponent(component: AbstractComponent): void;
-    
-    public abstract removeComponent(component: AbstractComponent): void;
+    public abstract addComponent(component:AbstractComponent):void;
 
+    public abstract removeComponent(component:AbstractComponent):boolean;
+    
     public abstract toString(tab:string):string;
 
 }
