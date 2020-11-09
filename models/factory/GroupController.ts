@@ -11,9 +11,9 @@ export class GroupController {
         this.group = group;
     }
 
-    /*public getGroup():CompositeComponent {
+    public getGroup():CompositeComponent {
         return this.group;
-    }*/
+    }
     
     /**
      * Nombre: addMember

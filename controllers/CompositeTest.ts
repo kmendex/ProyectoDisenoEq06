@@ -24,6 +24,7 @@ import { Direccion } from "../models/Direccion";
 import { eEstado, Persona } from "../models/Persona";
 import { CComposite } from "../controllers/CComposite";
 import { CPersona } from "../controllers/CPersona";
+import { BranchController } from "../models/factory/BranchController";
 
 const distritos = new Array<Distrito>();
 const cantones = new Array<Canton>();
@@ -76,10 +77,7 @@ const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccio
 //Grupo 1 (1 Monitor 1 Miembro)
 //const componente0 = new SimpleComponent(Roles.Monitor, monitor0);
 //const componente1 = new SimpleComponent(Roles.Miembro, miembro0);
-const grupo1 = new CompositeComponent(111,"Grupo 1", Roles.Grupo);
-var groupController1 = new GroupController(grupo1);
-groupController1.addMonitor(monitor0);
-groupController1.addMember(miembro0);
+//const grupo1 = new CompositeComponent(111,"Grupo 1", Roles.Grupo);
 //grupo1.addComponent(componente0);
 //grupo1.addComponent(componente1);
 
@@ -89,18 +87,21 @@ const componente3 = new SimpleComponent(Roles.Monitor, monitor2);
 const componente4 = new SimpleComponent(Roles.Miembro, miembro1);
 const componente5 = new SimpleComponent(Roles.Miembro, miembro2);
 const componente6 = new SimpleComponent(Roles.Miembro, miembro3);
-const grupo2 = new CompositeComponent(112, "Grupo 2", Roles.Grupo);
-grupo2.addComponent(componente2);
+//const grupo2 = new CompositeComponent(112, "Grupo 2", Roles.Grupo);
+/*grupo2.addComponent(componente2);
 grupo2.addComponent(componente3);
 grupo2.addComponent(componente4);
 grupo2.addComponent(componente5);
 grupo2.addComponent(componente6);
 var groupController2 = new GroupController(grupo2);
+groupController2.addMonitor(monitor1);
+groupController2.addMonitor(monitor2);
+groupController2.addMember(miembro1);
+groupController2.addMember(miembro2);
+groupController2.addMember(miembro3);*/
 
-//Rama 1 (Grupo 1, Grupo 2)
-const rama1 = new CompositeComponent(1, "Rama 1", Roles.Rama);
-rama1.addComponent(grupo1);
-rama1.addComponent(grupo2);
+//rama1.addComponent(grupo1);
+//rama1.addComponent(grupo2);
 
 
 //Grupo 3 (2 Jefe, 4 Miembros)
@@ -118,7 +119,7 @@ grupo3.addComponent(componente10);
 grupo3.addComponent(componente11);
 grupo3.addComponent(componente12);
 
-//Rama 1 (Grupo 3)
+/*//Rama 1 (Grupo 3)
 const rama2 = new CompositeComponent(2, "Rama 2", Roles.Rama);
 rama2.addComponent(grupo3);
 
@@ -130,12 +131,35 @@ zona1.addComponent(rama2);
 //COORDINACION (asesor general, zona1)
 const componente13 = new SimpleComponent(Roles.Asesor, miembro30);
 const coordinacion = new CompositeComponent(1, "Coordinación", Roles.Coordinacion);
-coordinacion.addComponent(zona1);
+coordinacion.addComponent(zona1);*/
 
 
 
 console.clear();
 console.log("BIENVENIDO A LAS PRUEBAS DEL COMPOSITE\n");
+
+//Rama 1 (Grupo 1, Grupo 2)
+const rama1 = new CompositeComponent(1, "Rama 1", Roles.Rama);
+var branchController1 = new BranchController(rama1);
+console.log(branchController1.addGroup(111,"Grupo 1"));
+console.log(branchController1.addGroup(112, "Grupo 2"));
+
+var groupController1 = new GroupController(branchController1.getGroupByID(111));
+groupController1.addMonitor(monitor0);
+groupController1.addMember(miembro0);
+
+var groupController2 = new GroupController(branchController1.getGroupByID(112));
+groupController2.addMonitor(monitor1);
+groupController2.addMonitor(monitor2);
+groupController2.addMember(miembro1);
+groupController2.addMember(miembro2);
+groupController2.addMember(miembro3);
+console.log(branchController1.getBranch().toString(""));
+
+console.log("*******************Imprimir Comission********************\n");
+for(var component of branchController1.getComission()) {
+    console.log(component.toString(""));
+}
 
 /*
 //Imprimir miembro
@@ -202,7 +226,7 @@ console.log("*******************Imprimir Grupo2*********************\n");
 console.log(grupo2.toString("")+"\n");
 console.log("*******************************************************\n");*/
 
-console.log("*******************Imprimir Grupo1*********************\n");
+/*console.log("*******************Imprimir Grupo1*********************\n");
 console.log(grupo2.toString("")+"\n");
 console.log("*******************************************************\n");
 
