@@ -1,4 +1,4 @@
-import { Roles } from "../composite/AbstractComponent";
+import { AbstractComponent, Roles } from "../composite/AbstractComponent";
 import { CompositeComponent } from "../composite/CompositeComponent";
 
 export class BranchController {
@@ -6,6 +6,10 @@ export class BranchController {
 
     constructor(branch:CompositeComponent) {
         this.branch = branch;
+    }
+
+    public getBranch():CompositeComponent {
+        return this.branch;
     }
 
     /**
@@ -31,7 +35,29 @@ export class BranchController {
         }
     }
 
-        /**
+    /**
+     * Nombre: getGroupByID
+     * Entrada: Id del grupo
+     * Salida: AbstractComponent (grupo)        
+     * Restricciones: N/A
+     */
+    public getGroupByID(id:number):CompositeComponent {
+        const abstractComponent = this.branch.getLevel().filter(component => component.getId() == id)[0];
+        return (<CompositeComponent>abstractComponent);
+    }
+
+    /**
+     * Nombre: getGroupByName
+     * Entrada: Id del grupo
+     * Salida: AbstractComponent (grupo)        
+     * Restricciones: N/A
+     */
+    public getGroupByName(name:string):CompositeComponent {
+        const abstractComponent = this.branch.getLevel().filter(component => component.getName() == name)[0];
+        return (<CompositeComponent>abstractComponent);
+    }
+
+    /**
      * Nombre: removeGroup
      * Entrada: Id y nombre del grupo
      * Salida: true si se eliminó bien
@@ -42,4 +68,47 @@ export class BranchController {
         return this.branch.removeComponent(new CompositeComponent (id, name, Roles.Grupo));
     }
 
+    /**
+     * Nombre: getGrupos
+     * Entrada: N/A
+     * Salida: AbstractComponent[] con los grupos de la rama      
+     * Restricciones: N/A
+     */
+
+    public getGroups():AbstractComponent[] {
+        var groups = this.branch.getLevel().filter(component => component.isComposite());
+        return groups;
+    }
+
+    /**
+     * Nombre: getTypeMember
+     * Entrada: Tipo de miembro esperado
+     * Salida: AbstractComponent[] con los miembros de la comision     
+     * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
+     */
+
+    public getTypeMember(rol:Roles):AbstractComponent[] {
+        var groups = this.getGroups();
+        var comission: AbstractComponent[] = [];
+        for(var group of groups) {
+            comission = comission.concat(((<CompositeComponent>group).getLevel()).filter(member => (member.getType() === rol)));
+        }
+        return comission;
+    }
+
+    /**
+     * Nombre: getHeadship
+     * Entrada: Tipo de miembro esperado
+     * Salida: AbstractComponent[] con los miembros de la comision     
+     * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
+     */
+
+    public getComission():AbstractComponent[] {
+        var comission: AbstractComponent[] = [];
+        comission = comission.concat(this.getTypeMember(Roles.Jefe));
+        comission = comission.concat(this.getTypeMember(Roles.Monitor));
+        return comission;
+    }
+    
+    
 }
