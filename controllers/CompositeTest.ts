@@ -15,16 +15,26 @@
 import { Roles } from "../models/composite/AbstractComponent";
 import { CompositeComponent } from "../models/composite/CompositeComponent";
 import { SimpleComponent } from "../models/composite/SimpleComponent";
-import { Direccion, Provincia, Canton, Distrito } from "../models/Direccion";
+import { Direccion } from "../models/Direccion";
+import { Pais } from "../models/Pais";
+import { Provincia } from "../models/Provincia";
+import { Canton } from "../models/Canton";
+import { Distrito } from "../models/Distrito";
 import { eEstado, Persona } from "../models/Persona";
 import { CComposite } from "../controllers/CComposite";
 import { CPersona } from "../controllers/CPersona";
 
+const distritos = new Array<Distrito>();
+const cantones = new Array<Canton>();
+const provincias = new Array<Provincia>();
+const paises = new Array<Pais>();
 
-const provincia: Provincia = {id: 3, nombre: "Cartago"};
-const canton: Canton = {id: 1, nombre: "Central"};
-const distrito: Distrito = {id: 2, nombre: "Oriental"};
-const direccionUnica = new Direccion(provincia, canton, distrito, "Los Ángeles");
+distritos.push(new Distrito(2, "Oriental"));
+cantones.push(new Canton(1, "Central", distritos));
+provincias.push(new Provincia(3, "Cartago", cantones));
+paises.push(new Pais(1, "Costa Rica", provincias));
+
+const direccionUnica = new Direccion(paises[0], provincias[0], cantones[0], distritos[0], "Los Ángeles");
 
 const miembro0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const miembro1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica, eEstado.activo);

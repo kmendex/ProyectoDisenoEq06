@@ -5,13 +5,15 @@ import { CPersona } from '../controllers/CPersona';
 import { Roles } from "../models/composite/AbstractComponent";
 
 export class CComposite{
+    static coordinaciones: Array<CompositeComponent> = [];
     static zonas: Array<CompositeComponent> = [];
     static ramas: Array<CompositeComponent> = [];
     static grupos: Array<CompositeComponent> = [];
 
     //--------------------Insertar--------------------//
     static insertarCoordinador(id: number, nombreCoordinacion: string): void {
-        COrganizacion.coordinaciones.push(new CompositeComponent(id, nombreCoordinacion, Roles.Coordinacion));
+        let nueveCoordinacion = new CompositeComponent(id, nombreCoordinacion, Roles.Coordinacion);
+        this.coordinaciones.push(nueveCoordinacion);
     }
 
     static insertarZona(id: number, nombreZona: string): void {

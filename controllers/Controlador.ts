@@ -1,59 +1,71 @@
-//import CPersona from "../controllers/CPersona";
+import { CPersona } from "../controllers/CPersona";
 import { CComposite } from "../controllers/CComposite";
+import { COrganizacion } from "../controllers/COrganizacion";
 import { CompositeComponent } from "../models/composite/CompositeComponent";
 import { SimpleComponent } from "../models/composite/SimpleComponent";
 import { Persona } from "../models/Persona";
-//import { COrganizacion } from "../controllers/COrganizacion";
-import * as Collections from 'typescript-collections';
+
+const db = require("../dao/DAOSourcePostgres.js");
+
+try{
+  //let result = await db.getOrganization('12');
+  let result = await db.getOrganization('1');
+  console.log(result);
+  console.log(result.readOrganization.name);  
+}
+catch(error){
+  console.log(error);
+}
+
 
 export class Controlador{
 
 }
 
 //--------------------Definir--------------------//
-function definirCoordinador(): {} {
+function definirCoordinador() {
     return null;
 }
 
-function definirZona(): {} {
+function definirZona() {
     return null;
 }
 
-function definirRama(): {} {
+function definirRama() {
     return null;
 }
 
-function definirGrupo(): {} {
+function definirGrupo() {
     return null;
 }
 
 //--------------------Consultar--------------------//
-function consultarZonas(): Collections.Set<CompositeComponent> {
+function consultarZonas() {
     //Collections.Set<CompositeComponent> zona = CComposite.listarZonas();
-    return zona;
-}
-
-function consultarRamas(): Collections.Set<CompositeComponent> {
     return null;
 }
 
-function consultarGrupos(): Collections.Set<CompositeComponent> {
+function consultarRamas() {
+    return null;
+}
+
+function consultarGrupos() {
     return null;
 }
 
 //--------------------Designar--------------------//
-function designarAsesor(id: number, nombre: string): Collections.Set<SimpleComponent> {
+function designarAsesor(id: number, nombre: string) {
     return null;
 }
 
-function designarJefeZ(id: number, nombre: string): Collections.Set<SimpleComponent> {
+function designarJefeZ(id: number, nombre: string) {
     return null;
 }
 
-function designarJefeR(id: number, nombre: string): Collections.Set<SimpleComponent> {
+function designarJefeR(id: number, nombre: string) {
     return null;
 }
 
-function designarMonitor(id: number, nombre: string): Collections.Set<SimpleComponent> {
+function designarMonitor(id: number, nombre: string) {
     return null;
 }
