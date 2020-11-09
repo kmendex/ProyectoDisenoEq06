@@ -2,7 +2,7 @@ import {AbstractComponent, Roles} from "./AbstractComponent"
 import {Persona} from "../Persona";
 
 export class SimpleComponent extends AbstractComponent {
-
+    
     protected member: Persona;
 
     public constructor(type:Roles, member:Persona) {
@@ -20,6 +20,14 @@ export class SimpleComponent extends AbstractComponent {
 
     public isComposite(): boolean {
         return false;
+    }
+
+    public addComponent(component: AbstractComponent ): void {
+        throw new Error("Method not implemented.");
+    }
+
+    public removeComponent(component: AbstractComponent): boolean {
+        throw new Error("Method not implemented.");
     }
 
     /**

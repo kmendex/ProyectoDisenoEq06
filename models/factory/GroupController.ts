@@ -1,6 +1,7 @@
 import { CompositeComponent } from "../composite/CompositeComponent";
 import { SimpleComponent } from "../composite/SimpleComponent";
 import { Roles } from "../composite/AbstractComponent";
+import { Persona } from "../Persona";
 
 export class GroupController {
 
@@ -10,53 +11,114 @@ export class GroupController {
         this.group = group;
     }
 
-    public getGroup():CompositeComponent {
+    /*public getGroup():CompositeComponent {
         return this.group;
-    }
+    }*/
     
     /**
      * Nombre: addMember
      * Entrada: Un SimpleComponent
-     * Salida: -1 si ya se encuentra en el grupo
-     *         0 si el tipo es diferente Miembro
-     *         1 si se agrega correctamente el miembro al grupo         
-     * Restricciones: Sólo admite Simplecomponent tipo miembro
+     * Salida: true si se agregó bien
+     *         false si ya se encontraba en el grupo         
+     * Restricciones: N/A
      */
-    public addMember(member:SimpleComponent):number {
-        if(this.group.isID(member.getId())) {
-            return -1;
+    public addMember(member:Persona):boolean {
+        if(this.group.isID(member.identificacion)) {
+            return false;
         }
         else {
-            if (member.getType().localeCompare(Roles.Miembro) == 0) {
-                this.group.addComponent(member);
-                return 1;
-            }
-            else{
-                return 0;
-            }
+            const newMember = new SimpleComponent(Roles.Miembro, member);
+            this.group.addComponent(newMember);
+            return true;
         }
     }
 
     /**
      * Nombre: addMonitor
      * Entrada: Un SimpleComponent
-     * Salida: -1 si ya se encuentra en el grupo
-     *         0 si el tipo es diferente monitor
-     *         1 si se agrega correctamente el miembro al grupo         
-     * Restricciones: Sólo admite Simplecomponent tipo miembro
+     * Salida: true si se agregó correctamente
+     *         false si ya tiene jefe asignado o hay dos monitores o el monitor está repetido
+     * Restricciones: No exite jefe y debe haber menos de un monitor
      */
-    public addMonitor(member:SimpleComponent):number {
-        if(this.group.isID(member.getId())) {
-            return -1;
+    public addMonitor(monitor:Persona):boolean {
+        if(this.group.count(Roles.Jefe) == 0 && this.group.count(Roles.Monitor) < 2) {
+            const newMonitor = new SimpleComponent(Roles.Monitor, monitor);
+            var memberRepeat = this.group.getLevel().filter(member => (member.getId() == monitor.identificacion && member.getType() === Roles.Miembro));
+            if(memberRepeat.length > 0) {
+                this.group.removeComponent(memberRepeat[0]);
+                this.group.addComponent(newMonitor);
+                return true;
+            }
+            else 
+            {
+                memberRepeat = this.group.getLevel().filter(member => (member.getId() == monitor.identificacion && member.getType() === Roles.Monitor));
+                if(memberRepeat.length > 0) {
+                    return false;
+                }
+                else {
+                    this.group.addComponent(newMonitor);
+                    return true;
+                }
+            }           
         }
         else {
-            if (member.getType().localeCompare(Roles.Miembro) == 0) {
-                this.group.addComponent(member);
-                return 1;
+            return false;
+        }
+    }
+
+    /**
+     * Nombre: addBoss
+     * Entrada: Un SimpleComponent
+     * Salida: true si se agregó correctamente
+     *         false si hay dos jefes o el jefe está repetido o si se va a asignar
+     * Restricciones: No exite jefe y debe haber menos de un monitor
+     */
+    public addBoss(boss:Persona):boolean {
+        if(this.group.count(Roles.Jefe) < 2) {
+            const newBoss = new SimpleComponent(Roles.Jefe, boss);
+            var memberRepeat = this.group.getLevel().filter(member => (member.getId() == boss.identificacion && member.getType() === Roles.Monitor));
+            if(memberRepeat.length > 0) {
+                return false;
             }
-            else{
-                return 0;
+            else 
+            {
+                memberRepeat = this.group.getLevel().filter(member => (member.getId() == boss.identificacion && member.getType() === Roles.Jefe));
+                if(memberRepeat.length > 0) {
+                    return false;
+                }
+                else {
+                    memberRepeat = this.group.getLevel().filter(member => (member.getId() == boss.identificacion && member.getType() === Roles.Miembro));
+                    if(memberRepeat.length > 0) {
+                        this.group.removeComponent(memberRepeat[0]);
+                        this.group.addComponent(newBoss);
+                        this.removeVirtualMonitors();
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }           
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Nombre: removeMonitors()
+     * Entrada: N/A
+     * Salida: N/A
+     * Restricciones: N/A
+     */
+    public removeVirtualMonitors():void {
+        var index = 0;
+        const groupMembers = this.group.getLevel();
+        for(var component of groupMembers) {
+            if (component.getType() === Roles.Monitor) {
+                groupMembers[index].setEnable(false);
             }
+            index += 1;
         }
     }
 }

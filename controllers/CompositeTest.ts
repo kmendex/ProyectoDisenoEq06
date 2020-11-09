@@ -64,11 +64,12 @@ const jefe9 = new Persona(19,"Jefe9",74479112,"@gmail.com",direccionUnica, eEsta
 const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
 //Grupo 1 (1 Monitor 1 Miembro)
-const componente0 = new SimpleComponent(Roles.Monitor, monitor0);
-const componente1 = new SimpleComponent(Roles.Miembro, miembro0);
+//const componente0 = new SimpleComponent(Roles.Monitor, monitor0);
+//const componente1 = new SimpleComponent(Roles.Miembro, miembro0);
 const grupo1 = new CompositeComponent(111,"Grupo 1", Roles.Grupo);
 var groupController1 = new GroupController(grupo1);
-
+groupController1.addMonitor(monitor0);
+groupController1.addMember(miembro0);
 //grupo1.addComponent(componente0);
 //grupo1.addComponent(componente1);
 
@@ -174,25 +175,45 @@ console.log(groupController2.getGroup().isHere(2, "Miembro2"));
 console.log(groupController2.getGroup().isHere(21, "Monitor3"));
 console.log(groupController2.getGroup().isHere(22, "Miembro2"));*/
 
-//Imprimir grupo
+/*//Imprimir grupo
 console.log("*******************Imprimir Grupo2*********************\n");
-console.log(grupo2.toString("")+"\n");
+console.log(grupo1.toString("")+"\n");
 console.log("*******************************************************\n");
 
 //const miembro2 = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-//const miembroAux = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-//const componenteAux = new SimpleComponent("MIEMBRO", miembro2);
+
+const componenteAux = new SimpleComponent(Roles.Miembro, miembro2);
 console.log(grupo2.findIndexComponent(2, "Miembro2", Roles.Asesor));
 console.log(grupo2.findIndexComponent(2, "Miembro2", Roles.Miembro));
-console.log(grupo2.removeComponent(2, "Miembro2", Roles.Asesor));
-console.log(grupo2.removeComponent(2, "Miembro2", Roles.Miembro));
+console.log(grupo2.removeComponent(componenteAux));
 
 //Imprimir grupo
 console.log("*******************Imprimir Grupo2*********************\n");
 console.log(grupo2.toString("")+"\n");
+console.log("*******************************************************\n");*/
+
+console.log("*******************Imprimir Grupo1*********************\n");
+console.log(grupo2.toString("")+"\n");
 console.log("*******************************************************\n");
 
-console.log();
+const miembroAux0 = new Persona(1,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembroAux1 = new Persona(22,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembroAux2 = new Persona(4,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembroAux3 = new Persona(3,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembroAux4 = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+console.log(groupController2.addBoss(miembroAux0)); //true
+console.log(groupController2.addBoss(miembroAux1)); //false
+console.log(groupController2.addBoss(miembroAux0)); //false
+console.log(groupController2.addBoss(miembroAux2)); //false
+console.log(groupController2.addBoss(miembroAux3)); //true
+console.log(groupController2.addBoss(miembroAux4)); //false
+
+console.log("*******************Imprimir Grupo1*********************\n");
+console.log(grupo2.toString("")+"\n");
+console.log("*******************************************************\n");
+
+
+//console.log(groupController2.addBoss(miembroAux));
 
 
 /*const eol = require('os').EOL;

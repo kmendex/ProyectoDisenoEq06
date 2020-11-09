@@ -12,7 +12,7 @@ export class CompositeComponent extends AbstractComponent {
         return this.level;
     }
 
-    public isComposite(): boolean {
+    public isComposite():boolean {
         return true;
     }
     
@@ -20,8 +20,8 @@ export class CompositeComponent extends AbstractComponent {
         this.level.push(component);
     }
 
-    public removeComponent(id:number, name:string, type:Roles):boolean {        
-        const componentIndex = this.findIndexComponent(id, name, type);
+    public removeComponent(component: AbstractComponent):boolean {        
+        const componentIndex = this.findIndexComponent(component.getId(), component.getName(), component.getType());
         if(componentIndex >= 0) {
             this.level.splice(componentIndex, 1);
             return true;
@@ -33,7 +33,7 @@ export class CompositeComponent extends AbstractComponent {
     
     /**
      * Nombre: findIndexComponent
-     * Entrada: Un id (numero), un nombre (string).
+     * Entrada: Un id (numero), un nombre (string), tipo (Roles).
      * Salida: -1 si no encuentra coincidencias
      *          retorna el indice donde se encuentra el componente    
      * Restricciones: N/A.
