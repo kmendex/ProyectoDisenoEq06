@@ -10,18 +10,18 @@ export class CPersona{
     this.personas.push(new Persona(id, nombre, celular, correo, direccion, estado));
   }
   
-  static getPersonas (id: number): Persona{
+  static tomarPersonas (id: number): Persona{
     let buscarPersona = this.personas.filter(x => x.identificacion == id)[0];
     return buscarPersona;
   }
 
   static cambiarEstado(id: number, estado: eEstado): void {
-    let persona = this.getPersonas(id);
+    let persona = this.tomarPersonas(id);
     persona.estado = estado;
   }
   
   static actualizarDatos(id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
-    let persona = this.getPersonas(id);
+    let persona = this.tomarPersonas(id);
     if(nombre !== undefined)
       persona.nombreCompleto = nombre;
     if(celular !== undefined)

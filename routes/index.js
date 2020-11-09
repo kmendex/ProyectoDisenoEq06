@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
 //
   try{
     //let result = await db.getOrganization('12');
-    let result = await db.getGroup('ZON-03','RAM-04');
+    let result = await db.getOrganization('1');
     console.log(result);  
   }
   catch(error){
