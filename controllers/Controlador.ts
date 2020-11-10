@@ -39,59 +39,59 @@ export class Controlador{
     }
 
     //--------------------Definir--------------------//
-    static definirCoordinador(id: number, nombreCoordinacion: string) {
+    static defineCoordination(id: number, nombreCoordinacion: string) {
         return CComposite.insertarCoordinador(id, nombreCoordinacion);
     }
 
-    static definirZona(id: number, nombreZona: string) {
+    static defineZone(id: number, nombreZona: string) {
         return CComposite.insertarZona(id, nombreZona);
     }
 
-    static definirRama(id: number, nombreRama: string) {
+    static defineBranch(id: number, nombreRama: string) {
         return CComposite.insertarRama(id, nombreRama);
     }
 
-    static definirGrupo(id: number, nombreGrupo: string) {
+    static defineGroup(id: number, nombreGrupo: string) {
         return CComposite.insertarGrupo(id, nombreGrupo);
     }
 
     //--------------------Consultar--------------------//
-    static consultarZonas(coordinacion: string): Array<CompositeComponent> {
+    static consultCoordination(coordinacion: string): Array<CompositeComponent> {
         return CComposite.listarZonas(coordinacion);
     }
 
-    static consultarRamas(zona: string): Array<CompositeComponent> {
+    static consultBranch(zona: string): Array<CompositeComponent> {
         return CComposite.listarRamas(zona);
     }
 
-    static consultarGrupos(grupo: string): Array<CompositeComponent> {
+    static consultGroup(grupo: string): Array<CompositeComponent> {
         return CComposite.listarGrupos(grupo);
     }
 
     //--------------------Designar--------------------//
-    static designarAsesor(id: number, nombre: string) {
+    static assignAdvisor(id: number, nombre: string) {
         CComposite.nombrarAsesor(id, nombre);
     }
 
-    static designarJefeZ(id: number, nombre: string) {
+    static assignBossZ(id: number, nombre: string) {
         CComposite.nombrarJefeZ(id, nombre);
     }
 
-    static designarJefeR(id: number, nombre: string) {
+    static assignBossB(id: number, nombre: string) {
         CComposite.nombrarJefeR(id, nombre);
     }
 
-    static designarMonitor(id: number, nombre: string) {
+    static assignMonitor(id: number, nombre: string) {
         CComposite.nombrarMonitor(id, nombre);
     }
 
     //--------------------Persona--------------------//
     static setPersonas (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
-        CPersona.crearPersonas(id, nombre, celular, correo, direccion, estado);
+        CPersona.crearPersona(id, nombre, celular, correo, direccion, estado);
     }
       
     static getPersonas (id: number): Persona{
-        return CPersona.tomarPersonas(id);
+        return CPersona.obtenerPersona(id);
     }
     
     static updatePerson(id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {

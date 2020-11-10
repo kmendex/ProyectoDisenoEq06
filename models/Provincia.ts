@@ -1,7 +1,10 @@
+import { Canton } from "./Canton";
+
 export class Provincia { 
   //field 
   private _id: number;
   private _nombre: string;
+  static cantones = new Map();
   
   //constructor 
   constructor(id: number, nombre: string) {
@@ -24,5 +27,13 @@ export class Provincia {
 
   set nombre (nombre: string) {
     this._nombre = nombre;
+  }
+  
+  static addCanton(key: number, value: Canton) {
+    Provincia.cantones.set(key, value);
+  }
+
+  static getCanton(key: number) : Canton{
+    return Provincia.cantones.get(key);
   }
 }  

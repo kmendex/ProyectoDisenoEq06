@@ -1,7 +1,10 @@
+import { Distrito } from "./Distrito";
+
 export class Canton { 
   //field 
   private _id: number;
   private _nombre: string;
+  static distritos = new Map();
   
   //constructor 
   constructor(id: number, nombre: string) {
@@ -24,5 +27,13 @@ export class Canton {
 
   set nombre (nombre: string) {
     this._nombre = nombre;
+  }
+    
+  static addDistrito(key: number, value: Distrito) {
+    Canton.distritos.set(key, value);
+  }
+
+  static getDistrito(key: number) : Distrito{
+    return Canton.distritos.get(key);
   }
 }

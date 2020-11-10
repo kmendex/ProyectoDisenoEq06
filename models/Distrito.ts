@@ -7,7 +7,7 @@ export class Distrito {
   constructor(id: number, nombre: string) {
     this._id = id;
     this._nombre = nombre;
-  }  
+  }
   
   //functions
   get id (): number {
