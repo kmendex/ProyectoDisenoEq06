@@ -26,17 +26,12 @@ import { CComposite } from "../controllers/CComposite";
 import { CPersona } from "../controllers/CPersona";
 import { BranchController } from "../models/factory/BranchController";
 
-const distritos = new Array<Distrito>();
-const cantones = new Array<Canton>();
-const provincias = new Array<Provincia>();
-const paises = new Array<Pais>();
+const distrito = new Distrito(2, "Oriental");
+const canton = new Canton(1, "Central");
+const provincia = new Provincia(3, "Cartago");
+const pais = new Pais(1, "Costa Rica");
 
-distritos.push(new Distrito(2, "Oriental"));
-cantones.push(new Canton(1, "Central"));
-provincias.push(new Provincia(3, "Cartago"));
-paises.push(new Pais(1, "Costa Rica"));
-
-const direccionUnica = new Direccion(paises[0], provincias[0], cantones[0], distritos[0], "Los Ángeles");
+const direccionUnica = new Direccion(pais, provincia, canton, distrito, "Los Ángeles");
 
 const miembro0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const miembro1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
