@@ -1,4 +1,3 @@
-
 //Ejecutar en la terminal npm install typescript
 //Ejecutar en la terminal npm install keypress
 //Ejecutar en la terminal npm install -g ts-node (Compila y ejecuta el *.ts)
@@ -8,13 +7,8 @@
 //Digitar en la terminal ts-node CompositeTest.ts
 //Recordar deshabilitar ésta opción después de terminar de hacer pruebas Set-ExecutionPolicy Restricted
 
-//import { Provincia } from "../models/Provincia";
-//import { Canton } from "../models/Canton";
-//import { Districto } from "../models/Distrito";
-
 import { Roles } from "../models/composite/AbstractComponent";
 import { CompositeComponent } from "../models/composite/CompositeComponent";
-import { SimpleComponent } from "../models/composite/SimpleComponent";
 import { GroupController } from "../models/factory/GroupController";
 import { Distrito } from "../models/Distrito";
 import { Canton } from "../models/Canton";
@@ -22,9 +16,8 @@ import { Provincia } from "../models/Provincia";
 import { Pais } from "../models/Pais";
 import { Direccion } from "../models/Direccion";
 import { eEstado, Persona } from "../models/Persona";
-import { CComposite } from "../controllers/CComposite";
-import { CPersona } from "../controllers/CPersona";
 import { BranchController } from "../models/factory/BranchController";
+import { ZoneController } from "../models/factory/ZoneController";
 
 const pais = new Pais(1, "Costa Rica");
 const provincia = new Provincia(3, "Cartago");
@@ -44,8 +37,8 @@ const miembro7 = new Persona(7,"Miembro7",74479112,"@gmail.com",direccionUnica, 
 const miembro8 = new Persona(8,"Miembro8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const miembro9 = new Persona(9,"Miembro9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
-const monitor0 = new Persona(20,"Monitor0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const monitor1 = new Persona(21,"Monitor1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor0 = new Persona(21,"Monitor1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const monitor1 = new Persona(20,"Monitor0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const monitor2 = new Persona(22,"Monitor2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const monitor3 = new Persona(23,"Monitor3",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const monitor4 = new Persona(24,"Monitor4",74479112,"@gmail.com",direccionUnica, eEstado.activo);
@@ -55,19 +48,18 @@ const monitor7 = new Persona(27,"Monitor7",74479112,"@gmail.com",direccionUnica,
 const monitor8 = new Persona(28,"Monitor8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const monitor9 = new Persona(29,"Monitor9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
-const jefe0 = new Persona(10,"Jefe0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe1 = new Persona(11,"Jefe1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe2 = new Persona(12,"Jefe2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe3 = new Persona(13,"Jefe3",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe4 = new Persona(14,"Jefe4",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe5 = new Persona(15,"Jefe5",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe6 = new Persona(16,"Jefe6",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe7 = new Persona(17,"Jefe7",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe8 = new Persona(18,"Jefe8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
-const jefe9 = new Persona(19,"Jefe9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe2 = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe3 = new Persona(3,"Miembro3",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe4 = new Persona(4,"Miembro4",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe5 = new Persona(5,"Miembro5",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe6 = new Persona(6,"Miembro6",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe7 = new Persona(7,"Miembro7",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe8 = new Persona(8,"Miembro8",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const jefe9 = new Persona(9,"Miembro9",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 
-
-const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccionUnica, eEstado.activo);
+const miembro30 = new Persona(30,"Asesor General",74479112,"@gmail.com", direccionUnica, eEstado.activo);
 
 //Grupo 1 (1 Monitor 1 Miembro)
 //const componente0 = new SimpleComponent(Roles.Monitor, monitor0);
@@ -76,14 +68,66 @@ const miembro30 = new Persona(30,"Asesor general",74479112,"@gmail.com",direccio
 //grupo1.addComponent(componente0);
 //grupo1.addComponent(componente1);
 
+const zona1 = new CompositeComponent(1, "Zona 1", Roles.Zona);
+var zoneController = new ZoneController(zona1);
+console.log(zoneController.addBranch(11,"Rama 1"));
+console.log(zoneController.addBranch(12,"Rama 2"));
+console.log(zoneController.addBranch(11,"Rama 3"));
+
+
+var branchController = new BranchController(zoneController.getBranchByID(11));
+console.log(branchController.addGroup(111,"Grupo 1"));
+console.log(branchController.addGroup(111, "Grupo 2"));
+console.log(branchController.addGroup(112, "Grupo 2"));
+
+var groupController = new GroupController(branchController.getGroupByID(111));
+console.log(groupController.addMonitor(monitor0));
+console.log(groupController.addMember(miembro0));
+
+groupController = new GroupController(branchController.getGroupByID(112));
+console.log(groupController.addMonitor(monitor1));
+console.log(groupController.addMonitor(monitor2));
+console.log(groupController.addMember(miembro1));
+console.log(groupController.addMember(miembro2));
+console.log(groupController.addMember(miembro3));
+
+const zona2 = new CompositeComponent(2, "Zona 2", Roles.Zona);
+zoneController = new ZoneController(zona2);
+console.log(zoneController.addBranch(21,"Rama 1"));
+
+branchController = new BranchController(zoneController.getBranchByID(21));
+console.log(branchController.addGroup(211,"Grupo 1"));
+
+groupController = new GroupController(branchController.getGroupByID(211));
+console.log(groupController.addMember(miembro4));//true
+console.log(groupController.addMember(miembro5));//true
+console.log(groupController.addMember(miembro6));//true
+console.log(groupController.addMember(miembro7));//true
+console.log(groupController.addMember(miembro8));//true
+console.log(groupController.addMember(miembro9));//true
+console.log(groupController.addMonitor(monitor3));//true
+console.log(groupController.addMonitor(monitor4));//true
+console.log(groupController.addMonitor(monitor5));//false
+console.log(groupController.addBoss(miembro5));//true
+console.log(groupController.addBoss(monitor5));//false
+console.log(groupController.addBoss(miembro9));//true
+console.log(groupController.addBoss(miembro1));//false
+console.log(groupController.addBoss(miembro5));//false
+console.log(groupController.addBoss(miembro8));//false
+
+
+console.log(branchController.getBranch().toString(""));
+
+
+
 // Grupo 2 (2 Monitores, 3 Miembros)
-const componente2 = new SimpleComponent(Roles.Monitor, monitor1);
+/*const componente2 = new SimpleComponent(Roles.Monitor, monitor1);
 const componente3 = new SimpleComponent(Roles.Monitor, monitor2);
 const componente4 = new SimpleComponent(Roles.Miembro, miembro1);
 const componente5 = new SimpleComponent(Roles.Miembro, miembro2);
 const componente6 = new SimpleComponent(Roles.Miembro, miembro3);
 //const grupo2 = new CompositeComponent(112, "Grupo 2", Roles.Grupo);
-/*grupo2.addComponent(componente2);
+grupo2.addComponent(componente2);
 grupo2.addComponent(componente3);
 grupo2.addComponent(componente4);
 grupo2.addComponent(componente5);
@@ -100,7 +144,7 @@ groupController2.addMember(miembro3);*/
 
 
 //Grupo 3 (2 Jefe, 4 Miembros)
-const componente7 = new SimpleComponent(Roles.Jefe, jefe0);
+/*const componente7 = new SimpleComponent(Roles.Jefe, jefe0);
 const componente8 = new SimpleComponent(Roles.Jefe, jefe1);
 const componente9 = new SimpleComponent(Roles.Miembro, miembro4);
 const componente10 = new SimpleComponent(Roles.Miembro, miembro5);
@@ -112,7 +156,7 @@ grupo3.addComponent(componente8);
 grupo3.addComponent(componente9);
 grupo3.addComponent(componente10);
 grupo3.addComponent(componente11);
-grupo3.addComponent(componente12);
+grupo3.addComponent(componente12);*/
 
 /*//Rama 1 (Grupo 3)
 const rama2 = new CompositeComponent(2, "Rama 2", Roles.Rama);
@@ -133,28 +177,29 @@ coordinacion.addComponent(zona1);*/
 console.clear();
 console.log("BIENVENIDO A LAS PRUEBAS DEL COMPOSITE\n");
 
-//Rama 1 (Grupo 1, Grupo 2)
-const rama1 = new CompositeComponent(1, "Rama 1", Roles.Rama);
-var branchController1 = new BranchController(rama1);
-console.log(branchController1.addGroup(111,"Grupo 1"));
-console.log(branchController1.addGroup(112, "Grupo 2"));
 
-var groupController1 = new GroupController(branchController1.getGroupByID(111));
-groupController1.addMonitor(monitor0);
-groupController1.addMember(miembro0);
-
-var groupController2 = new GroupController(branchController1.getGroupByID(112));
-groupController2.addMonitor(monitor1);
-groupController2.addMonitor(monitor2);
-groupController2.addMember(miembro1);
-groupController2.addMember(miembro2);
-groupController2.addMember(miembro3);
-console.log(branchController1.getBranch().toString(""));
-
-console.log("*******************Imprimir Comission********************\n");
+/*
+console.log("*******************Imprimir Comisión********************\n");
 for(var component of branchController1.getComission()) {
     console.log(component.toString(""));
 }
+console.log("*******************Imprimir Jefatura********************\n");
+for(var component1 of branchController1.getHeadship()) {
+    console.log(component1.toString(""));
+}
+console.log("*******************Asignar Jefe********************\n");
+console.log(branchController1.addBoss(jefe0)); //false
+console.log(branchController1.addBoss(miembro1)); //false
+console.log(branchController1.addBoss(monitor0)); //true
+console.log(branchController1.addBoss(monitor1)); //true
+console.log(branchController1.addBoss(monitor3)); //false
+
+console.log("*******************Imprimir Jefatura********************\n");
+for(var component1 of branchController1.getHeadship()) {
+    console.log(component1.toString(""));
+}
+*/
+
 
 /*
 //Imprimir miembro

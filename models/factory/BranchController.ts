@@ -1,5 +1,7 @@
 import { AbstractComponent, Roles } from "../composite/AbstractComponent";
 import { CompositeComponent } from "../composite/CompositeComponent";
+import { SimpleComponent } from "../composite/SimpleComponent";
+import { Persona } from "../Persona";
 
 export class BranchController {
     private branch:CompositeComponent;
@@ -97,8 +99,8 @@ export class BranchController {
     }
 
     /**
-     * Nombre: getHeadship
-     * Entrada: Tipo de miembro esperado
+     * Nombre: getComission
+     * Entrada: N/A
      * Salida: AbstractComponent[] con los miembros de la comision     
      * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
      */
@@ -109,6 +111,44 @@ export class BranchController {
         comission = comission.concat(this.getTypeMember(Roles.Monitor));
         return comission;
     }
+
+    /**
+     * Nombre: addBoss
+     * Entrada: Un jefe (Persona)
+     * Salida: true si se agregó correctamente
+     *         false si hay dos jefes o el jefe está repetido o si se va a asignar a alguien que no está en la comisión
+     * Restricciones: No exite jefe y debe haber menos de un monitor
+     */
+    public addBoss(boss:Persona):boolean {
+        if(this.branch.count(Roles.Jefe) > 2) {
+            return false;
+        }
+        else {
+            if(this.branch.isHere(boss.identificacion, boss.nombreCompleto)) {
+                return false;
+            }
+            else {
+                const comission = this.getComission().filter(member => (member.getId() == boss.identificacion));
+                if (comission.length > 0) {
+                    this.branch.addComponent(new SimpleComponent(Roles.Jefe, boss));
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+    }
     
+    /**
+     * Nombre: getHeadship
+     * Entrada: Tipo de miembro esperado
+     * Salida: AbstractComponent[] con los miembros de la comision     
+     * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
+     */
+
+    public getHeadship():AbstractComponent[] {
+        return this.branch.getLevel().filter(member => member.getType() === Roles.Jefe);       
+    }
     
 }
