@@ -9,7 +9,7 @@ export class Direccion {
   private _provincia: Provincia;
   private _canton: Canton;
   private _distrito: Distrito;
-  private _info: string; 
+  private _info: string;
   
   //constructor 
   constructor(pais: Pais, provincia: Provincia, canton: Canton, distrito: Distrito, info: string) {
@@ -59,5 +59,5 @@ export class Direccion {
 
   set info(info: string){
     this._info = info;
-  } 
+  }
 }

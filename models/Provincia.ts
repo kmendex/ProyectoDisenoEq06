@@ -1,19 +1,16 @@
 import { Canton } from "../models/Canton";
 
-export interface C {
-  cantones: Array<Canton>;
-}
-
-export class Provincia implements C { 
+export class Provincia { 
   //field 
   private _id: number;
   private _nombre: string;
+  static cantones: Array<Canton>;
   
   //constructor 
   constructor(id: number, nombre: string) {
     this._id = id;
     this._nombre = nombre;
-    this.addCanton(id, nombre);
+    Provincia.addCanton(id, nombre);
   }  
   
   //functions
@@ -33,15 +30,11 @@ export class Provincia implements C {
     this._nombre = nombre;
   }
 
-  get cantones (): Array<Canton> {
-    return this.cantones;
-  }
-
-  addCanton(id: number, nombre: string) {
+  static addCanton(id: number, nombre: string) {
     this.cantones.push(new Canton(id, nombre));
   }
 
-  getCanton (id: number): Canton {
+  static getCanton (id: number): Canton {
     return this.cantones.filter(x => x.id == id)[0];
   }
 }  

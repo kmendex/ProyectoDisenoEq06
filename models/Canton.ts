@@ -1,20 +1,17 @@
 import { Distrito } from "../models/Distrito";
 
-export interface D {
-  distritos: Array<Distrito>;
-}
-
-export class Canton implements D { 
+export class Canton { 
   //field 
   private _id: number;
   private _nombre: string;
+  static distritos: Array<Distrito>;
   
   //constructor 
   constructor(id: number, nombre: string) {
     this._id = id;
     this._nombre = nombre;
-    this.addDistrito(id, nombre);
-  }  
+    Canton.addDistrito(id, nombre);
+  }
   
   //functions
   get id (): number {
@@ -33,15 +30,11 @@ export class Canton implements D {
     this._nombre = nombre;
   }
 
-  get distritos (): Array<Distrito> {
-    return this.distritos;
-  }
-
-  addDistrito(id: number, nombre: string) {
+  static addDistrito(id: number, nombre: string) {
     this.distritos.push(new Distrito(id, nombre));
   }
 
-  getDistrito (id: number): Distrito {
+  static getDistrito (id: number): Distrito {
     return this.distritos.filter(x => x.id == id)[0];
   }
 }
