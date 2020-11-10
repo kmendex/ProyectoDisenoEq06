@@ -24,5 +24,5 @@ export class Distrito {
 
   set nombre (nombre: string) {
     this._nombre = nombre;
-  } 
+  }
 } 

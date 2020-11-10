@@ -26,10 +26,10 @@ import { CComposite } from "../controllers/CComposite";
 import { CPersona } from "../controllers/CPersona";
 import { BranchController } from "../models/factory/BranchController";
 
-const distrito = new Distrito(2, "Oriental");
-const canton = new Canton(1, "Central");
-const provincia = new Provincia(3, "Cartago");
 const pais = new Pais(1, "Costa Rica");
+const provincia = new Provincia(3, "Cartago");
+const canton = new Canton(1, "Central");
+const distrito = new Distrito(2, "Oriental");
 
 const direccionUnica = new Direccion(pais, provincia, canton, distrito, "Los Ángeles");
 
