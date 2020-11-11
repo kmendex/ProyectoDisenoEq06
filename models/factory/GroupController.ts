@@ -68,9 +68,9 @@ export class GroupController {
 
     /**
      * Nombre: addBoss
-     * Entrada: Un SimpleComponent
+     * Entrada: Un jefe (Persona)
      * Salida: true si se agregó correctamente
-     *         false si hay dos jefes o el jefe está repetido o si se va a asignar
+     *         false si hay dos jefes o el jefe está repetido o si se va a asignar a monitor como jefe
      * Restricciones: No exite jefe y debe haber menos de un monitor
      */
     public addBoss(boss:Persona):boolean {

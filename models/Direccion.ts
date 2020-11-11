@@ -1,38 +1,34 @@
-/* import { Provincia } from "../models/Provincia";
+import { Pais } from "../models/Pais";
+import { Provincia } from "../models/Provincia";
 import { Canton } from "../models/Canton";
-import { Districto } from "../models/Districto"; */
-
-export interface Provincia {
-  id: number;
-  nombre: string;
-}
-
-export interface Canton {
-  id: number;
-  nombre: string;
-}
-
-export interface Distrito {
-  id: number;
-  nombre: string;
-}
+import { Distrito } from "../models/Distrito";
 
 export class Direccion { 
-  //field 
+  //field
+  private _pais: Pais; 
   private _provincia: Provincia;
   private _canton: Canton;
   private _distrito: Distrito;
-  private _info: string; 
+  private _info: string;
   
   //constructor 
-  constructor(provincia: Provincia, canton: Canton, distrito: Distrito, info: string) {
+  constructor(pais: Pais, provincia: Provincia, canton: Canton, distrito: Distrito, info: string) {
+    this._pais = pais;
     this._provincia = provincia;
     this._canton = canton;
     this._distrito = distrito;
     this._info = info;
   }
   
-  //function
+  //functions
+  get pais() : Pais{
+    return this._pais;
+  }
+
+  set pais(pais: Pais){
+    this._pais = pais;
+  }
+
   get provincia() : Provincia{
     return this._provincia;
   }
@@ -63,12 +59,5 @@ export class Direccion {
 
   set info(info: string){
     this._info = info;
-  } 
+  }
 }
-
-let provinciaV:Provincia = {id: 1, nombre: "Heredia"};
-let cantonV:Canton = {id: 1, nombre: "San Isidro"};
-let distritoV:Distrito = {id: 1, nombre: "Calle Chaves"};
-let direccion = new Direccion(provinciaV, cantonV, distritoV, "Que bonito lugar");
-
-//console.log(direccion.provincia);

@@ -2,26 +2,22 @@ import { Persona, eEstado } from "../models/Persona";
 import { Direccion } from "../models/Direccion";
 
 export class CPersona{
-  static personas: Array<Persona>;
+  static personas = Array<Persona>();
 
-  constructor(personas: Array<Persona>) {}
-
-  static crearPersonas (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
-    this.personas.push(new Persona(id, nombre, celular, correo, direccion, estado));
+  static crearPersona (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
+    CPersona.personas.push(new Persona(id, nombre, celular, correo, direccion, estado));
   }
   
-  static getPersonas (id: number): Persona{
-    let buscarPersona = this.personas.filter(x => x.identificacion == id)[0];
-    return buscarPersona;
+  static obtenerPersona (id: number): Persona{
+    return CPersona.personas.filter(x => x.identificacion == id)[0];
   }
 
-  static cambiarEstado(id: number, estado: eEstado): void {
-    let persona = this.getPersonas(id);
-    persona.estado = estado;
+  static cambiarEstado (id: number, estado: eEstado): void {
+    CPersona.obtenerPersona(id).estado = estado;
   }
   
-  static actualizarDatos(id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
-    let persona = this.getPersonas(id);
+  static actualizarDatos (id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
+    let persona = CPersona.obtenerPersona(id);
     if(nombre !== undefined)
       persona.nombreCompleto = nombre;
     if(celular !== undefined)

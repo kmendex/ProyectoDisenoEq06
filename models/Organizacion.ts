@@ -1,26 +1,36 @@
 import { Direccion } from "../models/Direccion";
-import { CompositeComponent } from "../models/composite/CompositeComponent";
 
 export class Organizacion { 
   //field 
   static nombreCompany: string;
   static cedulaJuridica: number;
+  static descripcion: string;
+  static logoURL: string;
   static direccionWeb: string;
   static direccion: Direccion;
   static telefono: number;
-  static coordinaciones: Array<CompositeComponent>;
+  static correo: string;
+  static logoTwitter: string;
+  static logoFace: string;
+  //static coordinaciones: Array<CompositeComponent>;
   
   //constructor 
-  constructor(nombreCompany: string, cedulaJuridica: number, direccionWeb: string, direccion: Direccion, telefono: number, coordinaciones: Array<CompositeComponent>) {
+  constructor(nombreCompany: string, cedulaJuridica: number, descripcion: string, logoURL: string, direccionWeb: string, 
+              direccion: Direccion, telefono: number, correo: string, logoTwitter: string, logoFace: string) {
     this.nombreCompany = nombreCompany;
     this.cedulaJuridica = cedulaJuridica;
+    this.descripcion = descripcion;
+    this.logoURL = logoURL;
     this.direccionWeb = direccionWeb;
     this.direccion = direccion;
     this.telefono = telefono;
-    this.coordinaciones = coordinaciones;
+    this.correo = correo;
+    this.logoTwitter = logoTwitter;
+    this.logoFace = logoFace;
   }
   
-  get nombreCompany (): string{
+  //functions
+  get nombreCompany (): string {
     return this.nombreCompany;
   }
 
@@ -28,7 +38,7 @@ export class Organizacion {
     this.nombreCompany = nombre;
   }
 
-  get cedulaJuridica (): number{
+  get cedulaJuridica (): number {
     return this.cedulaJuridica;
   }
 
@@ -36,7 +46,23 @@ export class Organizacion {
     this.cedulaJuridica = cedula;
   }
 
-  get direccionWeb (): string{
+  get descripcion (): string {
+    return this.descripcion;
+  }
+
+  set descripcion (descripcion: string) {
+    this.descripcion = descripcion;
+  }
+
+  get logoURL (): string {
+    return this.logoURL;
+  }
+
+  set logoURL (logoURL: string) {
+    this.logoURL = logoURL;
+  }
+
+  get direccionWeb (): string {
     return this.direccionWeb;
   }
 
@@ -44,7 +70,7 @@ export class Organizacion {
     this.direccionWeb = web;
   }
 
-  get direccion (): Direccion{
+  get direccion (): Direccion {
     return this.direccion;
   }
 
@@ -52,7 +78,7 @@ export class Organizacion {
     this.direccion = direccion;
   }
 
-  get telefono (): number{
+  get telefono (): number {
     return this.telefono;
   }
 
@@ -60,11 +86,35 @@ export class Organizacion {
     this.telefono = telefono;
   }
 
-  get coordinaciones (): Array<CompositeComponent>{
+  get correo (): string {
+    return this.correo;
+  }
+
+  set correo (correo: string) {
+    this.correo = correo;
+  }
+
+  get logoTwitter (): string {
+    return this.logoTwitter;
+  }
+
+  set logoTwitter (logoTwitter: string) {
+    this.logoTwitter = logoTwitter;
+  }
+
+  get logoFace (): string {
+    return this.logoFace;
+  }
+
+  set logoFace (logoFace: string) {
+    this.logoFace = logoFace;
+  }
+
+  /* get coordinaciones (): Array<CompositeComponent>{
     return this.coordinaciones;
   }
 
   set coordinaciones (coordinaciones: Array<CompositeComponent>) {
     this.coordinaciones = coordinaciones;
-  }
+  } */
 }
