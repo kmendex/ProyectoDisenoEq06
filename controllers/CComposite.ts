@@ -5,10 +5,10 @@ import { CPersona } from '../controllers/CPersona';
 import { Roles } from "../models/composite/AbstractComponent";
 
 export class CComposite{
-    static coordinaciones: Array<CompositeComponent> = [];
-    static zonas: Array<CompositeComponent> = [];
-    static ramas: Array<CompositeComponent> = [];
-    static grupos: Array<CompositeComponent> = [];
+    private static coordinaciones: Array<CompositeComponent> = [];
+    private static zonas: Array<CompositeComponent> = [];
+    private static ramas: Array<CompositeComponent> = [];
+    private static grupos: Array<CompositeComponent> = [];
 
     //--------------------Insertar--------------------//
     static insertarCoordinador(id: number, nombreCoordinacion: string): void {
@@ -52,7 +52,8 @@ export class CComposite{
     // Cambiar tipo a un miembro, monitor, jefe e incluso asesor
     static nombrarAsesor(id: number, coordinacion: string): void {
         
-        let nuevoAsesor = CPersona.tomarPersonas(id);
+        //let nuevoAsesor = CPersona.tomarPersonas(id);
+        let nuevoAsesor = CPersona.obtenerPersona(id);
         let buscarCoordinacion = this.zonas.filter(x => x.getName() == coordinacion)[0];
         let asesor = new SimpleComponent(Roles.Asesor, nuevoAsesor);
 
@@ -61,7 +62,8 @@ export class CComposite{
 
     static nombrarJefeZ(id: number, zona: string): void {
         
-        let nuevoJefe = CPersona.tomarPersonas(id);
+        //let nuevoJefe = CPersona.tomarPersonas(id);
+        let nuevoJefe = CPersona.obtenerPersona(id);
         let buscarZona = this.zonas.filter(x => x.getName() == zona)[0];
         let jefeZ = new SimpleComponent(Roles.Jefe, nuevoJefe);
 
@@ -70,7 +72,8 @@ export class CComposite{
 
     static nombrarJefeR(id: number, rama: string): void {
         
-        let nuevoJefe = CPersona.tomarPersonas(id);
+        //let nuevoJefe = CPersona.tomarPersonas(id);
+        let nuevoJefe = CPersona.obtenerPersona(id);
         let buscarRama = this.ramas.filter(x => x.getName() == rama)[0];
         let jefeR = new SimpleComponent(Roles.Jefe, nuevoJefe);
 
@@ -78,7 +81,8 @@ export class CComposite{
     }
 
     static nombrarMonitor(id: number, grupo: string): void {
-        let nuevoMonitor = CPersona.tomarPersonas(id);
+        //let nuevoMonitor = CPersona.tomarPersonas(id);
+        let nuevoMonitor = CPersona.obtenerPersona(id);
         let buscarGrupo = this.grupos.filter(x => x.getName() == grupo)[0];
         let monitor = new SimpleComponent(Roles.Monitor, nuevoMonitor);
 

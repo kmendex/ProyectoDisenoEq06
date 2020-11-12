@@ -2,119 +2,119 @@ import { Direccion } from "../models/Direccion";
 
 export class Organizacion { 
   //field 
-  static nombreCompany: string;
-  static cedulaJuridica: number;
-  static descripcion: string;
-  static logoURL: string;
-  static direccionWeb: string;
-  static direccion: Direccion;
-  static telefono: number;
-  static correo: string;
-  static logoTwitter: string;
-  static logoFace: string;
+  private _nombreCompany: string;
+  private _cedulaJuridica: number;
+  private _descripcion: string;
+  private _logoURL: string;
+  private _direccionWeb: string;
+  private _direccion: Direccion;
+  private _telefono: number;
+  private _correo: string;
+  private _logoTwitter: string;
+  private _logoFace: string;
   //static coordinaciones: Array<CompositeComponent>;
   
   //constructor 
   constructor(nombreCompany: string, cedulaJuridica: number, descripcion: string, logoURL: string, direccionWeb: string, 
               direccion: Direccion, telefono: number, correo: string, logoTwitter: string, logoFace: string) {
-    this.nombreCompany = nombreCompany;
-    this.cedulaJuridica = cedulaJuridica;
-    this.descripcion = descripcion;
-    this.logoURL = logoURL;
-    this.direccionWeb = direccionWeb;
-    this.direccion = direccion;
-    this.telefono = telefono;
-    this.correo = correo;
-    this.logoTwitter = logoTwitter;
-    this.logoFace = logoFace;
+    this._nombreCompany = nombreCompany;
+    this._cedulaJuridica = cedulaJuridica;
+    this._descripcion = descripcion;
+    this._logoURL = logoURL;
+    this._direccionWeb = direccionWeb;
+    this._direccion = direccion;
+    this._telefono = telefono;
+    this._correo = correo;
+    this._logoTwitter = logoTwitter;
+    this._logoFace = logoFace;
   }
   
   //functions
-  get nombreCompany (): string {
-    return this.nombreCompany;
+  get nombreCompany(): string {
+    return this._nombreCompany;
   }
 
-  set nombreCompany (nombre: string) {
-    this.nombreCompany = nombre;
+  set nombreCompany(nombre: string) {
+    this._nombreCompany = nombre;
   }
 
-  get cedulaJuridica (): number {
-    return this.cedulaJuridica;
+  get cedulaJuridica(): number {
+    return this._cedulaJuridica;
   }
 
   set cedulaJuridica (cedula: number) {
-    this.cedulaJuridica = cedula;
+    this._cedulaJuridica = cedula;
   }
 
-  get descripcion (): string {
-    return this.descripcion;
+  get descripcion(): string {
+    return this._descripcion;
   }
 
   set descripcion (descripcion: string) {
-    this.descripcion = descripcion;
+    this._descripcion = descripcion;
   }
 
-  get logoURL (): string {
-    return this.logoURL;
+  get logoURL(): string {
+    return this._logoURL;
   }
 
   set logoURL (logoURL: string) {
-    this.logoURL = logoURL;
+    this._logoURL = logoURL;
   }
 
-  get direccionWeb (): string {
-    return this.direccionWeb;
+  get direccionWeb(): string {
+    return this._direccionWeb;
   }
 
   set direccionWeb (web: string) {
-    this.direccionWeb = web;
+    this._direccionWeb = web;
   }
 
-  get direccion (): Direccion {
-    return this.direccion;
+  get direccion(): Direccion {
+    return this._direccion;
   }
 
   set direccion (direccion: Direccion) {
-    this.direccion = direccion;
+    this._direccion = direccion;
   }
 
-  get telefono (): number {
-    return this.telefono;
+  get telefono(): number {
+    return this._telefono;
   }
 
   set telefono (telefono: number) {
-    this.telefono = telefono;
+    this._telefono = telefono;
   }
 
-  get correo (): string {
-    return this.correo;
+  get correo(): string {
+    return this._correo;
   }
 
   set correo (correo: string) {
-    this.correo = correo;
+    this._correo = correo;
   }
 
-  get logoTwitter (): string {
-    return this.logoTwitter;
+  get logoTwitter(): string {
+    return this._logoTwitter;
   }
 
   set logoTwitter (logoTwitter: string) {
-    this.logoTwitter = logoTwitter;
+    this._logoTwitter = logoTwitter;
   }
 
-  get logoFace (): string {
-    return this.logoFace;
+  get logoFace(): string {
+    return this._logoFace;
   }
 
   set logoFace (logoFace: string) {
-    this.logoFace = logoFace;
+    this._logoFace = logoFace;
   }
 
-  /* get coordinaciones (): Array<CompositeComponent>{
-    return this.coordinaciones;
+  /* get coordinaciones(): Array<CompositeComponent>{
+    return this._coordinaciones;
   }
 
   set coordinaciones (coordinaciones: Array<CompositeComponent>) {
-    this.coordinaciones = coordinaciones;
+    this._coordinaciones = coordinaciones;
   } */
 }

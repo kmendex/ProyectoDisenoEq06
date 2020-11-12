@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var defineRouter = require('./routes/define')
 var queryRouter = require('./routes/query')
 
+var {Controlador} = require("./controllers/Controlador");
+
 var app = express();
 
 // view engine setup
@@ -23,6 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/define', defineRouter);
 app.use('/consulta', queryRouter);
+
+
+// information load
+console.log('...Loading information...');
+Controlador.bringData();
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

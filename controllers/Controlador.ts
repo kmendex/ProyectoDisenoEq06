@@ -11,31 +11,56 @@ import { Distrito } from "../models/Distrito";
 import { Pais } from "../models/Pais";
 import { Provincia } from "../models/Provincia";
 
-const db = require("../dao/DAOSourcePostgres.js");
+const db = require("../dao/DAOSourcePostgres");
 
 export class Controlador{
     static async bringData(){
         try{
-            let result = await db.getOrganization('1');
-            let r = result.readOrganization;
-            console.log(r);
-            const distritos = new Array<Distrito>();
-            const cantones = new Array<Canton>();
-            const provincias = new Array<Provincia>();
-            const paises = new Array<Pais>();
+            let r = await db.getOrganization('1');
+            let r1 = await db.getContactOrganization('1');
+            if (r != null && r1 != null){
 
-            distritos.push(new Distrito(2, "Oriental"));
-            cantones.push(new Canton(1, "Central"));
-            provincias.push(new Provincia(3, "Cartago"));
-            paises.push(new Pais(1, "Costa Rica"));
+                // Esto debería cambiarse de alǵun modo...
+                const distritos = new Array<Distrito>();
+                const cantones = new Array<Canton>();
+                const provincias = new Array<Provincia>();
+                const paises = new Array<Pais>();
 
-            const direccionUnica = new Direccion(paises[0], provincias[0], cantones[0], distritos[0], "Los Ángeles");
+                distritos.push(new Distrito(2, r.district));
+                cantones.push(new Canton(1, r.canton));
+                provincias.push(new Provincia(3, r.province));
+                paises.push(new Pais(1, r.country));
+                
+                let direccionWeb, telefono, correo, logoTwitter, logoFace;
+                let cr1 : any;
+                for (cr1 of r1){                                        
+                    switch (cr1.type){                        
+                        //type: 2:telefono | 4:correo | 5:web | 6:facebook | 7:twitter        
+                        case 2:
+                            telefono = cr1.value;
+                            break;
+                        case 4:
+                            correo = cr1.value;
+                            break;
+                        case 5:
+                            direccionWeb = cr1.value;
+                            break;
+                        case 6:
+                            logoTwitter = cr1.value;
+                            break;
+                        case 7:
+                            logoFace = cr1.value;
+                    }
+                }
+                                
+                let direccionUnica = new Direccion(paises[0], provincias[0], cantones[0], distritos[0], r.address);
 
-            Controlador.setCompany(r.name, r.juridicalCode, r.description, r.logoURL, "", direccionUnica, 111111, "", "", "");  
+                this.setCompany(r.name, r.juridicalCode, r.description, r.logoURL, direccionWeb, direccionUnica, telefono, correo, logoTwitter, logoFace);
+            }
         }
             catch(error){
-            console.log(error);
-        }
+                console.log(error);        
+            }
     }
 
     //--------------------Definir--------------------//
@@ -100,13 +125,17 @@ export class Controlador{
 
     //--------------------Organizacion--------------------//
     static setCompany (nombreCompany: string, cedulaJuridica: number, descripcion: string, logoURL: string, direccionWeb: string, 
-        direccion: Direccion, telefono: number, correo: string, logoTwitter: string, logoFace: string): Organizacion{
-        return COrganizacion.crearOrganizacion(nombreCompany, cedulaJuridica, descripcion, logoURL, direccionWeb, direccion, telefono, correo, logoTwitter, logoFace);
+        direccion: Direccion, telefono: number, correo: string, logoTwitter: string, logoFace: string): void{
+        COrganizacion.crearOrganizacion(nombreCompany, cedulaJuridica, descripcion, logoURL, direccionWeb, direccion, telefono, correo, logoTwitter, logoFace);
     }
 
-    static updateCompany(nombre?: string, cedulaJuridica?: number, descripcion?: string, logoURL?: string, direccionWeb?: string, 
+    /*static updateCompany(nombre?: string, cedulaJuridica?: number, descripcion?: string, logoURL?: string, direccionWeb?: string, 
     direccion?: Direccion, telefono?: number, correo?: string, logoTwitter?: string, logoFace?: string): void {
         COrganizacion.actualizarDatos(nombre, cedulaJuridica, descripcion, logoURL, direccionWeb, 
             direccion, telefono, correo, logoTwitter, logoFace);
+    }*/
+
+    static getCompanyData () : any {
+        return COrganizacion.getDataToShow();
     }
 }
