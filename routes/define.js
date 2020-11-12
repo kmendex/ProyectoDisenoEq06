@@ -4,8 +4,8 @@ var path = require('path');
 
 
 router.get('/', function(req, res, next) {
-    let page = path.join(__dirname, '../public/html/formulariosDefinir.html')
-    res.sendFile(page);
+    //let page = path.join(__dirname, '../views/define.jade')
+    res.render('define');
 });
 
 router.post('/organizacion', async function (req, res, next){
@@ -17,7 +17,8 @@ router.post('/organizacion', async function (req, res, next){
 });
 
 router.post('/zona', async function (req, res, next){
-  res.render ('index', {title: req.body});
+  
+  res.render('define', { alerta: 'Dios nos ayude' });
 });
 
 router.post('/rama', async function (req, res, next){
