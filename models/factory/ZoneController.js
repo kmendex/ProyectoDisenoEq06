@@ -1,116 +1,103 @@
-import { AbstractComponent, Roles } from "../composite/AbstractComponent";
-import { CompositeComponent } from "../composite/CompositeComponent";
-import { SimpleComponent } from "../composite/SimpleComponent";
-import { Persona } from "../Persona";
-
-export class ZoneController {
-    private zone:CompositeComponent;
-
-    constructor(zone:CompositeComponent) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ZoneController = void 0;
+const AbstractComponent_1 = require("../composite/AbstractComponent");
+const CompositeComponent_1 = require("../composite/CompositeComponent");
+const SimpleComponent_1 = require("../composite/SimpleComponent");
+class ZoneController {
+    constructor(zone) {
         this.zone = zone;
     }
-
-    public getzone():CompositeComponent {
+    getzone() {
         return this.zone;
     }
-
     /**
      * Nombre: addBranch
      * Entrada: Id y nombre del rama
      * Salida: true si se agregó bien
-     *         false si ya existe el ID o el nombre del rama         
+     *         false si ya existe el ID o el nombre del rama
      * Restricciones: N/A
      */
-    public addBranch(id:number, name:string):boolean {
-        if(this.zone.isID(id)) {
+    addBranch(id, name) {
+        if (this.zone.isID(id)) {
             return false;
         }
         else {
-            if(this.zone.isName(name)) {
+            if (this.zone.isName(name)) {
                 return false;
             }
             else {
-                const newBranch = new CompositeComponent(id, name, Roles.Rama);
+                const newBranch = new CompositeComponent_1.CompositeComponent(id, name, AbstractComponent_1.Roles.Rama);
                 this.zone.addComponent(newBranch);
                 return true;
             }
         }
     }
-
     /**
      * Nombre: getBranchByID
      * Entrada: Id del rama
-     * Salida: AbstractComponent (rama)        
+     * Salida: AbstractComponent (rama)
      * Restricciones: N/A
      */
-    public getBranchByID(id:number):CompositeComponent {
+    getBranchByID(id) {
         const abstractComponent = this.zone.getLevel().filter(component => component.getId() == id)[0];
-        return (<CompositeComponent>abstractComponent);
+        return abstractComponent;
     }
-
     /**
      * Nombre: getBranchByName
      * Entrada: Id del rama
-     * Salida: AbstractComponent (rama)        
+     * Salida: AbstractComponent (rama)
      * Restricciones: N/A
      */
-    public getBranchByName(name:string):CompositeComponent {
+    getBranchByName(name) {
         const abstractComponent = this.zone.getLevel().filter(component => component.getName() == name)[0];
-        return (<CompositeComponent>abstractComponent);
+        return abstractComponent;
     }
-
     /**
      * Nombre: removeBranch
      * Entrada: Id y nombre del rama
      * Salida: true si se eliminó bien
-     *         false si no existe el rama        
+     *         false si no existe el rama
      * Restricciones: N/A
      */
-    public removeBranch(id:number, name:string):boolean {
-        return this.zone.removeComponent(new CompositeComponent (id, name, Roles.Rama));
+    removeBranch(id, name) {
+        return this.zone.removeComponent(new CompositeComponent_1.CompositeComponent(id, name, AbstractComponent_1.Roles.Rama));
     }
-
     /**
      * Nombre: getramas
      * Entrada: N/A
-     * Salida: AbstractComponent[] con los ramas de la rama      
+     * Salida: AbstractComponent[] con los ramas de la rama
      * Restricciones: N/A
      */
-
-    public getBranchs():AbstractComponent[] {
+    getBranchs() {
         var Branchs = this.zone.getLevel().filter(component => component.isComposite());
         return Branchs;
     }
-
     /**
      * Nombre: getTypeMember
      * Entrada: Tipo de miembro esperado
-     * Salida: AbstractComponent[] con los miembros de la comision     
+     * Salida: AbstractComponent[] con los miembros de la comision
      * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
      */
-
-    public getTypeMember(rol:Roles):AbstractComponent[] {
+    getTypeMember(rol) {
         var Branchs = this.getBranchs();
-        var comission: AbstractComponent[] = [];
-        for(var Branch of Branchs) {
-            comission = comission.concat(((<CompositeComponent>Branch).getLevel()).filter(member => (member.getType() === rol)));
+        var comission = [];
+        for (var Branch of Branchs) {
+            comission = comission.concat((Branch.getLevel()).filter(member => (member.getType() === rol)));
         }
         return comission;
     }
-
     /**
      * Nombre: getComission
      * Entrada: N/A
-     * Salida: AbstractComponent[] con los miembros de la comision     
+     * Salida: AbstractComponent[] con los miembros de la comision
      * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
      */
-
-    public getComission():AbstractComponent[] {
-        var comission: AbstractComponent[] = [];
-        comission = comission.concat(this.getTypeMember(Roles.Jefe));
+    getComission() {
+        var comission = [];
+        comission = comission.concat(this.getTypeMember(AbstractComponent_1.Roles.Jefe));
         return comission;
     }
-
     /**
      * Nombre: addBoss
      * Entrada: Un jefe (Persona)
@@ -118,18 +105,18 @@ export class ZoneController {
      *         false si hay dos jefes o el jefe está repetido o si se va a asignar a alguien que no está en la comisión
      * Restricciones: No exite jefe y debe haber menos de un monitor
      */
-    public addBoss(boss:Persona):boolean {
-        if(this.zone.count(Roles.Jefe) > 2) {
+    addBoss(boss) {
+        if (this.zone.count(AbstractComponent_1.Roles.Jefe) > 2) {
             return false;
         }
         else {
-            if(this.zone.isHere(boss.identificacion, boss.nombreCompleto)) {
+            if (this.zone.isHere(boss.identificacion, boss.nombreCompleto)) {
                 return false;
             }
             else {
                 const comission = this.getComission().filter(member => (member.getId() == boss.identificacion));
                 if (comission.length > 0) {
-                    this.zone.addComponent(new SimpleComponent(Roles.Jefe, boss));
+                    this.zone.addComponent(new SimpleComponent_1.SimpleComponent(AbstractComponent_1.Roles.Jefe, boss));
                     return true;
                 }
                 else {
@@ -138,16 +125,14 @@ export class ZoneController {
             }
         }
     }
-    
     /**
      * Nombre: getHeadship
      * Entrada: Tipo de miembro esperado
-     * Salida: AbstractComponent[] con los miembros de la comision     
+     * Salida: AbstractComponent[] con los miembros de la comision
      * Restricciones: Solo admite Roles.Miembro, Roles.Jefe, Roles.Monitor
      */
-
-    public getHeadship():AbstractComponent[] {
-        return this.zone.getLevel().filter(member => member.getType() === Roles.Jefe);       
+    getHeadship() {
+        return this.zone.getLevel().filter(member => member.getType() === AbstractComponent_1.Roles.Jefe);
     }
-    
 }
+exports.ZoneController = ZoneController;

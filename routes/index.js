@@ -13,8 +13,7 @@ router.get('/', async function(req, res, next) {
     //let result = await db.getOrganization('1');
     //console.log(result);  
 
-    //let controlador = new Controlador();
-    console.log('ACAS');  
+    //let controlador = new Controlador();    
     //Controlador.bringData();
 
     //let result1 = COrganizacion.getDataToShow();
@@ -25,8 +24,7 @@ router.get('/', async function(req, res, next) {
   }                
 //  
 //  
-  let result = Controlador.getCompanyData();
-  console.log(result);
+  let result = Controlador.getCompanyData();  
 
   // campos esperados para desplegar en la pagina
   // { title: '',
