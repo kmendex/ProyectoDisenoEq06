@@ -1,21 +1,46 @@
-var DATABASE_URL = 'postgres://wdupoeegmlpkfn:c144a4e4b7f388899becdc70f091509be22890ec8f115201527460c33d477c14@ec2-54-90-68-208.compute-1.amazonaws.com:5432/drs6db4nh7o0v';
-
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
-const { Client } = require('pg');
+const {Controlador} = require("../controllers/Controlador");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-//
-  const client = new Client({connectionString: (process.env.DATABASE_URL || DATABASE_URL), ssl:{rejectUnauthorized: false}});
-  client.connect();
-  client.query('select textaqui from test where id = 1', (err, res1) => {
-      if (err) throw err
-      res.render('index', { title: res1.rows[0].textaqui });
-  client.end();
+router.get('/', async function(req, res, next) {
+
+
+  try{
+    //let result = await db.getOrganization('12');
+    //let result = await db.getOrganization('1');
+    //console.log(result);  
+
+    //let controlador = new Controlador();
+    console.log('ACAS');  
+    //Controlador.bringData();
+
+    //let result1 = COrganizacion.getDataToShow();
+    //console.log(result1);  
+  }
+  catch(error){
+    console.log(error);
+  }                
+//  
+//  
+  let result = Controlador.getCompanyData();
+  console.log(result);
+
+  // campos esperados para desplegar en la pagina
+  // { title: '',
+  //   content : {
+  //      orgName,description,logoURL,province,country,address,webSite,facebook,twitter
+  //   }
+  //  }  
+
+  res.render('index', { "title": "OAIS",
+    "content": { "orgName": result.nombreCompany, "description": result.descripcion, "logoURL": result.logoURL, "province": result.provincia, "country": result.pais, 
+      "address": result.direccion, "webSite": result.direccionWeb, "facebook": result.logoFace, "twitter": result.logoTwitter
+    }
   });
-//
+  
 });
 
 module.exports = router;
