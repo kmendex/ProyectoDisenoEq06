@@ -1,22 +1,29 @@
 {
-  "name": "proyectodisenoeq06",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "oais",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www",
+    "stype": "ts-node ./bin/www",
+    "tsc": "tsc"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kmendex/ProyectoDisenoEq06.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kmendex/ProyectoDisenoEq06/issues"
-  },
-  "homepage": "https://github.com/kmendex/ProyectoDisenoEq06#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@types/express": "^4.17.8",
+    "@types/jquery": "^3.5.4",
+    "@types/sizzle": "^2.3.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "keypress": "^0.2.1",
+    "morgan": "~1.9.1",
+    "pg": "^8.4.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.5"
   }
 }
