@@ -73,7 +73,7 @@ export class Persona {
     this._estado = estado;
   }
 
-  toString() {
+  /*toString() {
     console.log(this.nombreCompleto + " con identificacion " + this.identificacion + ", vive en la provincia de " + this.direccion.provincia);
-  }
+  }*/
 }
