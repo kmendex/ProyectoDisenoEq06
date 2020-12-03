@@ -1,27 +1,25 @@
+import { Bridge } from "../brigde/Bridge";
 import {AbstractComponent, Roles} from "./AbstractComponent"
 
 export class CompositeComponent extends AbstractComponent {
 
-    private level:AbstractComponent[] = []; 
+    protected level:AbstractComponent[] = []; 
 
-    public constructor(id:number, nombre:string, type:Roles) {
+    public constructor(id:string, nombre:string, type:Roles) {
         super(id,nombre,type);
     }
 
     public getLevel():AbstractComponent[] {
         return this.level;
     }
-
-    public isComposite():boolean {
-        return true;
-    }
     
-    public addComponent(component:AbstractComponent):void{
-        this.level.push(component);
+    public addComponent(component:AbstractComponent):boolean{
+            this.level.push(component);
+            return true;
     }
 
     public removeComponent(component: AbstractComponent):boolean {        
-        const componentIndex = this.findIndexComponent(component.getId(), component.getName(), component.getType());
+        const componentIndex = this.findIndexComponent(component.getId(), component.getRole());
         if(componentIndex >= 0) {
             this.level.splice(componentIndex, 1);
             return true;
@@ -30,6 +28,18 @@ export class CompositeComponent extends AbstractComponent {
             return false;
         }        
     }
+
+    /**
+     * Nombre: getComponent
+     * Entrada: id y rol del componente
+     * Salida:  AbstractComponent que representa el componente encontrado
+     * Restricciones: N/A
+     */
+    public getComponent(id:string, role:Roles):AbstractComponent {
+        const components= this.level.filter(component => (component.equalsId(id) && component.equalsRole(role)));
+        return components[0];
+    }
+
     
     /**
      * Nombre: findIndexComponent
@@ -38,10 +48,10 @@ export class CompositeComponent extends AbstractComponent {
      *          retorna el indice donde se encuentra el componente    
      * Restricciones: N/A.
      */
-    public findIndexComponent(id:number, name:string, type:Roles):number {
+    public findIndexComponent(id:string, role:Roles):number {
         var index = 0;
         for(var component of this.level) {
-            if (component.getId() === id && component.getName().localeCompare(name) == 0 && component.getType() === type) {
+            if (component.equalsId(id) && component.equalsRole(role)) {
                 return  index;
             }
             index += 1;
@@ -51,15 +61,15 @@ export class CompositeComponent extends AbstractComponent {
     }
 
     /**
-     * Nombre: isComponent
-     * Entrada: Un número
+     * Nombre: isID
+     * Entrada: String del id
      * Salida: true si encuentra el id indicado
      *         false en caso contrario    
      * Restricciones: N/A.
      */
-    public isID(id:number):boolean {
+    public isID(id:string):boolean {
         for(var component of this.level) {
-            if (component.getId() === id) {
+            if (component.equalsId(id)) {
                 return true;
             }
         }
@@ -75,7 +85,7 @@ export class CompositeComponent extends AbstractComponent {
      */
     public isName(name:string):boolean {
         for(var component of this.level) {
-            if (component.getName().localeCompare(name) == 0) {
+            if (component.equalsName(name)) {
                 return true;
             }
         }
@@ -89,9 +99,9 @@ export class CompositeComponent extends AbstractComponent {
      *         false en caso contrario.    
      * Restricciones: N/A
      */
-    public isHere(id:number, name:string):boolean {
+    public isHere(id:string, role:Roles):boolean {
         for(var component of this.level) {
-            if (component.getId() === id && component.getName().localeCompare(name) == 0) {
+            if (component.equalsId(id) && component.equalsRole(role)) {
                 return true;
             }
         }
@@ -104,14 +114,25 @@ export class CompositeComponent extends AbstractComponent {
      * Salida: Cantidad de elementos con ese tipo.        
      * Restricciones: N/A.
      */
-    public count(type:Roles):number {
+    public count(role:Roles):number {
         var account = 0;
         for(var component of this.level) {
-            if (!component.getType().localeCompare(type)) {
+            if (component.equalsRole(role)) {
                 account += 1;
             }
         }
         return account;        
+    }
+
+    /**
+     * Nombre: getTypeRole
+     * Entrada: Rol deseado
+     * Salida: AbstractComponent[] con los componentes del rol indicado    
+     * Restricciones: N/A
+     */
+
+    public getTypeRole(role:Roles):AbstractComponent[] {
+        return this.level.filter(component => (component.equalsRole(role)));
     }
 
     /**
@@ -121,11 +142,11 @@ export class CompositeComponent extends AbstractComponent {
      * Restricciones: N/A.
      */
     public toString(tab:string):string {
-        var structure:string = tab +`id ${this.getId()} ${this.getName()} -> ${this.getType()}`+ "\n" + tab + "{\n";
+        var structure:string = tab +`id ${this.getId()} ${this.getName()} -> ${this.getRole()}`+ "\n" + tab + "{\n";
         for(var component of this.level) {
             structure += component.toString(tab + "\t");
         }
-        structure += tab + "}" + "\n"; //+ tab +"}\n";
+        structure += tab + "}" + "\n";
         return structure;
     }
 

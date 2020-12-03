@@ -11,22 +11,22 @@ export enum Roles {
 
 export abstract class AbstractComponent {
     
-    protected id:number;
+    protected id:string;
     protected name:string;
-    protected type:Roles;
+    protected role:Roles;
     protected enable: boolean = true;
 
-    public constructor(id:number, name:string, type:Roles) {
+    public constructor(id:string, name:string, role:Roles) {
         this.id = id;
         this.name = name;
-        this.type = type;
+        this.role = role;
     }
 
-    public getId(): number {
+    public getId(): string {
         return this.id;
     }
 
-    public setId(id:number): void {
+    public setId(id:string): void {
         this.id = id;
     }
 
@@ -38,12 +38,12 @@ export abstract class AbstractComponent {
         this.name = name;
     }
 
-    public getType(): Roles {
-        return this.type;
+    public getRole(): Roles {
+        return this.role;
     }
 
-    public setType(type:Roles): void {
-        this.type = type;
+    public setRole(role:Roles): void {
+        this.role = role;
     }
 
     public getEnable(): boolean {
@@ -54,11 +54,17 @@ export abstract class AbstractComponent {
         this.enable = enable;
     }
 
-    public abstract isComposite(): boolean;
+    public equalsId(param:string):boolean {
+        return this.id.localeCompare(param) == 0;
+    }
 
-    public abstract addComponent(component:AbstractComponent):void;
+    public equalsName(param:string):boolean {
+        return this.name.localeCompare(param) == 0;
+    }
 
-    public abstract removeComponent(component:AbstractComponent):boolean;
+    public equalsRole(param:Roles):boolean {
+        return this.role === param;
+    }
     
     public abstract toString(tab:string):string;
 
