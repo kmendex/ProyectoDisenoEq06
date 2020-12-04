@@ -3,7 +3,8 @@ import { Direccion } from "../models/Direccion";
 export enum eEstado {
   activo = "ACTIVO",
   inactivo = "INACTIVO",
-  de_baja = "DE_BAJA"
+  de_baja = "DE_BAJA",
+  en_espera = "EN_ESPERA"
 }
 
 export class Persona { 
