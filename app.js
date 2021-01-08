@@ -3,11 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const dbConnection = require("./dao/DAOSource.js");
 
 var indexRouter = require('./routes/index');
 var defineRouter = require('./routes/define')
 var queryRouter = require('./routes/query')
+
+var {Controlador} = require("./controllers/Controlador");
 
 var app = express();
 
@@ -23,12 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/define', defineRouter);
-app.use('/query', queryRouter);
+app.use('/consulta', queryRouter);
 
-app.use(function (req, res, next){
-    req.dbConnection = dbConnection;
-    next();
-});
+
+// information load
+console.log('...Loading information...');
+Controlador.bringData();
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

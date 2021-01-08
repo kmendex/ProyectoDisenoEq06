@@ -3,10 +3,10 @@ import {Persona} from "../Persona";
 
 export class SimpleComponent extends AbstractComponent {
     
-    protected member: Persona;
+    private member: Persona;
 
-    public constructor(type:Roles, member:Persona) {
-        super(member.identificacion, member.nombreCompleto, type);
+    public constructor(member:Persona, role:Roles) {
+        super(member.identificacion+"", member.nombreCompleto, role);
         this.member = member;
     }
 
@@ -18,18 +18,6 @@ export class SimpleComponent extends AbstractComponent {
         this.member = member;
     }
 
-    public isComposite(): boolean {
-        return false;
-    }
-
-    public addComponent(component: AbstractComponent ): void {
-        throw new Error("Method not implemented.");
-    }
-
-    public removeComponent(component: AbstractComponent): boolean {
-        throw new Error("Method not implemented.");
-    }
-
     /**
      * Nombre: toString
      * Entrada: Un tabulador (string)
@@ -37,6 +25,6 @@ export class SimpleComponent extends AbstractComponent {
      * Restricciones: Sólo acepta string
      */
     public toString(tab:string): string {
-        return tab + `id ${this.getId()} ${this.getName()} -> ${this.getType()}` + "\n";
+        return tab + `id ${this.getId()} ${this.getName()} -> ${this.getRole()}` + "\n";
     }
 }

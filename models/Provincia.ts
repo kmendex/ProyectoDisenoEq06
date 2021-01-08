@@ -1,13 +1,39 @@
+import { Canton } from "./Canton";
+
 export class Provincia { 
   //field 
-  id:number;
-  nombre:string;
+  private _id: number;
+  private _nombre: string;
+  static cantones = new Map();
   
   //constructor 
-  constructor(id:number, nombre:string) {
-    this.id = id;
-    this.nombre = nombre;
+  constructor(id: number, nombre: string) {
+    this._id = id;
+    this._nombre = nombre;
   }  
   
-  //function 
+  //functions
+  get id (): number {
+    return this._id;
+  }
+
+  set id (id: number) {
+    this._id = id;
+  }
+
+  get nombre (): string {
+    return this._nombre;
+  }
+
+  set nombre (nombre: string) {
+    this._nombre = nombre;
+  }
+  
+  static addCanton(key: number, value: Canton) {
+    Provincia.cantones.set(key, value);
+  }
+
+  static getCanton(key: number) : Canton{
+    return Provincia.cantones.get(key);
+  }
 }  

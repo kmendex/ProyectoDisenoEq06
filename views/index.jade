@@ -1,5 +1,83 @@
-extends layout
+// { title: '',
+//   content : {orgName,description,logoURL, province, country, address,webSite,facebook,twitter
+//   }
+//  }
+//
 
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title #{title}
+  link(rel='stylesheet' href='../css/estilos.css')
+  link(href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap' rel='stylesheet')
+
+body
+  header#OrganigramaHeader.header
+    img.menu(src='../img/menu.svg' alt='')
+    nav.menu-navegacion
+      a(href='#Organigrama') Inicio    
+      a(href='../define') Definir    
+      a(href='../consulta') Consultar
+      a(href='#contacto') Contacto
+    .contenedor.head
+      h1#txtTitulo.titulo #{content.orgName}
+      p#descripcion_Organizacion.copy #{content.description}
+  main
+    section#Organigrama.organigrama.contenedor
+      h2.subtitulo Nuestro Organigrama
+      .contenedor-Organigrama
+        img(src='../img/Organigrama.svg' alt='')
+        .checkList
+          .unidad
+            h3.n-unidad
+              span.number 1
+              | Coordinacion
+            p#descripcion_Organizacion
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione consectetur reprehenderit corrupti delectus vero libero qui quod amet at cumque.
+          .unidad
+            h3.n-unidad
+              span.number 2
+              | Zona
+            p#descripcion_Zona
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione consectetur reprehenderit corrupti delectus vero libero qui quod amet at cumque.
+          .unidad
+            h3.n-unidad
+              span.number 3
+              | Rama
+            p#descripcion_Rama
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione consectetur reprehenderit corrupti delectus vero libero qui quod amet at cumque.
+          .unidad
+            h3.n-unidad
+              span.number 4
+              | Grupo
+            p#descripcion_Grupo
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione consectetur reprehenderit corrupti delectus vero libero qui quod amet at cumque.
+    section#portafolio.galeria
+      .contenedor
+        h2.subtitulo Galeria
+        .contenedor-galeria
+          img#imagen1.img-galeria(src= '#{content.logoURL}' alt='')
+          //img#imagen1.img-galeria(src=#{logoURL}'../img/g1.jpg' alt='')
+          //img#imagen2.img-galeria(src='../img/g2.jpg' alt='')
+          //img#imagen3.img-galeria(src='../img/g3.jpg' alt='')
+          //img#imagen4.img-galeria(src='../img/g4.jpg' alt='')
+    section.imagen-light
+      img.close(src='../img/Close.svg' alt='')
+      img.agregar-imagen(src='../img/fondo.jpg' alt='')
+  footer#contacto
+    .contenedor.footer-content
+      .contacto
+        h2#nameOrganizacion_Contacto.marca #{content.province}, #{content.country}
+        p#descripcionOrganizacion_Contacto #{content.address}
+      .social-media
+        a#webSiteOrganizacion_Contacto.social-media-icon(href= '#{content.webSite}')
+          i.bx.bx-world
+        a#facebookOrganizacion_Contacto.social-media-icon(href= '#{content.facebook}')
+          i.bx.bxl-facebook
+        a#twitterOrganizacion_Contacto.social-media-icon(href= '#{content.twitter}')
+          i.bx.bxl-twitter
+    .line
+  script(src='../javascript/ligthbox.js')
+  script(src='../javascript/menu.js')

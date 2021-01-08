@@ -4,16 +4,36 @@ var path = require('path');
 
 
 router.get('/', function(req, res, next) {
-/*
-  //req.dbConnection.connect();
-req.dbConnection.query('select textaqui from test where id = 1', (err, res1) => {
-      if (err) throw err
-      console.log ("def:" + res1.rows[0].textaqui);
-req.dbConnection.end();
-});*/
+    let page = path.join(__dirname, '../public/html/formulariosDefinir.html')
+    res.sendFile(page);
+});
 
-    let p = path.join(__dirname, '../public/html/formulariosDefinir.html')
-    res.sendFile(p);
+router.post('/organizacion', async function (req, res, next){
+  
+  // Llamada a alǵun controlador para hacer validaciones, etc
+
+  console.log(req.body.name_Organizacion);
+  res.render ('index', {title: req.body.name_Organizacion});
+});
+
+router.post('/zona', async function (req, res, next){
+  res.render ('index', {title: req.body});
+});
+
+router.post('/rama', async function (req, res, next){
+  res.render ('index', {title: req.body});
+});
+
+router.post('/grupo', async function (req, res, next){
+  res.render ('index', {title: req.body});
+});
+
+router.post('/miembro', async function (req, res, next){
+  res.render ('index', {title: req.body});
+});
+
+router.post('/rol', async function (){
+  res.render ('index', {title: req.body});
 });
 
 module.exports = router;

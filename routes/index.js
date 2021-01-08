@@ -2,29 +2,46 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-//const { Client } = require('pg');
-//require('dotenv/config')
+const {Controlador} = require("../controllers/Controlador");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
 
-// conexion base
-/*
-  const client = new Client({connectionString: process.env.DATABASE_URL, ssl:{rejectUnauthorized: false}});
-  client.connect();
-  client.query('select textaqui from test where id = 1', (err, res1) => {
-      if (err) throw err
-      console.log (res1.rows[0].textaqui);
-  client.end();
 
-  });
-*/
+  try{
+    //let result = await db.getOrganization('12');
+    //let result = await db.getOrganization('1');
+    //console.log(result);  
+
+    //let controlador = new Controlador();
+    console.log('ACAS');  
+    //Controlador.bringData();
+
+    //let result1 = COrganizacion.getDataToShow();
+    //console.log(result1);  
+  }
+  catch(error){
+    console.log(error);
+  }                
+//  
 //
+  
+  let result = Controlador.getCompanyData();
+  console.log(result);
 
-    // paso de documentos estaticos
-    let p = path.join(__dirname, '../public/html/index.html')
-    res.sendFile(p);
+  // campos esperados para desplegar en la pagina
+  // { title: '',
+  //   content : {
+  //      orgName,description,logoURL,province,country,address,webSite,facebook,twitter
+  //   }
+  //  }  
 
+  res.render('index', { "title": "OAIS",
+    "content": { "orgName": result.nombreCompany, "description": result.descripcion, "logoURL": result.logoURL, "province": result.provincia, "country": result.pais, 
+      "address": result.direccion, "webSite": result.direccionWeb, "facebook": result.logoFace, "twitter": result.logoTwitter
+    }
+  });
+  
 });
 
 module.exports = router;
