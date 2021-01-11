@@ -1,0 +1,314 @@
+{{> header title=jerarquia.tipo}}
+
+    <p class="lead">
+        {{#ifeq jerarquia.tipo "Organizacion"}}
+            {{jerarquia.nombre}}
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCOrganizacionNombre">Nombre de la Organizacion</label>
+                        <input type="text" class="form-control" id="inputCOrganizacionNombre" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCOrganizacionAsesor">Asesor General</label>
+                        <input type="text" class="form-control" id="inputCOrganizacionAsesor" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCOrganizacionWeb">Direccion Web</label>
+                    <input type="text" class="form-control" id="inputCOrganizacionWeb" disabled>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCOrganizacionCedula">Cedula Juridica</label>
+                        <input type="text" class="form-control" id="inputCOrganizacionCedula" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCOrganizacionTelefono">Telefono</label>
+                        <input type="text" class="form-control" id="inputCOrganizacionTelefono" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCOrganizacionCorreo">Correo</label>
+                        <input type="email" class="form-control" id="inputCOrganizacionCorreo" disabled>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCOrganizacionProvincia">Provincia</label>
+                        <input type="text" id="inputCOrganizacionProvincia" class="form-control" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCOrganizacionCanton">Canton</label>
+                        <input type="text" id="inputCOrganizacionCanton" class="form-control" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCOrganizacionDistrito">Distrito</label>
+                        <input type="text" id="inputCOrganizacionDistrito" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCOrganizacionOtra">Otras Señas</label>
+                    <input type="text" class="form-control" id="inputCOrganizacionOtra" disabled>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <button type="button" class="btnOrganizacion2 btn-danger" onclick="consultarOrganizacion()">Cargar</button>
+                    </div>
+                </div>
+            </form>
+        {{/ifeq}}
+        {{#ifeq jerarquia.tipo "Coordinacion"}}
+            {{jerarquia.nombre}}
+        {{/ifeq}}
+
+        {{#ifeq jerarquia.tipo "Zona"}}
+            {{jerarquia.nombre}}
+            <body onload="cargarZona()">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectCZona">Zona</label>
+                            <select id="selectCZona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button type="button" class="btnCZona btn-danger" onclick="consultarZona()">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaIdentificador">Ramas</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaNombre">Cantidad Miembros</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaFecha">Fecha Creacion</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaIdentificador">Miembros</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaNombre">Tipo</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaFecha">Procedencia</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </body>
+            
+        {{/ifeq}}
+
+        {{#ifeq jerarquia.tipo "Rama"}}
+            {{jerarquia.nombre}}
+            <body onload="cargarRama()">
+                <form onload="cargarRama()">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputCRama_Zona">Zona</label>
+                            <select id="inputCRama_Zona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCRama_Rama">Rama</label>
+                            <select id="inputCRama_Rama" class="form-control">
+                                <option selected>Ramas Disponibles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button type="button" class="btnCRama btn-danger" onclick="consultarRama()">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Miembro"><h4>Miembro</h4></label>
+                            <ul id="listCRama_Miembro">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Tipo"><h4>Tipo</h4></label>
+                            <ul id="listCRama_Tipo">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Estado"><h4>Estado</h4></label>
+                            <ul id="listCRama_Estado">
+
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Grupo"><h4>Grupo</h4></label>
+                            <ul id="listCRama_Grupo">
+
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </body>
+        {{/ifeq}}
+
+        {{#ifeq jerarquia.tipo "Grupo"}}
+            {{jerarquia.nombre}}
+            <body onload="cargarGrupo()">
+                <form onload="cargarGrupo()">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputCGrupo_Zona">Zona</label>
+                            <select id="inputCGrupo_Zona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCGrupo_Rama">Rama</label>
+                            <select id="inputCGrupo_Rama" class="form-control">
+                                <option selected>Ramas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCGrupo_Grupo">Grupo</label>
+                            <select id="inputCGrupo_Grupo" class="form-control">
+                                <option selected>Grupos Disponibles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button type="button" class="btnCGrupo btn-danger" onclick="consultarGrupo()">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="labelCGrupo_Miembro"><h4>Miembro</h4></label>
+                            <ul id="listCGrupo_Miembro">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCGrupo_Tipo"><h4>Tipo</h4></label>
+                            <ul id="listCGrupo_Tipo">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCGrupo_Estado"><h4>Estado</h4></label>
+                            <ul id="listCGrupo_Estado">
+
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </body>           
+        {{/ifeq}}
+
+        {{#ifeq jerarquia.tipo "Miembro"}}
+            {{jerarquia.nombre}}
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="bmd-label-floating" for="inputCMiembroIdentificacion">ID Miembro</label>
+                        <input type="text" class="form-control" id="inputCMiembroIdentificacion">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <button type="button" class="btnRol btn-danger" onclick="consultarMiembro()">Consultar</button>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCMiembroNombre">Nombre</label>
+                        <input type="text" class="form-control" id="inputCMiembroNombre" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCMiembroApellido">Apellido</label>
+                    <input type="text" class="form-control" id="inputCMiembroApellido" disabled>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCMiembroCedula">Numero de Identificacion</label>
+                        <input type="text" class="form-control" id="inputCMiembroCedula" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCMiembroTelefono">Telefono</label>
+                        <input type="text" class="form-control" id="inputCMiembroTelefono" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCMiembroCorreo">Correo</label>
+                        <input type="email" class="form-control" id="inputCMiembroCorreo" disabled>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCMiembroProvincia">Provincia</label>
+                        <input type="text" class="form-control" id="inputCMiembroProvincia" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCMiembroCanton">Canton</label>
+                        <input type="text" class="form-control" id="inputCMiembroCanton" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCMiembroDistrito">Distrito</label>
+                        <input type="text" class="form-control" id="inputCMiembroDistrito" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCMiembroOtra">Otras Señas</label>
+                    <input type="text" class="form-control" id="inputCMiembroOtra" disabled>
+                </div>
+            </form>
+        {{/ifeq}}
+    </p>
+{{>footer}}
