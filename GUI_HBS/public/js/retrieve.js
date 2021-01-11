@@ -1,44 +1,44 @@
 /* ---------------Variables--------------- */
 var zonasGlobales = {
-    ValueA : 'Atlantico',
-    ValueB : 'Pacifico',
-    ValueC : 'Huetar'
+    ValueA: 'Atlantico',
+    ValueB: 'Pacifico',
+    ValueC: 'Huetar'
 };
 
 var ramasGlobales = {
-    ValueA : 'Juvenil',
-    ValueB : 'Adulto',
-    ValueC : 'Ciudadano de Oro'
+    ValueA: 'Juvenil',
+    ValueB: 'Adulto',
+    ValueC: 'Ciudadano de Oro'
 };
 
 var gruposGlobales = {
-    ValueA : 'Lobos',
-    ValueB : 'Leones',
-    ValueC : 'Ballenas'
+    ValueA: 'Lobos',
+    ValueB: 'Leones',
+    ValueC: 'Ballenas'
 };
 
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
     var input1 = document.getElementById('inputDOrganizacionNombre'),
-    orgName = input1.value;
+        orgName = input1.value;
     var input2 = document.getElementById('inputDOrganizacionAsesor'),
-    asesor = input2.value;
+        asesor = input2.value;
     var input3 = document.getElementById('inputDOrganizacionWeb'),
-    web = input3.value;
+        web = input3.value;
     var input4 = document.getElementById('inputDOrganizacionCedula'),
-    cedula = input4.value;
+        cedula = input4.value;
     var input5 = document.getElementById('inputDOrganizacionTelefono'),
-    telefono = input5.value;
+        telefono = input5.value;
     var input6 = document.getElementById('inputDOrganizacionCorreo'),
-    correo = input6.value;
+        correo = input6.value;
     var input7 = document.getElementById('inputDOrganizacionProvincia'),
-    provincia = input7.value;
+        provincia = input7.value;
     var input8 = document.getElementById('inputDOrganizacionCanton'),
-    canton = input8.value;
+        canton = input8.value;
     var input9 = document.getElementById('inputDOrganizacionDistrito'),
-    distrito = input9.value;
+        distrito = input9.value;
     var input10 = document.getElementById('inputDOrganizacionOtra'),
-    otra = input10.value;
+        otra = input10.value;
 
     const organizacion = {
         nombre: orgName,
@@ -87,9 +87,9 @@ function consultarOrganizacion() {
 
 function definirZona() {
     var input1 = document.getElementById('inputDZonaNombre'),
-    nombre = input1.value;
+        nombre = input1.value;
     var input2 = document.getElementById('inputDZonaIdentificacion'),
-    identificacion = input2.value;
+        identificacion = input2.value;
 
     const zona = {
         nombre: nombre,
@@ -117,10 +117,10 @@ function consultarZona() {
     //     if(identificacion == element){
     //         // READ STRING FROM LOCAL STORAGE
     //         var retrievedObject = localStorage.getItem('miembroData');
-    
+
     //         // CONVERT STRING TO REGULAR JS OBJECT
     //         var parsedObject = JSON.parse(retrievedObject);
-    
+
     //         // ACCESS DATA
     //         document.getElementById("inputCMiembroNombre").value = parsedObject.nombre;
     //         document.getElementById("inputCMiembroApellido").value = parsedObject.apellido;
@@ -133,9 +133,30 @@ function consultarZona() {
     //         document.getElementById("inputCMiembroOtra").value = parsedObject.otra;
     //     }
     // });
+
+}
+
+function cargarZona() {
+    var select1 = document.getElementById("selectCZona");
+
+    for (index in zonasGlobales) {
+        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
+    }
 }
 
 /* ---------------Rama--------------- */
+
+function cargarRama() {
+    var select1 = document.getElementById("inputCRama_Zona");
+    var select2 = document.getElementById("inputCRama_Rama");
+
+    for (index in zonasGlobales) {
+        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
+    }
+    for (index in ramasGlobales) {
+        select2.options[select2.options.length] = new Option(ramasGlobales[index], index);
+    }
+}
 
 /* ---------------Grupo--------------- */
 
@@ -144,13 +165,13 @@ function cargarGrupo() {
     var select2 = document.getElementById("inputCGrupo_Rama");
     var select3 = document.getElementById("inputCGrupo_Grupo");
 
-    for(index in zonasGlobales) {
+    for (index in zonasGlobales) {
         select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
     }
-    for(index in ramasGlobales) {
+    for (index in ramasGlobales) {
         select2.options[select2.options.length] = new Option(ramasGlobales[index], index);
     }
-    for(index in gruposGlobales) {
+    for (index in gruposGlobales) {
         select3.options[select3.options.length] = new Option(gruposGlobales[index], index);
     }
 }
@@ -163,35 +184,35 @@ function consultarGrupo() {
     var select3 = document.getElementById("inputCGrupo_Grupo");
     grupo = select3.options[select3.selectedIndex];
 
-    if(zona.text == "Atlantico" && rama.text == "Juvenil" && grupo.text == "Lobos"){
+    if (zona.text == "Atlantico" && rama.text == "Juvenil" && grupo.text == "Lobos") {
         alert('Funciona');
         let items1 = ['Juan', 'Roberto', 'Michael', 'Brandon', 'Ericka', 'Monica'],
-        miembro = document.getElementById('listCGrupo_Miembro');
-        
-        items1.forEach(function (item) {
+            miembro = document.getElementById('listCGrupo_Miembro');
+
+        items1.forEach(function(item) {
             let li = document.createElement('li');
             miembro.appendChild(li);
-        
+
             li.innerHTML += item;
         });
 
         let items2 = ['Jefe', 'Miembro', 'Miembro', 'Miembro', 'Miembro', 'Miembro'],
-        tipo = document.getElementById('listCGrupo_Tipo');
+            tipo = document.getElementById('listCGrupo_Tipo');
         /* -------------------------------------------------------------- */
-        items2.forEach(function (item) {
+        items2.forEach(function(item) {
             let li = document.createElement('li');
             tipo.appendChild(li);
-        
+
             li.innerHTML += item;
         });
         /* -------------------------------------------------------------- */
         let items3 = ['Activo', 'Inactivo', 'Activo', 'Activo', 'Inactivo', 'Inactivo'],
-        estado = document.getElementById('listCGrupo_Estado');
-        
-        items3.forEach(function (item) {
+            estado = document.getElementById('listCGrupo_Estado');
+
+        items3.forEach(function(item) {
             let li = document.createElement('li');
             estado.appendChild(li);
-        
+
             li.innerHTML += item;
         });
 
@@ -203,23 +224,23 @@ function consultarGrupo() {
 
 function definirMiembro() {
     var input1 = document.getElementById('inputDMiembroNombre'),
-    nombre = input1.value;
+        nombre = input1.value;
     var input2 = document.getElementById('inputDMiembroApellido'),
-    apellido = input2.value;
+        apellido = input2.value;
     var input3 = document.getElementById('inputDMiembroCedula'),
-    cedula = input3.value;
+        cedula = input3.value;
     var input4 = document.getElementById('inputDMiembroTelefono'),
-    telefono = input4.value;
+        telefono = input4.value;
     var input5 = document.getElementById('inputDMiembroCorreo'),
-    correo = input5.value;
+        correo = input5.value;
     var input6 = document.getElementById('inputDMiembroProvincia'),
-    provincia = input6.value;
+        provincia = input6.value;
     var input7 = document.getElementById('inputDMiembroCanton'),
-    canton = input7.value;
+        canton = input7.value;
     var input8 = document.getElementById('inputDMiembroDistrito'),
-    distrito = input8.value;
+        distrito = input8.value;
     var input9 = document.getElementById('inputDMiembroOtra'),
-    otra = input9.value;
+        otra = input9.value;
 
     const miembro = {
         nombre: nombre,
@@ -245,18 +266,18 @@ function definirMiembro() {
 
 function consultarMiembro() {
     var input1 = document.getElementById('inputCMiembroIdentificacion'),
-    identificacion = input1.value;
+        identificacion = input1.value;
 
     array = ["402420014", "111111111", "222222222", "333333333", "444444444"];
 
     array.forEach(element => {
-        if(identificacion == element){
+        if (identificacion == element) {
             // READ STRING FROM LOCAL STORAGE
             var retrievedObject = localStorage.getItem('miembroData');
-    
+
             // CONVERT STRING TO REGULAR JS OBJECT
             var parsedObject = JSON.parse(retrievedObject);
-    
+
             // ACCESS DATA
             document.getElementById("inputCMiembroNombre").value = parsedObject.nombre;
             document.getElementById("inputCMiembroApellido").value = parsedObject.apellido;
@@ -272,4 +293,3 @@ function consultarMiembro() {
 }
 
 /* ---------------Rol--------------- */
-

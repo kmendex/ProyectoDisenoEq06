@@ -63,79 +63,137 @@
 
         {{#ifeq jerarquia.tipo "Zona"}}
             {{jerarquia.nombre}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="labelCZona">Zona</label>
-                        <select id="selectCZona" class="form-control">
-                            <option selected>Zonas Disponibles</option>
-                        </select>
+            <body onload="cargarZona()">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectCZona">Zona</label>
+                            <select id="selectCZona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <button type="button" class="btnCZona btn-danger" onclick="consultarZona()">Buscar</button>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button type="button" class="btnCZona btn-danger" onclick="consultarZona()">Buscar</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="labelDZonaIdentificador">Ramas</label>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
-                        </ul>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaIdentificador">Ramas</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaNombre">Cantidad Miembros</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaFecha">Fecha Creacion</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="labelDZonaNombre">Cantidad Miembros</label>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
-                        </ul>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaIdentificador">Miembros</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaNombre">Tipo</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="labelDZonaFecha">Procedencia</label>
+                            <ul>
+                                <li>Coffee</li>
+                                <li>Tea</li>
+                                <li>Milk</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="labelDZonaFecha">Fecha Creacion</label>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="labelDZonaIdentificador">Miembros</label>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
-                        </ul>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="labelDZonaNombre">Tipo</label>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
-                        </ul>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="labelDZonaFecha">Procedencia</label>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
-                        </ul>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </body>
+            
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Rama"}}
             {{jerarquia.nombre}}
+            <body onload="cargarRama()">
+                <form onload="cargarRama()">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputCRama_Zona">Zona</label>
+                            <select id="inputCRama_Zona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCRama_Rama">Rama</label>
+                            <select id="inputCRama_Rama" class="form-control">
+                                <option selected>Ramas Disponibles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button type="button" class="btnCRama btn-danger" onclick="consultarRama()">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Miembro"><h4>Miembro</h4></label>
+                            <ul id="listCRama_Miembro">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Tipo"><h4>Tipo</h4></label>
+                            <ul id="listCRama_Tipo">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Estado"><h4>Estado</h4></label>
+                            <ul id="listCRama_Estado">
+
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Grupo"><h4>Grupo</h4></label>
+                            <ul id="listCRama_Grupo">
+
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </body>
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Grupo"}}
