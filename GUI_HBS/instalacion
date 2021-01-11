@@ -1,0 +1,5 @@
+npm i hbs
+npm install -g nodemon
+npm install express
+npm install -g gulp <---- No es necesario
+npm install ember-truth-helpers
