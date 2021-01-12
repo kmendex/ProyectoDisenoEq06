@@ -59,6 +59,30 @@
         {{/ifeq}}
         {{#ifeq jerarquia.tipo "Coordinacion"}}
             {{jerarquia.nombre}}
+            <body onload="">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Miembro"><h4>Miembro</h4></label>
+                            <ul id="listCRama_Miembro">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Tipo"><h4>Tipo</h4></label>
+                            <ul id="listCRama_Tipo">
+
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="labelCRama_Estado"><h4>Estado</h4></label>
+                            <ul id="listCRama_Estado">
+
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </body>
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Zona"}}
