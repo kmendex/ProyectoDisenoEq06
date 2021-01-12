@@ -11,22 +11,22 @@ export class CComposite{
     private static grupos: Array<CompositeComponent> = [];
 
     //--------------------Insertar--------------------//
-    static insertarCoordinador(id: number, nombreCoordinacion: string): void {
+    static insertarCoordinador(id: string, nombreCoordinacion: string): void {
         let nueveCoordinacion = new CompositeComponent(id, nombreCoordinacion, Roles.Coordinacion);
         this.coordinaciones.push(nueveCoordinacion);
     }
 
-    static insertarZona(id: number, nombreZona: string): void {
+    static insertarZona(id: string, nombreZona: string): void {
         let nuevaZona = new CompositeComponent(id, nombreZona, Roles.Zona);
         this.zonas.push(nuevaZona);
     }
 
-    static insertarRama(id: number, nombreRama: string): void {
+    static insertarRama(id: string, nombreRama: string): void {
         let nuevaRama = new CompositeComponent(id, nombreRama, Roles.Rama);
         this.ramas.push(nuevaRama);
     }
 
-    static insertarGrupo(id: number, nombreGrupo: string): void {
+    static insertarGrupo(id: string, nombreGrupo: string): void {
         let nuevoGrupo = new CompositeComponent(id, nombreGrupo, Roles.Grupo);
         this.grupos.push(nuevoGrupo);
     }
@@ -55,7 +55,7 @@ export class CComposite{
         //let nuevoAsesor = CPersona.tomarPersonas(id);
         let nuevoAsesor = CPersona.obtenerPersona(id);
         let buscarCoordinacion = this.zonas.filter(x => x.getName() == coordinacion)[0];
-        let asesor = new SimpleComponent(Roles.Asesor, nuevoAsesor);
+        let asesor = new SimpleComponent(nuevoAsesor, Roles.Asesor);
 
         buscarCoordinacion.addComponent(asesor);
     }
@@ -65,7 +65,7 @@ export class CComposite{
         //let nuevoJefe = CPersona.tomarPersonas(id);
         let nuevoJefe = CPersona.obtenerPersona(id);
         let buscarZona = this.zonas.filter(x => x.getName() == zona)[0];
-        let jefeZ = new SimpleComponent(Roles.Jefe, nuevoJefe);
+        let jefeZ = new SimpleComponent(nuevoJefe, Roles.Jefe);
 
         buscarZona.addComponent(jefeZ);
     }
@@ -75,7 +75,7 @@ export class CComposite{
         //let nuevoJefe = CPersona.tomarPersonas(id);
         let nuevoJefe = CPersona.obtenerPersona(id);
         let buscarRama = this.ramas.filter(x => x.getName() == rama)[0];
-        let jefeR = new SimpleComponent(Roles.Jefe, nuevoJefe);
+        let jefeR = new SimpleComponent(nuevoJefe, Roles.Jefe);
 
         buscarRama.addComponent(jefeR);
     }
@@ -84,7 +84,7 @@ export class CComposite{
         //let nuevoMonitor = CPersona.tomarPersonas(id);
         let nuevoMonitor = CPersona.obtenerPersona(id);
         let buscarGrupo = this.grupos.filter(x => x.getName() == grupo)[0];
-        let monitor = new SimpleComponent(Roles.Monitor, nuevoMonitor);
+        let monitor = new SimpleComponent(nuevoMonitor, Roles.Monitor);
 
         buscarGrupo.addComponent(monitor);
     }

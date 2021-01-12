@@ -1,47 +1,54 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+const login = (req, res) => {
+    res.render('login', {
+        titulo: 'Pagina Web'
+    });
+};
 
-const {Controlador} = require("../controllers/Controlador");
+const inicio = (req, res) => {
+    res.render('inicio', {
+        titulo: 'Pagina Web'
+    });
+};
 
-/* GET home page. */
-router.get('/', async function(req, res, next) {
+const definir = (req, res) => {
+    res.render('definir', {
+        jerarquia: {
+            tipo: req.params.id,
+            nombre: 'Bienvenido a la Organizacion, Aqui se define'
+        }
+    });
+};
 
+const consultar = (req, res) => {
+    res.render('consultar', {
+        jerarquia: {
+            tipo: req.params.id,
+            nombre: 'Bienvenido a la Organizacion, Aqui se consulta'
+        }
+    });
+};
 
-  try{
-    //let result = await db.getOrganization('12');
-    //let result = await db.getOrganization('1');
-    //console.log(result);  
+const consultar2 = (req, res) => {
+    res.render('consultar', {
+        jerarquia: {
+            tipo: req.params.id,
+            nombre: 'Bienvenido a la Organizacion, Aqui se consulta'
+        }
+    });
+};
 
-    //let controlador = new Controlador();
-    console.log('ACAS');  
-    //Controlador.bringData();
+const error = (req, res, next) => {
+    res.status(404).render('error', {
+        titulo: "404",
+        descripcion: "Página no encontrada"
+    });
+};
 
-    //let result1 = COrganizacion.getDataToShow();
-    //console.log(result1);  
-  }
-  catch(error){
-    console.log(error);
-  }                
-//  
-//
-  
-  let result = Controlador.getCompanyData();
-  console.log(result);
-
-  // campos esperados para desplegar en la pagina
-  // { title: '',
-  //   content : {
-  //      orgName,description,logoURL,province,country,address,webSite,facebook,twitter
-  //   }
-  //  }  
-
-  res.render('index', { "title": "OAIS",
-    "content": { "orgName": result.nombreCompany, "description": result.descripcion, "logoURL": result.logoURL, "province": result.provincia, "country": result.pais, 
-      "address": result.direccion, "webSite": result.direccionWeb, "facebook": result.logoFace, "twitter": result.logoTwitter
-    }
-  });
-  
-});
-
-module.exports = router;
+module.exports = {
+    login, 
+    inicio,
+    definir,
+    consultar,
+    consultar2,
+    error
+};

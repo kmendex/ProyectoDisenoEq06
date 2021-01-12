@@ -64,19 +64,19 @@ export class Controlador{
     }
 
     //--------------------Definir--------------------//
-    static defineCoordination(id: number, nombreCoordinacion: string) {
+    static defineCoordination(id: string, nombreCoordinacion: string) {
         return CComposite.insertarCoordinador(id, nombreCoordinacion);
     }
 
-    static defineZone(id: number, nombreZona: string) {
+    static defineZone(id: string, nombreZona: string) {
         return CComposite.insertarZona(id, nombreZona);
     }
 
-    static defineBranch(id: number, nombreRama: string) {
+    static defineBranch(id: string, nombreRama: string) {
         return CComposite.insertarRama(id, nombreRama);
     }
 
-    static defineGroup(id: number, nombreGrupo: string) {
+    static defineGroup(id: string, nombreGrupo: string) {
         return CComposite.insertarGrupo(id, nombreGrupo);
     }
 
