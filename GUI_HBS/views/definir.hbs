@@ -2,73 +2,67 @@
     <p class="lead">
         {{#ifeq jerarquia.tipo "Organizacion"}}
             {{jerarquia.nombre}}
-            <form action="/consultar/Organizacion" method="POST">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDOrganizacionNombre">Nombre de la Organizacion</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionNombre">
+            <body onload="cargarLugares()">
+                <form id="definirOrganizacion">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDOrganizacionNombre">Nombre de la Organizacion</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionNombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDOrganizacionAsesor">Asesor General</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionAsesor">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDOrganizacionAsesor">Asesor General</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionAsesor">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="inputDOrganizacionWeb">Direccion Web</label>
+                        <input type="text" class="form-control" id="inputDOrganizacionWeb">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="bmd-label-floating" for="inputDOrganizacionWeb">Direccion Web</label>
-                    <input type="text" class="form-control" id="inputDOrganizacionWeb">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDOrganizacionCedula">Cedula Juridica</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionCedula">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDOrganizacionCedula">Cedula Juridica</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionCedula">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDOrganizacionTelefono">Telefono</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionTelefono">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDOrganizacionCorreo">Correo</label>
+                            <input type="email" class="form-control" id="inputDOrganizacionCorreo">
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDOrganizacionTelefono">Telefono</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionTelefono">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectDOrganizacionProvincia">Provincia</label>
+                            <select id="selectDOrganizacionProvincia" class="form-control">
+                                <option selected>Provincia</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDOrganizacionCanton">Canton</label>
+                            <select id="selectDOrganizacionCanton" class="form-control">
+                                <option selected>Canton</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDOrganizacionDistrito">Distrito</label>
+                            <select id="selectDOrganizacionDistrito" class="form-control">
+                                <option selected>Distrito</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDOrganizacionCorreo">Correo</label>
-                        <input type="email" class="form-control" id="inputDOrganizacionCorreo">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="inputDOrganizacionOtra">Otras Señas</label>
+                        <input type="text" class="form-control" id="inputDOrganizacionOtra">
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputDOrganizacionProvincia">Provincia</label>
-                        <select id="inputDOrganizacionProvincia" class="form-control">
-                            <option selected>San Jose</option>
-                            <option>Heredia</option>
-                            <option>Alajuela</option>
-                            <option>Cartago</option>
-                            <option>Limon</option>
-                            <option>Puntarenas</option>
-                            <option>Guanacaste</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnDOrganizacion btn-danger" onclick="definirOrganizacion()">Guardar</button>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDOrganizacionCanton">Canton</label>
-                        <select id="inputDOrganizacionCanton" class="form-control">
-                            <option selected>Opcion 1</option>
-                            <option>Opcion 2</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDOrganizacionDistrito">Distrito</label>
-                        <select id="inputDOrganizacionDistrito" class="form-control">
-                            <option selected>Opcion 1</option>
-                            <option>Opcion 2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="bmd-label-floating" for="inputDOrganizacionOtra">Otras Señas</label>
-                    <input type="text" class="form-control" id="inputDOrganizacionOtra">
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <button class="btnDOrganizacion btn-danger" onclick="definirOrganizacion()">Guardar</button>
-                    </div>
-                </div>
-            </form>     
+                </form>
+            </body>                
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Coordinacion"}}
@@ -101,8 +95,8 @@
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="listDRama_Zona">Zona</label>
-                        <select id="listDRama_Zona" class="form-control">
+                        <label for="selectDRama_Zona">Zona</label>
+                        <select id="selectDRama_Zona" class="form-control">
                             <option selected>Atlantica</option>
                             <option>Opcion 2</option>
                         </select>
@@ -131,15 +125,15 @@
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="listDGrupo_Zona">Zona</label>
-                        <select id="listDGrupo_Zona" class="form-control">
+                        <label for="selectDGrupo_Zona">Zona</label>
+                        <select id="selectDGrupo_Zona" class="form-control">
                             <option selected>Atlantica</option>
                             <option>Opcion 2</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="listDGrupo_Rama">Rama</label>
-                        <select id="listDGrupo_Rama" class="form-control">
+                        <label for="selectDGrupo_Rama">Rama</label>
+                        <select id="selectDGrupo_Rama" class="form-control">
                             <option selected>Oeste</option>
                             <option>Opcion 2</option>
                         </select>
@@ -192,8 +186,8 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="inputDMiembroProvincia">Provincia</label>
-                        <select id="inputDMiembroProvincia" class="form-control">
+                        <label for="selectDMiembroProvincia">Provincia</label>
+                        <select id="selectDMiembroProvincia" class="form-control">
                             <option selected>San Jose</option>
                             <option>Heredia</option>
                             <option>Alajuela</option>
@@ -204,15 +198,15 @@
                         </select>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputDMiembroCanton">Canton</label>
-                        <select id="inputDMiembroCanton" class="form-control">
+                        <label for="selectDMiembroCanton">Canton</label>
+                        <select id="selectDMiembroCanton" class="form-control">
                             <option selected>Opcion 1</option>
                             <option>Opcion 2</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputDMiembroDistrito">Distrito</label>
-                        <select id="inputDMiembroDistrito" class="form-control">
+                        <label for="selectDMiembroDistrito">Distrito</label>
+                        <select id="selectDMiembroDistrito" class="form-control">
                             <option selected>Opcion 1</option>
                             <option>Opcion 2</option>
                         </select>

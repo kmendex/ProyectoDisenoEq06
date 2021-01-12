@@ -1,4 +1,34 @@
 /* ---------------Variables--------------- */
+var provincias = {
+    P1: 'San Jose',
+    P2: 'Alajuela',
+    P3: 'Cartago',
+    P4: 'Heredia',
+    P5: 'Guanacaste',
+    P6: 'Puntarenas',
+    P7: 'Limon'
+};
+
+var cantones = {
+    P1: 'San Jose',
+    P2: 'Alajuela',
+    P3: 'Cartago',
+    P4: 'Heredia',
+    P5: 'Guanacaste',
+    P6: 'Puntarenas',
+    P7: 'Limon'
+};
+
+var distritos = {
+    P1: 'San Jose',
+    P2: 'Alajuela',
+    P3: 'Cartago',
+    P4: 'Heredia',
+    P5: 'Guanacaste',
+    P6: 'Puntarenas',
+    P7: 'Limon'
+};
+
 var zonasGlobales = {
     ValueA: 'Atlantico',
     ValueB: 'Pacifico',
@@ -17,28 +47,39 @@ var gruposGlobales = {
     ValueC: 'Ballenas'
 };
 
+/* ---------------Generales--------------- */
+function cargarLugares() {
+    var select1 = document.getElementById("selectDOrganizacionProvincia");
+
+    for (index in provincias) {
+        select1.options[select1.options.length] = new Option(provincias[index], index);
+    }
+
+    var select2 = document.getElementById("selectDOrganizacionCanton");
+
+    for (index in provincias) {
+        select2.options[select2.options.length] = new Option(cantones[index], index);
+    }
+
+    var select3 = document.getElementById("selectDOrganizacionDistrito");
+
+    for (index in provincias) {
+        select3.options[select3.options.length] = new Option(distritos[index], index);
+    }
+}
+
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
-    var input1 = document.getElementById('inputDOrganizacionNombre'),
-        orgName = input1.value;
-    var input2 = document.getElementById('inputDOrganizacionAsesor'),
-        asesor = input2.value;
-    var input3 = document.getElementById('inputDOrganizacionWeb'),
-        web = input3.value;
-    var input4 = document.getElementById('inputDOrganizacionCedula'),
-        cedula = input4.value;
-    var input5 = document.getElementById('inputDOrganizacionTelefono'),
-        telefono = input5.value;
-    var input6 = document.getElementById('inputDOrganizacionCorreo'),
-        correo = input6.value;
-    var input7 = document.getElementById('inputDOrganizacionProvincia'),
-        provincia = input7.value;
-    var input8 = document.getElementById('inputDOrganizacionCanton'),
-        canton = input8.value;
-    var input9 = document.getElementById('inputDOrganizacionDistrito'),
-        distrito = input9.value;
-    var input10 = document.getElementById('inputDOrganizacionOtra'),
-        otra = input10.value;
+    var orgName = document.querySelector('#inputDOrganizacionNombre').value;
+    var asesor = document.querySelector('#inputDOrganizacionAsesor').value;
+    var web = document.querySelector('#inputDOrganizacionWeb').value;
+    var cedula = document.querySelector('#inputDOrganizacionCedula').value;
+    var telefono = document.querySelector('#inputDOrganizacionTelefono').value;
+    var correo = document.querySelector('#inputDOrganizacionCorreo').value;
+    var provincia = document.querySelector('#selectDOrganizacionProvincia').value;
+    var canton = document.querySelector('#selectDOrganizacionCanton').value;
+    var distrito = document.querySelector('#selectDOrganizacionDistrito').value;
+    var otra = document.querySelector('#inputDOrganizacionOtra').value;
 
     const organizacion = {
         nombre: orgName,
@@ -60,6 +101,7 @@ function definirOrganizacion() {
         alert('Faltan datos');
         input.focus();
     }
+
     return false;
 }
 
@@ -223,24 +265,15 @@ function consultarGrupo() {
 /* ---------------Miembro--------------- */
 
 function definirMiembro() {
-    var input1 = document.getElementById('inputDMiembroNombre'),
-        nombre = input1.value;
-    var input2 = document.getElementById('inputDMiembroApellido'),
-        apellido = input2.value;
-    var input3 = document.getElementById('inputDMiembroCedula'),
-        cedula = input3.value;
-    var input4 = document.getElementById('inputDMiembroTelefono'),
-        telefono = input4.value;
-    var input5 = document.getElementById('inputDMiembroCorreo'),
-        correo = input5.value;
-    var input6 = document.getElementById('inputDMiembroProvincia'),
-        provincia = input6.value;
-    var input7 = document.getElementById('inputDMiembroCanton'),
-        canton = input7.value;
-    var input8 = document.getElementById('inputDMiembroDistrito'),
-        distrito = input8.value;
-    var input9 = document.getElementById('inputDMiembroOtra'),
-        otra = input9.value;
+    var nombre = document.querySelector('#inputDMiembroNombre').value;
+    var apellido = document.querySelector('#inputDMiembroApellido').value;
+    var cedula = document.querySelector('#inputDMiembroCedula').value;
+    var telefono = document.querySelector('#inputDMiembroTelefono').value;
+    var correo = document.querySelector('#inputDMiembroCorreo').value;
+    var provincia = document.querySelector('#selectDMiembroProvincia').value;
+    var canton = document.querySelector('#selectDMiembroCanton').value;
+    var distrito = document.querySelector('#selectDMiembroDistrito').value;
+    var otra = document.querySelector('#inputDMiembroOtra').value;
 
     const miembro = {
         nombre: nombre,
@@ -261,6 +294,7 @@ function definirMiembro() {
         alert('Faltan datos');
         input.focus();
     }
+
     return false;
 }
 
