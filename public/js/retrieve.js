@@ -1,4 +1,34 @@
 /* ---------------Variables--------------- */
+var provincias = {
+    P1: 'San Jose',
+    P2: 'Alajuela',
+    P3: 'Cartago',
+    P4: 'Heredia',
+    P5: 'Guanacaste',
+    P6: 'Puntarenas',
+    P7: 'Limon'
+};
+
+var cantones = {
+    P1: 'San Jose',
+    P2: 'Alajuela',
+    P3: 'Cartago',
+    P4: 'Heredia',
+    P5: 'Guanacaste',
+    P6: 'Puntarenas',
+    P7: 'Limon'
+};
+
+var distritos = {
+    P1: 'San Jose',
+    P2: 'Alajuela',
+    P3: 'Cartago',
+    P4: 'Heredia',
+    P5: 'Guanacaste',
+    P6: 'Puntarenas',
+    P7: 'Limon'
+};
+
 var zonasGlobales = {
     ValueA: 'Atlantico',
     ValueB: 'Pacifico',
@@ -17,29 +47,69 @@ var gruposGlobales = {
     ValueC: 'Ballenas'
 };
 
+/* ---------------Generales--------------- */
+function cargarLugares(pro, cant, dist) {
+    var select1 = document.getElementById(pro);
+
+    for (index in provincias) {
+        select1.options[select1.options.length] = new Option(provincias[index], index);
+    }
+
+    var select2 = document.getElementById(cant);
+
+    for (index in provincias) {
+        select2.options[select2.options.length] = new Option(cantones[index], index);
+    }
+
+    var select3 = document.getElementById(dist);
+
+    for (index in provincias) {
+        select3.options[select3.options.length] = new Option(distritos[index], index);
+    }
+}
+
+function cargarZonas(selectInput) {
+    var select1 = document.getElementById(selectInput);
+
+    for (index in zonasGlobales) {
+        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
+    }
+}
+
+function cargarRamas(selectInput) {
+    var select1 = document.getElementById(selectInput);
+
+    for (index in ramasGlobales) {
+        select1.options[select1.options.length] = new Option(ramasGlobales[index], index);
+    }
+}
+
+function cargarGrupos(selectInput) {
+    var select1 = document.getElementById(selectInput);
+
+    for (index in gruposGlobales) {
+        select1.options[select1.options.length] = new Option(gruposGlobales[index], index);
+    }
+}
+
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
-    var input1 = document.getElementById('inputDOrganizacionNombre'),
-        orgName = input1.value;
-    var input2 = document.getElementById('inputDOrganizacionAsesor'),
-        asesor = input2.value;
-    var input3 = document.getElementById('inputDOrganizacionWeb'),
-        web = input3.value;
-    var input4 = document.getElementById('inputDOrganizacionCedula'),
-        cedula = input4.value;
-    var input5 = document.getElementById('inputDOrganizacionTelefono'),
-        telefono = input5.value;
-    var input6 = document.getElementById('inputDOrganizacionCorreo'),
-        correo = input6.value;
-    var input7 = document.getElementById('inputDOrganizacionProvincia'),
-        provincia = input7.value;
-    var input8 = document.getElementById('inputDOrganizacionCanton'),
-        canton = input8.value;
-    var input9 = document.getElementById('inputDOrganizacionDistrito'),
-        distrito = input9.value;
-    var input10 = document.getElementById('inputDOrganizacionOtra'),
-        otra = input10.value;
+    var orgName = document.querySelector('#inputDOrganizacionNombre').value;
+    var asesor = document.querySelector('#inputDOrganizacionAsesor').value;
+    var web = document.querySelector('#inputDOrganizacionWeb').value;
+    var cedula = document.querySelector('#inputDOrganizacionCedula').value;
+    var telefono = document.querySelector('#inputDOrganizacionTelefono').value;
+    var correo = document.querySelector('#inputDOrganizacionCorreo').value;
 
+    var select1 = document.getElementById("selectDOrganizacionProvincia");
+    provincia = select1.options[select1.selectedIndex].text;
+    var select2 = document.getElementById("selectDOrganizacionCanton");
+    canton = select2.options[select2.selectedIndex].text;
+    var select3 = document.getElementById("selectDOrganizacionDistrito");
+    distrito = select3.options[select3.selectedIndex].text;
+
+    var otra = document.querySelector('#inputDOrganizacionOtra').value;
+    
     const organizacion = {
         nombre: orgName,
         asesor: asesor,
@@ -60,6 +130,7 @@ function definirOrganizacion() {
         alert('Faltan datos');
         input.focus();
     }
+
     return false;
 }
 
@@ -86,10 +157,8 @@ function consultarOrganizacion() {
 /* ---------------Zona--------------- */
 
 function definirZona() {
-    var input1 = document.getElementById('inputDZonaNombre'),
-        nombre = input1.value;
-    var input2 = document.getElementById('inputDZonaIdentificacion'),
-        identificacion = input2.value;
+    var nombre = document.querySelector('#inputDZonaNombre').value;
+    var identificacion = document.querySelector('#inputDZonaIdentificacion').value;
 
     const zona = {
         nombre: nombre,
@@ -107,7 +176,7 @@ function definirZona() {
     return false;
 }
 
-function consultarZona() {
+function consultarZonas() {
     // var input1 = document.getElementById('inputCMiembroIdentificacion'),
     // identificacion = input1.value;
 
@@ -136,44 +205,59 @@ function consultarZona() {
 
 }
 
-function cargarZona() {
-    var select1 = document.getElementById("selectCZona");
-
-    for (index in zonasGlobales) {
-        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
-    }
-}
-
 /* ---------------Rama--------------- */
 
-function cargarRama() {
-    var select1 = document.getElementById("inputCRama_Zona");
-    var select2 = document.getElementById("inputCRama_Rama");
+function definirRama() {
+    var select1 = document.getElementById("selectDRama_Zona");
+    zonaR = select1.options[select1.selectedIndex].text;
 
-    for (index in zonasGlobales) {
-        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
+    var nombre = document.querySelector('#inputDRamaNombre').value;
+    var identificacion = document.querySelector('#inputDRamaIdentificacion').value;
+
+    const zona = {
+        zonaR: zonaR,
+        nombre: nombre,
+        identificacion: identificacion
+    };
+
+    if (nombre) {
+        alert('Informacion Guardada con exito');
+        localStorage.setItem("zonaData", JSON.stringify(zona));
+    } else {
+        alert('Faltan datos');
+        input.focus();
     }
-    for (index in ramasGlobales) {
-        select2.options[select2.options.length] = new Option(ramasGlobales[index], index);
-    }
+
+    return false;
 }
 
 /* ---------------Grupo--------------- */
 
-function cargarGrupo() {
-    var select1 = document.getElementById("inputCGrupo_Zona");
-    var select2 = document.getElementById("inputCGrupo_Rama");
-    var select3 = document.getElementById("inputCGrupo_Grupo");
+function definirGrupo() {
+    var select1 = document.getElementById("selectDGrupo_Zona");
+    zonaR = select1.options[select1.selectedIndex].text;
+    var select2 = document.getElementById("selectDGrupo_Rama");
+    ramaR = select2.options[select2.selectedIndex].text;
 
-    for (index in zonasGlobales) {
-        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
+    var nombreGrupo = document.querySelector('#inputDGrupoNombre').value;
+    var identificador = document.querySelector('#inputDGrupoIdentificador').value;
+
+    const grupo = {
+        zonaR: zonaR,
+        ramaR: ramaR,
+        nombreGrupo: nombreGrupo,
+        identificador: identificador
+    };
+
+    if (nombreGrupo) {
+        alert('Informacion Guardada con exito');
+        localStorage.setItem("GrupoData", JSON.stringify(grupo));
+    } else {
+        alert('Faltan datos');
+        input.focus();
     }
-    for (index in ramasGlobales) {
-        select2.options[select2.options.length] = new Option(ramasGlobales[index], index);
-    }
-    for (index in gruposGlobales) {
-        select3.options[select3.options.length] = new Option(gruposGlobales[index], index);
-    }
+
+    return false;
 }
 
 function consultarGrupo() {
@@ -223,24 +307,20 @@ function consultarGrupo() {
 /* ---------------Miembro--------------- */
 
 function definirMiembro() {
-    var input1 = document.getElementById('inputDMiembroNombre'),
-        nombre = input1.value;
-    var input2 = document.getElementById('inputDMiembroApellido'),
-        apellido = input2.value;
-    var input3 = document.getElementById('inputDMiembroCedula'),
-        cedula = input3.value;
-    var input4 = document.getElementById('inputDMiembroTelefono'),
-        telefono = input4.value;
-    var input5 = document.getElementById('inputDMiembroCorreo'),
-        correo = input5.value;
-    var input6 = document.getElementById('inputDMiembroProvincia'),
-        provincia = input6.value;
-    var input7 = document.getElementById('inputDMiembroCanton'),
-        canton = input7.value;
-    var input8 = document.getElementById('inputDMiembroDistrito'),
-        distrito = input8.value;
-    var input9 = document.getElementById('inputDMiembroOtra'),
-        otra = input9.value;
+    var nombre = document.querySelector('#inputDMiembroNombre').value;
+    var apellido = document.querySelector('#inputDMiembroApellido').value;
+    var cedula = document.querySelector('#inputDMiembroCedula').value;
+    var telefono = document.querySelector('#inputDMiembroTelefono').value;
+    var correo = document.querySelector('#inputDMiembroCorreo').value;
+
+    var select1 = document.getElementById("selectDMiembroProvincia");
+    provincia = select1.options[select1.selectedIndex].text;
+    var select2 = document.getElementById("selectDMiembroCanton");
+    canton = select2.options[select2.selectedIndex].text;
+    var select3 = document.getElementById("selectDMiembroDistrito");
+    distrito = select3.options[select3.selectedIndex].text;
+
+    var otra = document.querySelector('#inputDMiembroOtra').value;
 
     const miembro = {
         nombre: nombre,
@@ -261,6 +341,7 @@ function definirMiembro() {
         alert('Faltan datos');
         input.focus();
     }
+
     return false;
 }
 
@@ -293,3 +374,31 @@ function consultarMiembro() {
 }
 
 /* ---------------Rol--------------- */
+
+function definirRol() {
+    var identificacion = document.querySelector('#inputDRolIdentificacion').value;
+
+    var select1 = document.getElementById("selectDRol_Zona");
+    zonaR = select1.options[select1.selectedIndex].text;
+    var select2 = document.getElementById("selectDRol_Rama");
+    ramaR = select2.options[select2.selectedIndex].text;
+    var select3 = document.getElementById("selectDRol_Grupo");
+    grupoR = select3.options[select3.selectedIndex].text;
+
+    const rol = {
+        identificacion: identificacion,
+        zonaR: zonaR,
+        ramaR: ramaR,
+        grupoR: grupoR
+    };
+
+    if (identificacion) {
+        alert('Informacion Guardada con exito');
+        localStorage.setItem("RolData", JSON.stringify(rol));
+    } else {
+        alert('Faltan datos');
+        input.focus();
+    }
+
+    return false;
+}

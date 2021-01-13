@@ -2,73 +2,67 @@
     <p class="lead">
         {{#ifeq jerarquia.tipo "Organizacion"}}
             {{jerarquia.nombre}}
-            <form action="/consultar/Organizacion" method="POST">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDOrganizacionNombre">Nombre de la Organizacion</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionNombre">
+            <body onload="cargarLugares('selectDOrganizacionProvincia', 'selectDOrganizacionCanton', 'selectDOrganizacionDistrito')">
+                <form id="definirOrganizacion">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDOrganizacionNombre">Nombre de la Organizacion</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionNombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDOrganizacionAsesor">Asesor General</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionAsesor">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDOrganizacionAsesor">Asesor General</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionAsesor">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="inputDOrganizacionWeb">Direccion Web</label>
+                        <input type="text" class="form-control" id="inputDOrganizacionWeb">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="bmd-label-floating" for="inputDOrganizacionWeb">Direccion Web</label>
-                    <input type="text" class="form-control" id="inputDOrganizacionWeb">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDOrganizacionCedula">Cedula Juridica</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionCedula">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDOrganizacionCedula">Cedula Juridica</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionCedula">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDOrganizacionTelefono">Telefono</label>
+                            <input type="text" class="form-control" id="inputDOrganizacionTelefono">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDOrganizacionCorreo">Correo</label>
+                            <input type="email" class="form-control" id="inputDOrganizacionCorreo">
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDOrganizacionTelefono">Telefono</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionTelefono">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectDOrganizacionProvincia">Provincia</label>
+                            <select id="selectDOrganizacionProvincia" class="form-control">
+                                <option selected>Provincia</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDOrganizacionCanton">Canton</label>
+                            <select id="selectDOrganizacionCanton" class="form-control">
+                                <option selected>Canton</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDOrganizacionDistrito">Distrito</label>
+                            <select id="selectDOrganizacionDistrito" class="form-control">
+                                <option selected>Distrito</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDOrganizacionCorreo">Correo</label>
-                        <input type="email" class="form-control" id="inputDOrganizacionCorreo">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="inputDOrganizacionOtra">Otras Señas</label>
+                        <input type="text" class="form-control" id="inputDOrganizacionOtra">
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputDOrganizacionProvincia">Provincia</label>
-                        <select id="inputDOrganizacionProvincia" class="form-control">
-                            <option selected>San Jose</option>
-                            <option>Heredia</option>
-                            <option>Alajuela</option>
-                            <option>Cartago</option>
-                            <option>Limon</option>
-                            <option>Puntarenas</option>
-                            <option>Guanacaste</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnDOrganizacion btn-danger" onclick="definirOrganizacion()">Guardar</button>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDOrganizacionCanton">Canton</label>
-                        <select id="inputDOrganizacionCanton" class="form-control">
-                            <option selected>Opcion 1</option>
-                            <option>Opcion 2</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDOrganizacionDistrito">Distrito</label>
-                        <select id="inputDOrganizacionDistrito" class="form-control">
-                            <option selected>Opcion 1</option>
-                            <option>Opcion 2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="bmd-label-floating" for="inputDOrganizacionOtra">Otras Señas</label>
-                    <input type="text" class="form-control" id="inputDOrganizacionOtra">
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <button class="btnDOrganizacion btn-danger" onclick="definirOrganizacion()">Guardar</button>
-                    </div>
-                </div>
-            </form>     
+                </form>
+            </body>                
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Coordinacion"}}
@@ -97,142 +91,200 @@
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Rama"}}
-            {{jerarquia.nombre}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="listDRama_Zona">Zona</label>
-                        <select id="listDRama_Zona" class="form-control">
-                            <option selected>Atlantica</option>
-                            <option>Opcion 2</option>
-                        </select>
+            {{jerarquia.nombre}}      
+            <body onload="cargarZonas('selectDRama_Zona')">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="selectDRama_Zona">Zona</label>
+                            <select id="selectDRama_Zona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDRamaNombre">Nombre de la Rama</label>
-                        <input type="text" class="form-control" id="inputDRamaNombre">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDRamaNombre">Nombre de la Rama</label>
+                            <input type="text" class="form-control" id="inputDRamaNombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDRamaIdentificador">Identificador</label>
+                            <input type="text" class="form-control" id="inputDRamaIdentificador">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDRamaIdentificador">Identificador</label>
-                        <input type="text" class="form-control" id="inputDRamaIdentificador">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnDRama btn-danger" onclick="definirRama()">Agregar</button>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <button class="btnDRama btn-danger" onclick="definirRama()">Agregar</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </body>
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Grupo"}}
             {{jerarquia.nombre}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="listDGrupo_Zona">Zona</label>
-                        <select id="listDGrupo_Zona" class="form-control">
-                            <option selected>Atlantica</option>
-                            <option>Opcion 2</option>
-                        </select>
+            <body onload="cargarRamas('selectDGrupo_Rama');cargarZonas('selectDGrupo_Zona');">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="selectDGrupo_Zona">Zona</label>
+                            <select id="selectDGrupo_Zona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="selectDGrupo_Rama">Rama</label>
+                            <select id="selectDGrupo_Rama" class="form-control">
+                                <option selected>Ramas Disponibles</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="listDGrupo_Rama">Rama</label>
-                        <select id="listDGrupo_Rama" class="form-control">
-                            <option selected>Oeste</option>
-                            <option>Opcion 2</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDGrupoNombre">Nombre de la Grupo</label>
+                            <input type="text" class="form-control" id="inputDGrupoNombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDGrupoIdentificador">Identificador</label>
+                            <input type="text" class="form-control" id="inputDGrupoIdentificador">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDGrupoNombre">Nombre de la Grupo</label>
-                        <input type="text" class="form-control" id="inputDGrupoNombre">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnDGrupo btn-danger" onclick="definirGrupo()">Agregar</button>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDGrupoIdentificador">Identificador</label>
-                        <input type="text" class="form-control" id="inputDGrupoIdentificador">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <button class="btnDGrupo btn-danger" onclick="definirGrupo()">Agregar</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </body>
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Miembro"}}
             {{jerarquia.nombre}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputDMiembroNombre">Nombre</label>
-                        <input type="text" class="form-control" id="inputDMiembroNombre">
+            <body onload="cargarLugares('selectDMiembroProvincia', 'selectDMiembroCanton', 'selectDMiembroDistrito')"> 
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDMiembroNombre">Nombre</label>
+                            <input type="text" class="form-control" id="inputDMiembroNombre">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="bmd-label-floating" for="inputDMiembroApellido">Apellido</label>
-                    <input type="text" class="form-control" id="inputDMiembroApellido">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDMiembroCedula">Numero de Identificacion</label>
-                        <input type="text" class="form-control" id="inputDMiembroCedula">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="inputDMiembroApellido">Apellido</label>
+                        <input type="text" class="form-control" id="inputDMiembroApellido">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDMiembroTelefono">Telefono</label>
-                        <input type="text" class="form-control" id="inputDMiembroTelefono">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDMiembroCedula">Numero de Identificacion</label>
+                            <input type="text" class="form-control" id="inputDMiembroCedula">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDMiembroTelefono">Telefono</label>
+                            <input type="text" class="form-control" id="inputDMiembroTelefono">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="bmd-label-floating" for="inputDMiembroCorreo">Correo</label>
+                            <input type="email" class="form-control" id="inputDMiembroCorreo">
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="bmd-label-floating" for="inputDMiembroCorreo">Correo</label>
-                        <input type="email" class="form-control" id="inputDMiembroCorreo">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectDMiembroProvincia">Provincia</label>
+                            <select id="selectDMiembroProvincia" class="form-control">
+                                <option selected>Provincia</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDMiembroCanton">Canton</label>
+                            <select id="selectDMiembroCanton" class="form-control">
+                                <option selected>Canton</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDMiembroDistrito">Distrito</label>
+                            <select id="selectDMiembroDistrito" class="form-control">
+                                <option selected>Distrito</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputDMiembroProvincia">Provincia</label>
-                        <select id="inputDMiembroProvincia" class="form-control">
-                            <option selected>San Jose</option>
-                            <option>Heredia</option>
-                            <option>Alajuela</option>
-                            <option>Cartago</option>
-                            <option>Limon</option>
-                            <option>Puntarenas</option>
-                            <option>Guanacaste</option>
-                        </select>
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="inputDMiembroOtra">Otras Señas</label>
+                        <input type="text" class="form-control" id="inputDMiembroOtra">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDMiembroCanton">Canton</label>
-                        <select id="inputDMiembroCanton" class="form-control">
-                            <option selected>Opcion 1</option>
-                            <option>Opcion 2</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnRol btn-danger" onclick="definirMiembro()">Guardar</button>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDMiembroDistrito">Distrito</label>
-                        <select id="inputDMiembroDistrito" class="form-control">
-                            <option selected>Opcion 1</option>
-                            <option>Opcion 2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="bmd-label-floating" for="inputDMiembroOtra">Otras Señas</label>
-                    <input type="text" class="form-control" id="inputDMiembroOtra">
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <button class="btnRol btn-danger" onclick="definirMiembro()">Guardar</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </body>
         {{/ifeq}}
 
         {{#ifeq jerarquia.tipo "Rol"}}
             {{jerarquia.nombre}}
-            
+            <body onload="cargarGrupos('selectDRol_Grupo'); cargarRamas('selectDRol_Rama'); cargarZonas('selectDRol_Zona');">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDRolIdentificacion">ID Miembro</label>
+                            <input type="text" class="form-control" id="inputDRolIdentificacion">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectDRol_Zona">Zona</label>
+                            <select id="selectDRol_Zona" class="form-control">
+                                <option selected>Zonas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDRol_Rama">Rama</label>
+                            <select id="selectDRol_Rama" class="form-control">
+                                <option selected>Ramas Disponibles</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="selectDRol_Grupo">Grupo</label>
+                            <select id="selectDRol_Grupo" class="form-control">
+                                <option selected>Grupos Disponibles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-check form-check-radio form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioDRolAsesor" value="option1" checked>
+                            Asesor
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioDRolJefe" value="option2">
+                            Jefe
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio form-check-inline disabled">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioDRolMiembro" value="option3">
+                            Miembro
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>             
+                </form>
+                <form>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnRol btn-danger" onclick="definirRol()">Definir</button>
+                        </div>
+                    </div>
+                </form>
+            </body>
         {{/ifeq}}
     </p>
 {{>footer}}
