@@ -87,7 +87,7 @@
 
         {{#ifeq jerarquia.tipo "Zona"}}
             {{jerarquia.nombre}}
-            <body onload="cargarZona()">
+            <body onload="cargarZonas()">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -163,8 +163,8 @@
 
         {{#ifeq jerarquia.tipo "Rama"}}
             {{jerarquia.nombre}}
-            <body onload="cargarRama()">
-                <form onload="cargarRama()">
+            <body onload="cargarRamas('inputCRama_Rama'); cargarZonas('inputCRama_Zona');">
+                <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputCRama_Zona">Zona</label>
@@ -222,8 +222,8 @@
 
         {{#ifeq jerarquia.tipo "Grupo"}}
             {{jerarquia.nombre}}
-            <body onload="cargarGrupo()">
-                <form onload="cargarGrupo()">
+            <body onload="cargarGrupos('inputCGrupo_Grupo'); cargarRamas('inputCGrupo_Rama'); cargarZonas('inputCGrupo_Zona')">
+                <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputCGrupo_Zona">Zona</label>
