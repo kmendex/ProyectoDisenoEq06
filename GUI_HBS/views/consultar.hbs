@@ -1,8 +1,8 @@
-{{> header title=jerarquia.tipo}}
+{{> header title=pagina.tipo}}
 
     <p class="lead">
-        {{#ifeq jerarquia.tipo "Organizacion"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Organizacion"}}
+            {{pagina.titulo}}
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -57,8 +57,8 @@
                 </div>
             </form>
         {{/ifeq}}
-        {{#ifeq jerarquia.tipo "Coordinacion"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Coordinacion"}}
+            {{pagina.titulo}}
             <body onload="">
                 <form>
                     <div class="form-row">
@@ -91,8 +91,8 @@
             </body>
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Zona"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Zona"}}
+            {{pagina.titulo}}
             <body onload="cargarZonas('inputCZona_Zona')">
                 <form>
                     <div class="form-row">
@@ -175,8 +175,8 @@
             
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Rama"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Rama"}}
+            {{pagina.titulo}}
             <body onload="cargarRamas('inputCRama_Rama'); cargarZonas('inputCRama_Zona');">
                 <form>
                     <div class="form-row">
@@ -266,8 +266,8 @@
             </body>
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Grupo"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Grupo"}}
+            {{pagina.titulo}}
             <body onload="cargarGrupos('inputCGrupo_Grupo'); cargarRamas('inputCGrupo_Rama'); cargarZonas('inputCGrupo_Zona')">
                 <form>
                     <div class="form-row">
@@ -327,8 +327,8 @@
             </body>           
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Miembro"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Miembro"}}
+            {{pagina.titulo}}
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">

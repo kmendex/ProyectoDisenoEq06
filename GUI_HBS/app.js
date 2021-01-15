@@ -28,12 +28,12 @@ app.listen(port, () => {
 
 app.get("/", indexController.login);
 
-app.get("/inicio", indexController.inicio);
+app.get("/inicio/:puesto", indexController.inicio);
 
-app.get('/definir/:id', indexController.definir);
+app.get('/definir/:puesto/:tipo', indexController.definir);
 
-app.get('/consultar/:id', indexController.consultar);
+app.get('/consultar/:puesto/:tipo', indexController.consultar);
 
-app.post('/consultar/:id', indexController.consultar2);
+app.post('/consultar/:puesto/:tipo', indexController.consultar2);
 
 app.use(indexController.error);
