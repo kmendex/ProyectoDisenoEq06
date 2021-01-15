@@ -92,6 +92,26 @@ function cargarGrupos(selectInput) {
     }
 }
 
+function actualizarRamas(selectInput) {
+    var select1 = document.getElementById(selectInput);
+    var countOption = select1.options.length;
+
+    for (index = 1; index < countOption; index++) {
+        select1.remove(1);
+    }
+    select1.options[select1.options.length] = new Option("Prueba");
+}
+
+function actualizarGrupos(selectInput) {
+    var select1 = document.getElementById(selectInput);
+    var countOption = select1.options.length;
+
+    for (index = 1; index < countOption; index++) {
+        select1.remove(1);
+    }
+    select1.options[select1.options.length] = new Option("Prueba");
+}
+
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
     var orgName = document.querySelector('#inputDOrganizacionNombre').value;
@@ -109,7 +129,7 @@ function definirOrganizacion() {
     distrito = select3.options[select3.selectedIndex].text;
 
     var otra = document.querySelector('#inputDOrganizacionOtra').value;
-    
+
     const organizacion = {
         nombre: orgName,
         asesor: asesor,
