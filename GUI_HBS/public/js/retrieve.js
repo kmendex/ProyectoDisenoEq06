@@ -118,26 +118,6 @@ function cargarGrupos(selectInput) {
     }
 }
 
-<<<<<<< Updated upstream
-function actualizarRamas(selectInput) {
-    var select1 = document.getElementById(selectInput);
-    var countOption = select1.options.length;
-
-    for (index = 1; index < countOption; index++) {
-        select1.remove(1);
-    }
-    select1.options[select1.options.length] = new Option("Prueba");
-}
-
-function actualizarGrupos(selectInput) {
-    var select1 = document.getElementById(selectInput);
-    var countOption = select1.options.length;
-
-    for (index = 1; index < countOption; index++) {
-        select1.remove(1);
-    }
-    select1.options[select1.options.length] = new Option("Prueba");
-=======
 function cargarNiveles(selectInput) {
     var select1 = document.getElementById(selectInput);
 
@@ -171,7 +151,6 @@ function verificar() {
             }
         }
     });
->>>>>>> Stashed changes
 }
 
 /* ---------------Organizacion--------------- */
