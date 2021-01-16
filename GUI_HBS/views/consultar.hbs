@@ -273,7 +273,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputCGrupo_Zona"><h4>Zona</h4></label>
-                            <select id="inputCGrupo_Zona" class="form-control" onchange="actualizarGrupos('inputCGrupo_Rama')">
+                            <select id="inputCGrupo_Zona" class="form-control" onchange="actualizarRamas('inputCGrupo_Rama')">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
@@ -384,6 +384,20 @@
                     <label for="inputCMiembroOtra"><h4>Otras Señas</h4></label>
                     <input type="text" class="form-control" id="inputCMiembroOtra" disabled>
                 </div>
+            </form>
+        {{/ifeq}}
+        
+        {{#ifeq pagina.tipo "Noticias"}}
+            {{pagina.titulo}}
+            <form>
+                
+            </form>
+        {{/ifeq}}
+        
+        {{#ifeq pagina.tipo "Aportes"}}
+            {{pagina.titulo}}
+            <form>
+                
             </form>
         {{/ifeq}}
     </p>

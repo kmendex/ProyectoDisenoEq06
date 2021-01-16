@@ -47,22 +47,21 @@ var gruposGlobales = {
     ValueC: 'Ballenas'
 };
 
-var usuarios = [
-    {
+var usuarios = [{
         user: 'Tony',
-        password:'123'
+        password: '123'
     },
     {
         user: 'Oscar',
-        password:'123'
+        password: '123'
     },
     {
         user: 'Josue',
-        password:'123'
+        password: '123'
     },
     {
         user: 'Kenneth',
-        password:'123'
+        password: '123'
     }
 ]
 
@@ -292,15 +291,27 @@ function definirRama() {
     return false;
 }
 
-function actualizarRamas(selectInput) { 
-    var select1 = document.getElementById(selectInput); 
-    var countOption = select1.options.length; 
- 
-    for (index = 1; index < countOption; index++) { 
-        select1.remove(1); 
-    } 
-    select1.options[select1.options.length] = new Option("Prueba"); 
-} 
+
+function actualizarRamas(selectInput) {
+
+    var urlJson = '../views/prueba.json';
+    define([
+        'require',
+        '../views/prueba.json'
+    ], function(require) {
+        var json = requirejs('../views/prueba.json');
+        alert(json);
+    });
+
+
+    var select1 = document.getElementById(selectInput);
+    var countOption = select1.options.length;
+
+    for (index = 1; index < countOption; index++) {
+        select1.remove(1);
+    }
+    select1.options[select1.options.length] = new Option("Prueba");
+}
 
 /* ---------------Grupo--------------- */
 
@@ -375,14 +386,14 @@ function consultarGrupo() {
     }
 }
 
-function actualizarGrupos(selectInput) { 
-    var select1 = document.getElementById(selectInput); 
-    var countOption = select1.options.length; 
- 
-    for (index = 1; index < countOption; index++) { 
-        select1.remove(1); 
-    } 
-    select1.options[select1.options.length] = new Option("Prueba"); 
+function actualizarGrupos(selectInput) {
+    var select1 = document.getElementById(selectInput);
+    var countOption = select1.options.length;
+
+    for (index = 1; index < countOption; index++) {
+        select1.remove(1);
+    }
+    select1.options[select1.options.length] = new Option("Prueba");
 }
 
 /* ---------------Miembro--------------- */
