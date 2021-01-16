@@ -1,7 +1,18 @@
-{{> header title="Página de inicio"}}
-    
+{{> header title=pagina.tipo}}
     <p class="lead">
-        {{titulo}}
-    </p>
+        {{#ifeq pagina.puesto "Asesor"}}
+            <div class="page-header header-filter" style="background-image: url('../img/bg7.jpg'); background-size: cover; background-position: top center;">
+            </div>
+        {{/ifeq}}
 
+        {{#ifeq pagina.puesto "Jefe"}}
+            <div class="page-header header-filter" style="background-image: url('../img/profile_city.jpg'); background-size: cover; background-position: top center;">
+            </div>
+        {{/ifeq}}
+            
+        {{#ifeq pagina.puesto "Miembro"}}
+            <div class="page-header header-filter" style="background-image: url('../img/city-profile.jpg'); background-size: cover; background-position: top center;">
+            </div>
+        {{/ifeq}}
+    </p>
 {{>footer}}

@@ -47,6 +47,32 @@ var gruposGlobales = {
     ValueC: 'Ballenas'
 };
 
+var usuarios = [
+    {
+        user: 'Tony',
+        password:'123'
+    },
+    {
+        user: 'Oscar',
+        password:'123'
+    },
+    {
+        user: 'Josue',
+        password:'123'
+    },
+    {
+        user: 'Kenneth',
+        password:'123'
+    }
+]
+
+var niveles = {
+    Nivel1: 'Movimiento General',
+    Nivel2: 'Zona',
+    Nivel3: 'Rama',
+    Nivel4: 'Grupo'
+};
+
 /* ---------------Generales--------------- */
 function cargarLugares(pro, cant, dist) {
     var select1 = document.getElementById(pro);
@@ -92,6 +118,41 @@ function cargarGrupos(selectInput) {
     }
 }
 
+function cargarNiveles(selectInput) {
+    var select1 = document.getElementById(selectInput);
+
+    for (index in niveles) {
+        select1.options[select1.options.length] = new Option(niveles[index], index);
+    }
+}
+
+/* ---------------SignIn--------------- */
+function verificar() {
+    var username = document.querySelector('#inputUsuario').value;
+    var passwords = document.querySelector('#inputContraseña').value;
+
+    const login = {
+        username: username,
+        passwords: passwords
+    };
+
+    usuarios.forEach(usuario => {
+        if (username == usuario.user && passwords == usuario.password) {
+            alert('Usuario aceptado');
+            localStorage.setItem("zonaData", JSON.stringify(login));
+            if (usuario.user == "Tony") {
+                window.location.href = "/inicio/Asesor";
+            }
+            if (usuario.user == "Josue") {
+                window.location.href = "/inicio/Jefe";
+            }
+            if (usuario.user == "Oscar") {
+                window.location.href = "/inicio/Miembro";
+            }
+        }
+    });
+}
+
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
     var orgName = document.querySelector('#inputDOrganizacionNombre').value;
@@ -109,7 +170,7 @@ function definirOrganizacion() {
     distrito = select3.options[select3.selectedIndex].text;
 
     var otra = document.querySelector('#inputDOrganizacionOtra').value;
-    
+
     const organizacion = {
         nombre: orgName,
         asesor: asesor,
@@ -128,7 +189,7 @@ function definirOrganizacion() {
         localStorage.setItem("orgData", JSON.stringify(organizacion));
     } else {
         alert('Faltan datos');
-        input.focus();
+        document.querySelector('#inputDOrganizacionNombre').focus();
     }
 
     return false;
@@ -170,7 +231,7 @@ function definirZona() {
         localStorage.setItem("zonaData", JSON.stringify(zona));
     } else {
         alert('Faltan datos');
-        input.focus();
+        document.querySelector('#inputDZonaNombre').focus();
     }
 
     return false;
@@ -225,11 +286,21 @@ function definirRama() {
         localStorage.setItem("zonaData", JSON.stringify(zona));
     } else {
         alert('Faltan datos');
-        input.focus();
+        document.querySelector('#inputDRamaNombre').focus();
     }
 
     return false;
 }
+
+function actualizarRamas(selectInput) { 
+    var select1 = document.getElementById(selectInput); 
+    var countOption = select1.options.length; 
+ 
+    for (index = 1; index < countOption; index++) { 
+        select1.remove(1); 
+    } 
+    select1.options[select1.options.length] = new Option("Prueba"); 
+} 
 
 /* ---------------Grupo--------------- */
 
@@ -254,7 +325,7 @@ function definirGrupo() {
         localStorage.setItem("GrupoData", JSON.stringify(grupo));
     } else {
         alert('Faltan datos');
-        input.focus();
+        document.querySelector('#inputDGrupoNombre').focus();
     }
 
     return false;
@@ -304,6 +375,16 @@ function consultarGrupo() {
     }
 }
 
+function actualizarGrupos(selectInput) { 
+    var select1 = document.getElementById(selectInput); 
+    var countOption = select1.options.length; 
+ 
+    for (index = 1; index < countOption; index++) { 
+        select1.remove(1); 
+    } 
+    select1.options[select1.options.length] = new Option("Prueba"); 
+}
+
 /* ---------------Miembro--------------- */
 
 function definirMiembro() {
@@ -339,7 +420,7 @@ function definirMiembro() {
         localStorage.setItem("miembroData", JSON.stringify(miembro));
     } else {
         alert('Faltan datos');
-        input.focus();
+        document.querySelector('#inputDMiembroNombre').focus();
     }
 
     return false;
@@ -397,7 +478,58 @@ function definirRol() {
         localStorage.setItem("RolData", JSON.stringify(rol));
     } else {
         alert('Faltan datos');
-        input.focus();
+        document.querySelector('#inputDRolIdentificacion').focus();
+    }
+
+    return false;
+}
+
+/* ---------------Aporte--------------- */
+
+function definirAporte() {
+    var nombre = document.querySelector('#inputDAporteNombre').value;
+    var asunto = document.querySelector('#inputDAporteAsunto').value;
+    var detalle = document.querySelector('#textAreaDAporteDetalle').value;
+
+    const aporte = {
+        nombre: nombre,
+        asunto: asunto,
+        detalle: detalle
+    };
+
+    if (nombre) {
+        alert('Informacion Guardada con exito');
+        localStorage.setItem("AporteData", JSON.stringify(aporte));
+    } else {
+        alert('Faltan datos');
+        document.querySelector('#inputDAporteNombre').focus();
+    }
+
+    return false;
+}
+
+/* ---------------Noticia--------------- */
+
+function definirNoticia() {
+    var nombre = document.querySelector('#inputDAporteNombre').value;
+
+    var select1 = document.getElementById("selectDNoticiaNivel");
+    nivel = select1.options[select1.selectedIndex].text;
+
+    var mensaje = document.querySelector('#textAreaDNoticiaMensaje').value;
+
+    const noticia = {
+        nombre: nombre,
+        nivel: nivel,
+        mensaje: mensaje
+    };
+
+    if (nombre) {
+        alert('Informacion Guardada con exito');
+        localStorage.setItem("NoticiaData", JSON.stringify(noticia));
+    } else {
+        alert('Faltan datos');
+        document.querySelector('#inputDAporteNombre').focus();
     }
 
     return false;
