@@ -341,6 +341,7 @@
                         <button type="button" class="btnRol btn-danger" onclick="consultarMiembro()"><h4>Consultar</h4></button>
                     </div>
                 </div>
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCMiembroNombre"><h4>Nombre</h4></label>
@@ -389,100 +390,14 @@
         {{#ifeq pagina.tipo "Noticias"}}
             {{pagina.titulo}}
             <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCNombre_Noticias"><h4>Nombre Emisor</h4></label>
-                        <input type="text" class="form-control" id="inputCNombre_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputCEstado_Noticias"><h4>Estado</h4></label>
-                        <input type="text" class="form-control" id="inputCEstado_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCFecha_Noticias"><h4>Fecha Emision</h4></label>
-                        <input type="date" class="form-control" id="inputCFecha_Noticias" disabled>
-                    </div>
-                </div>
-                <label><h3>Procedencia</h3></label>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCZona_Noticias"><h4>Zona</h4></label>
-                        <input type="text" class="form-control" id="inputCZona_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCRama_Noticias"><h4>Rama</h4></label>
-                        <input type="text" class="form-control" id="inputCRama_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCGrupo_Noticias"><h4>Grupo</h4></label>
-                        <input type="text" class="form-control" id="inputCGrupo_Noticias" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCMensaje_Noticas"><h4>Mensaje</h4></label>
-                        <input type="text" class="form-control" id="inputCMensaje_Noticas" disabled>
-                    </div>
-                </div>
+                
             </form>
         {{/ifeq}}
         
         {{#ifeq pagina.tipo "Aportes"}}
             {{pagina.titulo}}
             <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCNombre_Aportes"><h4>Nombre</h4></label>
-                        <input type="text" class="form-control" id="inputCNombre_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputCTipo_Aportes"><h4>Tipo</h4></label>
-                        <input type="text" class="form-control" id="inputCTipo_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCFecha_Aportes"><h4>Fecha Emision</h4></label>
-                        <input type="date" class="form-control" id="inputCFecha_Aportes" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCMensaje_Aportes"><h4>Mensaje</h4></label>
-                        <input type="text" class="form-control" id="inputCMensaje_Aportes" disabled>
-                    </div>
-                </div>
-            </form>
-        {{/ifeq}}
-
-        {{#ifeq pagina.tipo "AportesAsesor"}}
-            {{pagina.titulo}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCNombre_Aportes"><h4>Nombre</h4></label>
-                        <input type="text" class="form-control" id="inputCNombre_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputCTipo_Aportes"><h4>Tipo</h4></label>
-                        <input type="text" class="form-control" id="inputCTipo_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCFecha_Aportes"><h4>Fecha Emision</h4></label>
-                        <input type="date" class="form-control" id="inputCFecha_Aportes" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCMensaje_Aportes"><h4>Mensaje</h4></label>
-                        <input type="text" class="form-control" id="inputCMensaje_Aportes" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        {{!-- <label for="inputCMensaje_Aportes"><h4>Mensaje</h4></label> --}}
-                        <button type="button" class="btnRol btn-danger" onclick=""><h4>Generar Reporte</h4></button>
-                        <button type="button" class="btnRol btn-danger" onclick=""><h4>Descargar Aportes</h4></button>
-                    </div>
-                </div>
+                
             </form>
         {{/ifeq}}
     </p>
