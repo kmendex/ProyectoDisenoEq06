@@ -127,6 +127,8 @@ function cargarNiveles(selectInput) {
 
 /* ---------------SignIn--------------- */
 function verificar() {
+    alert(usuarios.length);
+
     var username = document.querySelector('#inputUsuario').value;
     var passwords = document.querySelector('#inputContraseña').value;
 
@@ -135,39 +137,53 @@ function verificar() {
         passwords: passwords
     };
 
-    usuarios.forEach(usuario => {
-        if (username == usuario.user && passwords == usuario.password) {
-            alert('Usuario aceptado');
-            localStorage.setItem("zonaData", JSON.stringify(login));
-            if (usuario.user == "Tony") {
-                window.location.href = "/inicio/Asesor";
+    if (username) {
+        usuarios.forEach(usuario => {
+            if (username == usuario.user && passwords == usuario.password) {
+                alert('Usuario aceptado');
+                localStorage.setItem("zonaData", JSON.stringify(login));
+                if (usuario.user == "Tony") {
+                    window.location.href = "/inicio/Asesor";
+                }
+                if (usuario.user == "Josue") {
+                    window.location.href = "/inicio/Jefe";
+                }
+                else {
+                    window.location.href = "/inicio/Miembro";
+                }
             }
-            if (usuario.user == "Josue") {
-                window.location.href = "/inicio/Jefe";
-            }
-            if (usuario.user == "Oscar") {
-                window.location.href = "/inicio/Miembro";
-            }
-        }
-    });
+        });
+    } else {
+        alert('Faltan Datos');
+    }
 }
 
+/* ---------------SignUp--------------- */
 function registro(inputSelectName, inputSelectPass, inputSelectCPass) {
     var name = document.getElementById(inputSelectName).text;
     var password = document.getElementById(inputSelectPass).text;
     var confirmPass = document.getElementById(inputSelectCPass).text;
-
 
     const user = {
         user: name,
         password: password
     };
 
-    if (!name || !password || !confirmPass) {
+    if (!name && !password && !confirmPass) {
         if (password == confirmPass) {
             alert("Usuario creado");
             localStorage.setItem("usuarios", JSON.stringify(user));
-            window.location.href = "/inicio/miembro";
+
+            var element = {};
+            element.user = name;
+            element.password = password;
+            usuarios.push(element);
+
+            usuarios.push({user: 'Pedro', password: '123'});
+
+            alert(usuarios.length);
+
+            window.location.href = "/";
         } else {
             alert("Contraseñas no coinciden");
         }

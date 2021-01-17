@@ -27,9 +27,9 @@ app.listen(port, () => {
 });
 
 
-// app.get("/", indexController.login);
+app.get("/", indexController.login);
 
-app.get("/", indexController.registro);
+app.get("/registro", indexController.registro);
 
 app.get("/inicio/:puesto", indexController.inicio);
 
