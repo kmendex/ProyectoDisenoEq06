@@ -1,3 +1,6 @@
+const {Controlador} = require("../controllers/Controlador");
+
+
 const login = (req, res) => {
     res.render('login', {
         titulo: 'Pagina Web'
@@ -5,9 +8,10 @@ const login = (req, res) => {
 };
 
 const inicio = (req, res) => {
+    let result = Controlador.getCompanyData();
     res.render('inicio', {
-        titulo: 'Pagina Web'
-    });
+        titulo: result.nombreCompany
+    });    
 };
 
 const definir = (req, res) => {

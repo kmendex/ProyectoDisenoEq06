@@ -3,7 +3,7 @@ import { Direccion } from "../models/Direccion";
 export class Organizacion { 
   //field 
   private _nombreCompany: string;
-  private _cedulaJuridica: number;
+  private _cedulaJuridica: string;
   private _descripcion: string;
   private _logoURL: string;
   private _direccionWeb: string;
@@ -15,7 +15,7 @@ export class Organizacion {
   //static coordinaciones: Array<CompositeComponent>;
   
   //constructor 
-  constructor(nombreCompany: string, cedulaJuridica: number, descripcion: string, logoURL: string, direccionWeb: string, 
+  constructor(nombreCompany: string, cedulaJuridica: string, descripcion: string, logoURL: string, direccionWeb: string, 
               direccion: Direccion, telefono: number, correo: string, logoTwitter: string, logoFace: string) {
     this._nombreCompany = nombreCompany;
     this._cedulaJuridica = cedulaJuridica;
@@ -38,11 +38,11 @@ export class Organizacion {
     this._nombreCompany = nombre;
   }
 
-  get cedulaJuridica(): number {
+  get cedulaJuridica(): string {
     return this._cedulaJuridica;
   }
 
-  set cedulaJuridica (cedula: number) {
+  set cedulaJuridica (cedula: string) {
     this._cedulaJuridica = cedula;
   }
 

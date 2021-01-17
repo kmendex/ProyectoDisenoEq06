@@ -47,14 +47,7 @@ module.exports = {
                 let values = [grpCode];
                 let result = await pool.query('SELECT "readMembers"($1)', values, callback);
                 return result.rows[0].readMembers;
-        },
-        // [ { "type":2,"name":"...","value":"..."}, ... ]
-        // type: 2:telefono | 4:correo | 5:web | 6:facebook | 7:twitter         
-        getContactOrganization : async function (orgCode, callback){
-                let values = [orgCode];
-                let result = await pool.query('SELECT "readContactOrganization"($1)', values, callback);
-                return result.rows[0].readContactOrganization;
-        },
+        },        
         // { "fullName":"...","identificationCode":"...","birthdate":"...","state":"...","country":"...",
         //   "province":"...","canton":"...","district":"...","address":"..."}
         getPerson : async function(prsIdentification, callback){
@@ -88,6 +81,11 @@ module.exports = {
                 let values = [ctnName];
                 let result = pool.query('SELECT "readDistricts"($1)', values, callback);
                 return result.rows[0].readDistricts;
+        },
+        getBoss : async function (untCode, callback){
+                let values = [untCode];
+                let result = pool.query('SELECT "readBoss"($1)', values, callback);
+                return result.rows[0].readBoss;
         }
 
 };

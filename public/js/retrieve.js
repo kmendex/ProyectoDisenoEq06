@@ -111,21 +111,26 @@ function definirOrganizacion() {
     var otra = document.querySelector('#inputDOrganizacionOtra').value;
     
     const organizacion = {
-        nombre: orgName,
-        asesor: asesor,
-        direccionWeb: web,
-        cedula: cedula,
-        telefono: telefono,
-        correo: correo,
-        provincia: provincia,
-        canton: canton,
-        distrito: distrito,
-        otra: otra
+        "nombre": orgName,
+        "asesor": asesor,
+        "direccionWeb": web,
+        "cedula": cedula,
+        "telefono": telefono,
+        "correo": correo,
+        "provincia": provincia,
+        "canton": canton,
+        "distrito": distrito,
+        "otra": otra
     };
 
-    if (orgName) {
-        alert('Informacion Guardada con exito');
-        localStorage.setItem("orgData", JSON.stringify(organizacion));
+    if (orgName) {          
+        $.ajax({
+            type: 'PUT',
+            url: '/define/api/organizacion',                                    
+            contentType: 'application/json',            
+            data: JSON.stringify(organizacion) // access in body            
+        });                
+        //localStorage.setItem("orgData", JSON.stringify(organizacion));        
     } else {
         alert('Faltan datos');
         input.focus();

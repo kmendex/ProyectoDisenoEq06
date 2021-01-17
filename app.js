@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 
-var indexRouter = require('./api/index');
-var defineRouter = require('./api/define')
-var queryRouter = require('./api/query')
+var homeRouter = require('./routes/home');
+var defineRouter = require('./routes/define')
+var queryRouter = require('./routes/query')
 
 var indexController = require('./routes/index');
 
@@ -27,19 +27,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', indexRouter);
-app.use('/api/define', defineRouter);
-app.use('/api/consulta', queryRouter);
+app.use('/inicio', homeRouter);
+app.use('/define', defineRouter);
+app.use('/consulta', queryRouter);
 
-app.get("/", indexController.login);
-
-app.get("/inicio", indexController.inicio);
-
-app.get('/definir/:id', indexController.definir);
-
-app.get('/consultar/:id', indexController.consultar);
-
-app.post('/consultar/:id', indexController.consultar2);
 
 app.use(indexController.error);
 

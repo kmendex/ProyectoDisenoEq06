@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "stype": "ts-node ./bin/www",
+    "tstart":"ts-node-dev --respawn --transpile-only ./bin/www",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -13,18 +14,19 @@
     "@types/sizzle": "^2.3.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "ember-truth-helpers": "^3.0.0",
     "express": "^4.16.4",
+    "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
     "keypress": "^0.2.1",
     "morgan": "~1.9.1",
     "pg": "^8.4.1",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5",
-    "hbs": "^4.1.1",
-    "ember-truth-helpers": "^3.0.0"
+    "ts-node": "^9.0.0",    
+    "typescript": "^4.0.5"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.5"
+    "nodemon": "^2.0.5",
+    "ts-node-dev": "^1.1.1"
   }
 }
