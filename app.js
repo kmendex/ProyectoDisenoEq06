@@ -31,6 +31,15 @@ app.use('/inicio', homeRouter);
 app.use('/define', defineRouter);
 app.use('/consulta', queryRouter);
 
+app.get("/", indexController.login);
+
+app.get("/inicio/:puesto", indexController.inicio);
+
+app.get('/definir/:puesto/:tipo', indexController.definir);
+
+app.get('/consultar/:puesto/:tipo', indexController.consultar);
+
+app.post('/consultar/:puesto/:tipo', indexController.consultar2);
 
 app.use(indexController.error);
 

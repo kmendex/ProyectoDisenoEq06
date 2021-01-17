@@ -1,77 +1,191 @@
-<nav class="navbar bg-dark navbar-expand-lg">
-  <div class="container">
-    <div class="navbar-translate">
-      <a class="navbar-brand"> Diseño </a>
+{{#ifeq pagina.puesto "Asesor"}}
+  <nav class="navbar bg-dark navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand"> {{pagina.puesto}} </a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
 
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-              <a href="/inicio" class="nav-link">
-                  <i class="material-icons">apps</i> Inicio
-              </a>
-          </li>
-          <li class="dropdown nav-item">
-              <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <i class="material-icons">apps</i> Definir
-              </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="/define/Organizacion" class="dropdown-item">
-                <i class="material-icons">layers</i> Organizacion
-              </a>
-              <a href="/define/Coordinacion" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Coordinacion
-              </a>
-              <a href="/define/Zona" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Zona
-              </a>
-              <a href="/define/Rama" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Rama
-              </a>
-              <a href="/define/Grupo" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Grupo
-              </a>
-              <a href="/define/Miembro" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Miembro
-              </a>
-              <a href="/define/Rol" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Rol
-              </a>
-            </div>
-          </li>
-          <li class="dropdown nav-item" id="Consultas">
-              <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <i class="material-icons">apps</i> Consulta
-              </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="/consulta/Organizacion" class="dropdown-item">
-                <i class="material-icons">layers</i> Organizacion
-              </a>
-              <a href="/consulta/Coordinacion" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Coordinacion
-              </a>
-              <a href="/consulta/Zona" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Zona
-              </a>
-              <a href="/consulta/Rama" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Rama
-              </a>
-              <a href="/consulta/Grupo" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Grupo
-              </a>
-              <a href="/consulta/Miembro" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Miembro
-              </a>
-            </div>
-          </li>
-        </ul>
+      <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="/inicio/Asesor" class="nav-link">
+                    <i class="material-icons">apps</i> Inicio
+                </a>
+            </li>
+            <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">apps</i> Definir
+                </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <a href="/definir/Asesor/Organizacion" class="dropdown-item">
+                  <i class="material-icons">layers</i> Organizacion
+                </a>
+                <a href="/definir/Asesor/Coordinacion" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Coordinacion
+                </a>
+                <a href="/definir/Asesor/Zona" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Zona
+                </a>
+                <a href="/definir/Asesor/Rama" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Rama
+                </a>
+                <a href="/definir/Asesor/Grupo" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Grupo
+                </a>
+                <a href="/definir/Asesor/Miembro" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Miembro
+                </a>
+                <a href="/definir/Asesor/Rol" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Rol
+                </a>
+              </div>
+            </li>
+            <li class="dropdown nav-item" id="Consultas">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">apps</i> Consulta
+                </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <a href="/consultar/Asesor/Organizacion" class="dropdown-item">
+                  <i class="material-icons">layers</i> Organizacion
+                </a>
+                <a href="/consultar/Asesor/Coordinacion" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Coordinacion
+                </a>
+                <a href="/consultar/Asesor/Zona" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Zona
+                </a>
+                <a href="/consultar/Asesor/Rama" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Rama
+                </a>
+                <a href="/consultar/Asesor/Grupo" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Grupo
+                </a>
+                <a href="/consultar/Asesor/Miembro" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Miembro
+                </a>
+              </div>
+            </li>
+          </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+{{/ifeq}}
+
+{{#ifeq pagina.puesto "Jefe"}}
+  <nav class="navbar bg-dark navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand"> {{pagina.puesto}} </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="/inicio/Jefe" class="nav-link">
+                    <i class="material-icons">apps</i> Inicio
+                </a>
+            </li>
+            <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">apps</i> Definir
+                </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <a href="/definir/Jefe/Aportes" class="dropdown-item">
+                  <i class="material-icons">layers</i> Aportes
+                </a>
+                <a href="/definir/Jefe/Noticias" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Noticias
+                </a>
+              </div>
+            </li>
+            <li class="dropdown nav-item" id="Consultas">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">apps</i> Consulta
+                </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <a href="/consultar/Jefe/Zona" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Zona
+                </a>
+                <a href="/consultar/Jefe/Rama" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Rama
+                </a>
+                <a href="/consultar/Jefe/Grupo" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Grupo
+                </a>
+                <a href="/consultar/Jefe/Miembro" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Miembro
+                </a>
+                <a href="/consultar/Jefe/Noticias" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Noticias
+                </a>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+{{/ifeq}}
+
+{{#ifeq pagina.puesto "Miembro"}}
+  <nav class="navbar bg-dark navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand"> {{pagina.puesto}} </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="/inicio/Miembro" class="nav-link">
+                    <i class="material-icons">apps</i> Inicio
+                </a>
+            </li>
+            <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">apps</i> Definir
+                </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <a href="/definir/Miembro/Aportes" class="dropdown-item">
+                  <i class="material-icons">layers</i> Aportes
+                </a>
+              </div>
+            </li>
+            <li class="dropdown nav-item" id="Consultas">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">apps</i> Consulta
+                </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <a href="/consultar/Miembro/Grupo" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Grupo
+                </a>
+                <a href="/consultar/Miembro/Noticias" class="dropdown-item">
+                  <i class="material-icons">content_paste</i> Miembro
+                </a>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+{{/ifeq}}

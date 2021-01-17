@@ -1,8 +1,8 @@
-{{> header title=jerarquia.tipo}}
+{{> header title=pagina.tipo}}
     <p class="lead">
-        {{#ifeq jerarquia.tipo "Organizacion"}}
-            {{jerarquia.nombre}}
-            <body onload="cargarLugares('selectDOrganizacionProvincia', 'selectDOrganizacionCanton', 'selectDOrganizacionDistrito')">
+        {{#ifeq pagina.tipo "Organizacion"}}
+            {{pagina.titulo}}
+            <body onload="cargarLugares('selectDOrganizacionProvincia', 'selectDOrganizacionCanton', 'selectDOrganizacionDistrito');">
                 <form id="definirOrganizacion">
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -65,12 +65,12 @@
             </body>                
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Coordinacion"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Coordinacion"}}
+            {{pagina.titulo}}
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Zona"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Zona"}}
+            {{pagina.titulo}}
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -90,8 +90,8 @@
             </form>
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Rama"}}
-            {{jerarquia.nombre}}      
+        {{#ifeq pagina.tipo "Rama"}}
+            {{pagina.titulo}}      
             <body onload="cargarZonas('selectDRama_Zona')">
                 <form>
                     <div class="form-row">
@@ -121,8 +121,8 @@
             </body>
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Grupo"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Grupo"}}
+            {{pagina.titulo}}
             <body onload="cargarRamas('selectDGrupo_Rama');cargarZonas('selectDGrupo_Zona');">
                 <form>
                     <div class="form-row">
@@ -158,8 +158,8 @@
             </body>
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Miembro"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Miembro"}}
+            {{pagina.titulo}}
             <body onload="cargarLugares('selectDMiembroProvincia', 'selectDMiembroCanton', 'selectDMiembroDistrito')"> 
                 <form>
                     <div class="form-row">
@@ -219,8 +219,8 @@
             </body>
         {{/ifeq}}
 
-        {{#ifeq jerarquia.tipo "Rol"}}
-            {{jerarquia.nombre}}
+        {{#ifeq pagina.tipo "Rol"}}
+            {{pagina.titulo}}
             <body onload="cargarGrupos('selectDRol_Grupo'); cargarRamas('selectDRol_Rama'); cargarZonas('selectDRol_Zona');">
                 <form>
                     <div class="form-row">
@@ -281,6 +281,61 @@
                     <div class="row">
                         <div class="col-md-10">
                             <button class="btnRol btn-danger" onclick="definirRol()">Definir</button>
+                        </div>
+                    </div>
+                </form>
+            </body>
+        {{/ifeq}}
+
+        {{#ifeq pagina.tipo "Aportes"}}
+            {{pagina.titulo}}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="bmd-label-floating" for="inputDAporteNombre">Nombre del Miembro</label>
+                    <input type="text" class="form-control" id="inputDAporteNombre">
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="bmd-label-floating" for="inputDAporteAsunto">Asunto</label>
+                    <input type="text" class="form-control" id="inputDAporteAsunto">
+                </div>               
+            </div>
+            <div class="form-group">
+                <label for="textAreaDAporteDetalle">Detalle</label>
+                <textarea class="form-control" id="textAreaDAporteDetalle" rows="12"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <button class="btnDAporte btn-danger" onclick="definirAporte()">Enviar</button>
+                </div>
+            </div>
+        {{/ifeq}}
+
+        {{#ifeq pagina.tipo "Noticias"}}           
+            {{pagina.titulo}}
+            <!--   Luis Carlos del grupo 10 de la rama Juvenil de la Zona Norte   -->
+            <body onload="cargarNiveles('selectDNoticiaNivel');">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="bmd-label-floating" for="inputDAporteNombre">Nombre del Miembro</label>
+                            <input type="text" class="form-control" id="inputDAporteNombre">
+                        </div>              
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="selectDNoticiaNivel">Nivel</label>
+                            <select id="selectDNoticiaNivel" class="form-control">
+                                <option selected>Niveles Disponibles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textAreaDNoticiaMensaje">Mensaje</label>
+                        <textarea class="form-control" id="textAreaDNoticiaMensaje" rows="12"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btnDAporte btn-danger" onclick="definirNoticia()">Enviar</button>
                         </div>
                     </div>
                 </form>

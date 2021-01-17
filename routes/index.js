@@ -10,33 +10,39 @@ const login = (req, res) => {
 const inicio = (req, res) => {
     let result = Controlador.getCompanyData();
     res.render('inicio', {
-        titulo: result.nombreCompany
-    });    
+        pagina: {
+            titulo: 'Bienvenido al inicio',
+            puesto: req.params.puesto
+        }        
+    });
 };
 
 const definir = (req, res) => {
     res.render('definir', {
-        jerarquia: {
-            tipo: req.params.id,
-            nombre: 'Bienvenido a la Organizacion, Aqui se define'
+        pagina: {
+            titulo: 'Bienvenido a la Organizacion, Aqui se define',
+            puesto: req.params.puesto,
+            tipo: req.params.tipo
         }
     });
 };
 
 const consultar = (req, res) => {
     res.render('consultar', {
-        jerarquia: {
-            tipo: req.params.id,
-            nombre: 'Bienvenido a la Organizacion, Aqui se consulta'
+        pagina: {
+            titulo: 'Bienvenido a la Organizacion, Aqui se consulta',
+            puesto: req.params.puesto,
+            tipo: req.params.tipo
         }
     });
 };
 
 const consultar2 = (req, res) => {
     res.render('consultar', {
-        jerarquia: {
-            tipo: req.params.id,
-            nombre: 'Bienvenido a la Organizacion, Aqui se consulta'
+        pagina: {
+            titulo: 'Bienvenido a la Organizacion, Aqui se consulta',
+            puesto: req.params.puesto,
+            tipo: req.params.tipo
         }
     });
 };
@@ -49,7 +55,7 @@ const error = (req, res, next) => {
 };
 
 module.exports = {
-    login, 
+    login,
     inicio,
     definir,
     consultar,
