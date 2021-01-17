@@ -5,7 +5,7 @@ const port = process.env.PORT || 3001;
 
 // Motor de plantilla
 const hbs = require('hbs');
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+hbs.registerPartials(__dirname + '/views/partials', function(err) {});
 app.set('view engine', 'hbs');
 app.set("views", __dirname + "/views");
 
@@ -14,7 +14,7 @@ app.use(express.static(__dirname + "/public"));
 const indexController = require('./controllers/index');
 
 // Helper
-hbs.registerHelper('ifeq', function (a, b, options) {
+hbs.registerHelper('ifeq', function(a, b, options) {
     if (a == b) { return options.fn(this); }
     return options.inverse(this);
 });
@@ -23,10 +23,13 @@ hbs.registerHelper('ifeq', function (a, b, options) {
 
 // Iniciar servidor
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Example app listening at http://localhost:${port}`);
 });
 
-app.get("/", indexController.login);
+
+// app.get("/", indexController.login);
+
+app.get("/", indexController.registro);
 
 app.get("/inicio/:puesto", indexController.inicio);
 

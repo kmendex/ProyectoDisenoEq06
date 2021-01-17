@@ -152,6 +152,32 @@ function verificar() {
     });
 }
 
+function registro(inputSelectName, inputSelectPass, inputSelectCPass) {
+    var name = document.getElementById(inputSelectName).text;
+    var password = document.getElementById(inputSelectPass).text;
+    var confirmPass = document.getElementById(inputSelectCPass).text;
+
+
+    const user = {
+        user: name,
+        password: password
+    };
+
+    if (!name || !password || !confirmPass) {
+        if (password == confirmPass) {
+            alert("Usuario creado");
+            localStorage.setItem("usuarios", JSON.stringify(user));
+            window.location.href = "/inicio/miembro";
+        } else {
+            alert("Contraseñas no coinciden");
+        }
+    } else {
+        alert("Faltan Datos");
+    }
+
+}
+
+
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
     var orgName = document.querySelector('#inputDOrganizacionNombre').value;

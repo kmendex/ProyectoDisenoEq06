@@ -4,12 +4,18 @@ const login = (req, res) => {
     });
 };
 
+const registro = (req, res) => {
+    res.render('registro', {
+        titulo: 'Registro'
+    });
+};
+
 const inicio = (req, res) => {
     res.render('inicio', {
         pagina: {
             titulo: 'Bienvenido al inicio',
             puesto: req.params.puesto
-        }        
+        }
     });
 };
 
@@ -51,6 +57,7 @@ const error = (req, res, next) => {
 };
 
 module.exports = {
+    registro,
     login,
     inicio,
     definir,
