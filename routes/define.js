@@ -37,4 +37,35 @@ router.post('/api', function (req, res, next) {
   res.sendStatus(200);
 });
 
+router.post('/api', function (req, res, next) {
+  console.log(req.body.organizacion.otra);
+  res.sendStatus(200);
+});
+
+router.post('/api', function (req, res, next) {
+  console.log(req.body.organizacion.otra);
+  res.sendStatus(200);
+});
+
+router.get('/api/provinces/:country', async function (req, res, next) {
+  let cont = req.params.country;
+  console.log(typeof req.params.country);
+  cont = cont + '';
+  console.log(typeof cont);
+  let result = await Controlador.getProvinces(req.params.country); 
+  console.log(result);   
+  res.json(result);
+});
+
+router.get('/api/cantons/:province', async function (req, res, next) {
+  let result = await Controlador.getCantons(req.params.province);
+  res.json(result);    
+});
+
+router.get('/api/districts/:canton', async function (req, res, next) {
+  console.log(req.params.canton);
+  let result = await Controlador.getDistricts(req.params.canton);    
+  res.json(result);  
+});
+
 module.exports = router;

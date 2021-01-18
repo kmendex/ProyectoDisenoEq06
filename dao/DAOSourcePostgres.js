@@ -64,27 +64,29 @@ module.exports = {
         },
         // [ {"id...":1,"name":"..."}, ...]
         getCountries : async function(callback){
-                let result = pool.query('SELECT "readCountries"()', callback);
+                let result = await pool.query('SELECT "readCountries"()', callback);
                 return result.rows[0].readCountries;
         },
         getProvinces : async function (ctrName, callback){
+                console.log(ctrName);
                 let values = [ctrName];
-                let result = pool.query('SELECT "readProvinces"($1)', values, callback);
+                let result = await pool.query('SELECT "readProvinces"($1)', values, callback);
+                console.log(result.rows[0].readProvinces);
                 return result.rows[0].readProvinces;
         },
         getCantons : async function (prvName, callback){
                 let values = [prvName];
-                let result = pool.query('SELECT "readCantons"($1)', values, callback);
+                let result = await pool.query('SELECT "readCantons"($1)', values, callback);
                 return result.rows[0].readCantons;
         },
         getDistricts : async function (ctnName, callback){
                 let values = [ctnName];
-                let result = pool.query('SELECT "readDistricts"($1)', values, callback);
+                let result = await pool.query('SELECT "readDistricts"($1)', values, callback);
                 return result.rows[0].readDistricts;
         },
         getBoss : async function (untCode, callback){
                 let values = [untCode];
-                let result = pool.query('SELECT "readBoss"($1)', values, callback);
+                let result = await pool.query('SELECT "readBoss"($1)', values, callback);
                 return result.rows[0].readBoss;
         }
 

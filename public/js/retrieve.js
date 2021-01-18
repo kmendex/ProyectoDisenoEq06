@@ -1,33 +1,4 @@
 /* ---------------Variables--------------- */
-var provincias = {
-    P1: 'San Jose',
-    P2: 'Alajuela',
-    P3: 'Cartago',
-    P4: 'Heredia',
-    P5: 'Guanacaste',
-    P6: 'Puntarenas',
-    P7: 'Limon'
-};
-
-var cantones = {
-    P1: 'San Jose',
-    P2: 'Alajuela',
-    P3: 'Cartago',
-    P4: 'Heredia',
-    P5: 'Guanacaste',
-    P6: 'Puntarenas',
-    P7: 'Limon'
-};
-
-var distritos = {
-    P1: 'San Jose',
-    P2: 'Alajuela',
-    P3: 'Cartago',
-    P4: 'Heredia',
-    P5: 'Guanacaste',
-    P6: 'Puntarenas',
-    P7: 'Limon'
-};
 
 var zonasGlobales = {
     ValueA: 'Atlantico',
@@ -74,25 +45,67 @@ var niveles = {
 };
 
 /* ---------------Generales--------------- */
-function cargarLugares(pro, cant, dist) {
+function cargarProvincias(pro) {
     var select1 = document.getElementById(pro);
 
-    for (index in provincias) {
-        select1.options[select1.options.length] = new Option(provincias[index], index);
-    }
-
-    var select2 = document.getElementById(cant);
-
-    for (index in provincias) {
-        select2.options[select2.options.length] = new Option(cantones[index], index);
-    }
-
-    var select3 = document.getElementById(dist);
-
-    for (index in provincias) {
-        select3.options[select3.options.length] = new Option(distritos[index], index);
-    }
+    var path = '/define/api/provinces/' + 49; // Costa Rica = 49    
+    
+    $.ajax({
+        type: 'GET',
+        url: path,                                            
+        success: function (data){
+            for (index of data)
+                select1.options[select1.options.length] = new Option(index.name, index.idProvince);                        
+        },
+        dataType : 'json'
+    });                            
 }
+
+function cargarCantones(cant,pro) {    
+    var select2 = document.getElementById(cant);
+    $(select2).find('option')
+    .remove()
+    .end()
+    .append('<option value="whatever">Canton</option>')
+    .val('whatever');
+    
+
+    var path = '/define/api/cantons/' + pro;
+    
+    $.ajax({
+        type: 'GET',
+        url: path,                                            
+        success: function (data){
+            for (index of data)
+                select2.options[select2.options.length] = new Option(index.name, index.idCanton);                        
+        },
+        dataType : 'json'
+    });                             
+}
+
+function cargarDistritos(dist, cant) {    
+    var select3 = document.getElementById(dist);        
+    $(select3).find('option')
+    .remove()
+    .end()
+    .append('<option value="whatever">Distrito</option>')
+    .val('whatever');
+
+    var path = '/define/api/districts/' + cant;
+    
+    $.ajax({
+        type: 'GET',
+        url: path,                                            
+        success: function (data){
+            for (index of data)
+                select3.options[select3.options.length] = new Option(index.name, index.idDistrito);                        
+        },
+        dataType : 'json'
+    });   
+}
+
+
+
 
 function cargarZonas(selectInput) {
     var select1 = document.getElementById(selectInput);

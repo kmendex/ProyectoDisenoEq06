@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 
 
-router.get('/:id', function(req, res, next) {
+router.get('/api/:id', function(req, res, next) {
   res.render('consultar', {
       jerarquia: {
           tipo: req.params.id,

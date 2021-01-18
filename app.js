@@ -27,9 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/inicio', homeRouter);
+//app.use('/inicio', homeRouter);
 app.use('/define', defineRouter);
-app.use('/consulta', queryRouter);
+//app.use('/consulta', queryRouter);
 
 app.get("/", indexController.login);
 

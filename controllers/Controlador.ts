@@ -93,5 +93,32 @@ export class Controlador{
     static getCompanyData () : any {
         return COrganizacion.getDataToShow();
     }
+
+    static getProvinces(ctrName : string){  
+        try{
+            return db.getProvinces(ctrName);
+        }   
+        catch(error){
+            console.log(error);        
+        }           
+    }
+
+    static async getCantons(prvName : string){
+        try{
+            return db.getCantons(prvName);
+        }   
+        catch(error){
+            console.log(error);        
+        }                   
+    }
+
+    static async getDistricts(ctnName : string){
+        try{
+            return db.getDistricts(ctnName);
+        }   
+        catch(error){
+            console.log(error);        
+        }                   
+    }
     
 }

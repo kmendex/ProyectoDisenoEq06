@@ -1,8 +1,8 @@
 {{> header title=pagina.tipo}}
     <p class="lead">
         {{#ifeq pagina.tipo "Organizacion"}}
-            {{pagina.titulo}}
-            <body onload="cargarLugares('selectDOrganizacionProvincia', 'selectDOrganizacionCanton', 'selectDOrganizacionDistrito');">
+            {{pagina.titulo}}            
+                <body onload="cargarProvincias('selectDOrganizacionProvincia');">
                 <form id="definirOrganizacion">
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -35,13 +35,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="selectDOrganizacionProvincia">Provincia</label>
-                            <select id="selectDOrganizacionProvincia" class="form-control">
+                            <select id="selectDOrganizacionProvincia" class="form-control" onchange="if (this.selectedIndex) cargarCantones('selectDOrganizacionCanton',this.value);">
                                 <option selected>Provincia</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="selectDOrganizacionCanton">Canton</label>
-                            <select id="selectDOrganizacionCanton" class="form-control">
+                            <select id="selectDOrganizacionCanton" class="form-control" onchange="if (this.selectedIndex) cargarDistritos('selectDOrganizacionDistrito',this.value);">
                                 <option selected>Canton</option>
                             </select>
                         </div>
@@ -160,7 +160,7 @@
 
         {{#ifeq pagina.tipo "Miembro"}}
             {{pagina.titulo}}
-            <body onload="cargarLugares('selectDMiembroProvincia', 'selectDMiembroCanton', 'selectDMiembroDistrito')"> 
+            <body onload="cargarProvincias('selectDMiembroProvincia');"> 
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -189,13 +189,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="selectDMiembroProvincia">Provincia</label>
-                            <select id="selectDMiembroProvincia" class="form-control">
+                            <select id="selectDMiembroProvincia" class="form-control" onchange="if (this.selectedIndex) cargarCantones('selectDMiembroCanton',this.value);">
                                 <option selected>Provincia</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="selectDMiembroCanton">Canton</label>
-                            <select id="selectDMiembroCanton" class="form-control">
+                            <select id="selectDMiembroCanton" class="form-control" onchange="if (this.selectedIndex) cargarDistritos('selectDMiembroDistrito',this.value);">
                                 <option selected>Canton</option>
                             </select>
                         </div>
