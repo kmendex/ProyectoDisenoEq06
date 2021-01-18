@@ -33,6 +33,8 @@ app.use('/define', defineRouter);
 
 app.get("/", indexController.login);
 
+app.get("/registro", indexController.registro);
+
 app.get("/inicio/:puesto", indexController.inicio);
 
 app.get('/definir/:puesto/:tipo', indexController.definir);

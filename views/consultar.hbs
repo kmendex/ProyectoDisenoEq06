@@ -63,7 +63,7 @@
 
         {{#ifeq jerarquia.tipo "Zona"}}
             {{jerarquia.nombre}}
-            <body onload="cargarZona()">
+            <body onload="cargarZonas('selectCZona')">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -139,18 +139,18 @@
 
         {{#ifeq jerarquia.tipo "Rama"}}
             {{jerarquia.nombre}}
-            <body onload="cargarRama()">
-                <form onload="cargarRama()">
+            <body onload="cargarRamas('selectCRama_Rama');cargarZonas('selectCRama_Zona');">
+                <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputCRama_Zona">Zona</label>
-                            <select id="inputCRama_Zona" class="form-control">
+                            <label for="selectCRama_Zona">Zona</label>
+                            <select id="selectCRama_Zona" class="form-control">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputCRama_Rama">Rama</label>
-                            <select id="inputCRama_Rama" class="form-control">
+                            <label for="selectCRama_Rama">Rama</label>
+                            <select id="selectCRama_Rama" class="form-control">
                                 <option selected>Ramas Disponibles</option>
                             </select>
                         </div>
@@ -198,24 +198,24 @@
 
         {{#ifeq jerarquia.tipo "Grupo"}}
             {{jerarquia.nombre}}
-            <body onload="cargarGrupo()">
-                <form onload="cargarGrupo()">
+            <body onload="cargarGrupo(selectCGrupo_Grupo);cargarRamas('selectCGrupo_Rama');cargarZonas('selectCGrupo_Zona');">
+                <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputCGrupo_Zona">Zona</label>
-                            <select id="inputCGrupo_Zona" class="form-control">
+                            <label for="selectCGrupo_Zona">Zona</label>
+                            <select id="selectCGrupo_Zona" class="form-control">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputCGrupo_Rama">Rama</label>
-                            <select id="inputCGrupo_Rama" class="form-control">
+                            <label for="selectCGrupo_Rama">Rama</label>
+                            <select id="selectCGrupo_Rama" class="form-control">
                                 <option selected>Ramas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputCGrupo_Grupo">Grupo</label>
-                            <select id="inputCGrupo_Grupo" class="form-control">
+                            <label for="selectCGrupo_Grupo">Grupo</label>
+                            <select id="selectCGrupo_Grupo" class="form-control">
                                 <option selected>Grupos Disponibles</option>
                             </select>
                         </div>

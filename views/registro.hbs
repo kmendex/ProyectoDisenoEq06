@@ -27,7 +27,7 @@
           <div class="card card-login">
             <form class="form" method="" action="" id="signIn" name="signIn">
               <div class="card-header card-header-danger text-center">
-                <h4 class="card-title">Login</h4>
+                <h4 class="card-title">SignUp</h4>
                 <div class="social-line">
                   <a href="#" class="btn btn-just-icon btn-link">
                     <i class="fa fa-facebook-square"></i>
@@ -57,9 +57,18 @@
                   </div>
                   <input type="password" class="form-control" placeholder="Contraseña" name="inputContraseña" id="inputContraseña">
                 </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Confirmar Contraseña" name="inputConfirmContraseña" id="inputConfirmContraseña">
+                </div>
               </div>
               <div class="footer text-center">
-                <a class="btn btn-danger btn-link btn-wd btn-lg" onclick="verificar()">Iniciar Sesion</a>
+                <a class="btn btn-danger btn-link btn-wd btn-lg" href="/">Iniciar Sesion</a>
+                <a class="btn btn-danger btn-link btn-wd btn-lg" onclick="registro('inputUsuario', 'inputContraseña', 'inputConfirmContraseña')">Registrarse</a>
               </div>
             </form> 
           </div>

@@ -289,25 +289,27 @@
 
         {{#ifeq pagina.tipo "Aportes"}}
             {{pagina.titulo}}
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label class="bmd-label-floating" for="inputDAporteNombre">Nombre del Miembro</label>
-                    <input type="text" class="form-control" id="inputDAporteNombre">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="bmd-label-floating" for="inputDAporteNombre">Nombre del Miembro</label>
+                        <input type="text" class="form-control" id="inputDAporteNombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="bmd-label-floating" for="inputDAporteAsunto">Asunto</label>
+                        <input type="text" class="form-control" id="inputDAporteAsunto">
+                    </div>               
                 </div>
-                <div class="form-group col-md-6">
-                    <label class="bmd-label-floating" for="inputDAporteAsunto">Asunto</label>
-                    <input type="text" class="form-control" id="inputDAporteAsunto">
-                </div>               
-            </div>
-            <div class="form-group">
-                <label for="textAreaDAporteDetalle">Detalle</label>
-                <textarea class="form-control" id="textAreaDAporteDetalle" rows="12"></textarea>
-            </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <button class="btnDAporte btn-danger" onclick="definirAporte()">Enviar</button>
+                <div class="form-group">
+                    <label for="textAreaDAporteDetalle">Detalle</label>
+                    <textarea class="form-control" id="textAreaDAporteDetalle" rows="12"></textarea>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <button class="btnDAporte btn-danger" onclick="definirAporte()">Enviar</button>
+                    </div>
+                </div>
+            </form>
         {{/ifeq}}
 
         {{#ifeq pagina.tipo "Noticias"}}           
