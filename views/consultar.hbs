@@ -1,8 +1,8 @@
-{{> header title=pagina.tipo}}
+{{> header title=jerarquia.tipo}}
 
     <p class="lead">
-        {{#ifeq pagina.tipo "Organizacion"}}
-            {{pagina.titulo}}
+        {{#ifeq jerarquia.tipo "Organizacion"}}
+            {{jerarquia.nombre}}
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -57,48 +57,18 @@
                 </div>
             </form>
         {{/ifeq}}
-        {{#ifeq pagina.tipo "Coordinacion"}}
-            {{pagina.titulo}}
-            <body onload="">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="labelCCoordinacion_Miembro"><h4>Miembro</h4></label>
-                            <ul id="listCCoordinacion_Miembro">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="labelCCoordinacion_Tipo"><h4>Tipo</h4></label>
-                            <ul id="listCCoordinacion_Tipo">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="labelCCoordinacion_Estado"><h4>Estado</h4></label>
-                            <ul id="listCCoordinacion_Estado">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
-            </body>
+        {{#ifeq jerarquia.tipo "Coordinacion"}}
+            {{jerarquia.nombre}}
         {{/ifeq}}
 
-        {{#ifeq pagina.tipo "Zona"}}
-            {{pagina.titulo}}
-            <body onload="cargarZonas('inputCZona_Zona')">
+        {{#ifeq jerarquia.tipo "Zona"}}
+            {{jerarquia.nombre}}
+            <body onload="cargarZonas('selectCZona')">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputCZona_Zona"><h4>Zona</h4></label>
-                            <select id="inputCZona_Zona" class="form-control">
+                            <label for="selectCZona">Zona</label>
+                            <select id="selectCZona" class="form-control">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
@@ -112,24 +82,24 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="listCZona_Rama"><h4>Ramas</h4></label>
-                            <ul id="listCZona_Rama">
+                            <label class="bmd-label-floating" for="labelDZonaIdentificador">Ramas</label>
+                            <ul>
                                 <li>Coffee</li>
                                 <li>Tea</li>
                                 <li>Milk</li>
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCZona_CantMiembros"><h4>Cantidad Miembros</h4></label>
-                            <ul id="listCZona_CantMiembros">
+                            <label class="bmd-label-floating" for="labelDZonaNombre">Cantidad Miembros</label>
+                            <ul>
                                 <li>Coffee</li>
                                 <li>Tea</li>
                                 <li>Milk</li>
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCZona_Creacion"><h4>Fecha Creacion</h4></label>
-                            <ul id="listCZona_Creacion">
+                            <label class="bmd-label-floating" for="labelDZonaFecha">Fecha Creacion</label>
+                            <ul>
                                 <li>Coffee</li>
                                 <li>Tea</li>
                                 <li>Milk</li>
@@ -138,32 +108,24 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="listCZona_Mienbros"><h4>Miembros</h4></label>
-                            <ul id="listCZona_Miembro">
+                            <label class="bmd-label-floating" for="labelDZonaIdentificador">Miembros</label>
+                            <ul>
                                 <li>Coffee</li>
                                 <li>Tea</li>
                                 <li>Milk</li>
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCZona_Tipo"><h4>Tipo</h4></label>
-                            <ul id="listCZona_Tipo">
+                            <label class="bmd-label-floating" for="labelDZonaNombre">Tipo</label>
+                            <ul>
                                 <li>Coffee</li>
                                 <li>Tea</li>
                                 <li>Milk</li>
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCZona_Procedencia"><h4>Procedencia</h4></label>
-                            <ul id="listCZona_Procedencia">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="listCZona_Estado"><h4>Estado</h4></label>
-                            <ul id="listCZona_Estado">
+                            <label class="bmd-label-floating" for="labelDZonaFecha">Procedencia</label>
+                            <ul>
                                 <li>Coffee</li>
                                 <li>Tea</li>
                                 <li>Milk</li>
@@ -175,20 +137,20 @@
             
         {{/ifeq}}
 
-        {{#ifeq pagina.tipo "Rama"}}
-            {{pagina.titulo}}
-            <body onload="cargarRamas('inputCRama_Rama'); cargarZonas('inputCRama_Zona');">
+        {{#ifeq jerarquia.tipo "Rama"}}
+            {{jerarquia.nombre}}
+            <body onload="cargarRamas('selectCRama_Rama');cargarZonas('selectCRama_Zona');">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputCRama_Zona"><h4>Zona</h4></label>
-                            <select id="inputCRama_Zona" class="form-control"  onchange="actualizarRamas('inputCRama_Rama')">
+                            <label for="selectCRama_Zona">Zona</label>
+                            <select id="selectCRama_Zona" class="form-control">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputCRama_Rama"><h4>Rama</h4></label>
-                            <select id="inputCRama_Rama" class="form-control">
+                            <label for="selectCRama_Rama">Rama</label>
+                            <select id="selectCRama_Rama" class="form-control">
                                 <option selected>Ramas Disponibles</option>
                             </select>
                         </div>
@@ -202,27 +164,21 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="listCRama_Grupo"><h4>Grupo</h4></label>
-                            <ul id="listCRama_Grupo">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+                            <label for="labelCRama_Miembro"><h4>Miembro</h4></label>
+                            <ul id="listCRama_Miembro">
+
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCRama_CantMiembros"><h4>Cantidad Miembros</h4></label>
-                            <ul id="listCRama_CantMiembros">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+                            <label for="labelCRama_Tipo"><h4>Tipo</h4></label>
+                            <ul id="listCRama_Tipo">
+
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCRama_Creacion"><h4>Fecha Creacion</h4></label>
-                            <ul id="listCRama_Creacion">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+                            <label for="labelCRama_Estado"><h4>Estado</h4></label>
+                            <ul id="listCRama_Estado">
+
                             </ul>
                         </div>
                     </div>
@@ -230,35 +186,9 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label class="bmd-label-floating" for="listCRama_Miembro"><h4>Miembro</h4></label>
-                            <ul id="listCRama_Miembro">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="bmd-label-floating" for="listCRama_Tipo"><h4>Tipo</h4></label>
-                            <ul id="listCRama_Tipo">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="bmd-label-floating" for="listCRama_Procedencia"><h4>Procedencia</h4></label>
-                            <ul id="listCRama_Procedencia">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="bmd-label-floating" for="listCRama_Estado"><h4>Estado</h4></label>
-                            <ul id="listCRama_Estado">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+                            <label for="labelCRama_Grupo"><h4>Grupo</h4></label>
+                            <ul id="listCRama_Grupo">
+
                             </ul>
                         </div>
                     </div>
@@ -266,26 +196,26 @@
             </body>
         {{/ifeq}}
 
-        {{#ifeq pagina.tipo "Grupo"}}
-            {{pagina.titulo}}
-            <body onload="cargarGrupos('inputCGrupo_Grupo'); cargarRamas('inputCGrupo_Rama'); cargarZonas('inputCGrupo_Zona')">
+        {{#ifeq jerarquia.tipo "Grupo"}}
+            {{jerarquia.nombre}}
+            <body onload="cargarGrupo(selectCGrupo_Grupo);cargarRamas('selectCGrupo_Rama');cargarZonas('selectCGrupo_Zona');">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputCGrupo_Zona"><h4>Zona</h4></label>
-                            <select id="inputCGrupo_Zona" class="form-control" onchange="actualizarRamas('inputCGrupo_Rama')">
+                            <label for="selectCGrupo_Zona">Zona</label>
+                            <select id="selectCGrupo_Zona" class="form-control">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputCGrupo_Rama"><h4>Rama</h4></label>
-                            <select id="inputCGrupo_Rama" class="form-control" onchange="actualizarGrupos('inputCGrupo_Grupo')">
+                            <label for="selectCGrupo_Rama">Rama</label>
+                            <select id="selectCGrupo_Rama" class="form-control">
                                 <option selected>Ramas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputCGrupo_Grupo"><h4>Grupo</h4></label>
-                            <select id="inputCGrupo_Grupo" class="form-control">
+                            <label for="selectCGrupo_Grupo">Grupo</label>
+                            <select id="selectCGrupo_Grupo" class="form-control">
                                 <option selected>Grupos Disponibles</option>
                             </select>
                         </div>
@@ -299,27 +229,21 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="listCGrupo_Miembro"><h4>Miembro</h4></label>
+                            <label for="labelCGrupo_Miembro"><h4>Miembro</h4></label>
                             <ul id="listCGrupo_Miembro">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCGrupo_Tipo"><h4>Tipo</h4></label>
+                            <label for="labelCGrupo_Tipo"><h4>Tipo</h4></label>
                             <ul id="listCGrupo_Tipo">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+
                             </ul>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="listCGrupo_Estado"><h4>Estado</h4></label>
+                            <label for="labelCGrupo_Estado"><h4>Estado</h4></label>
                             <ul id="listCGrupo_Estado">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+
                             </ul>
                         </div>
                     </div>
@@ -327,176 +251,62 @@
             </body>           
         {{/ifeq}}
 
-        {{#ifeq pagina.tipo "Miembro"}}
-            {{pagina.titulo}}
+        {{#ifeq jerarquia.tipo "Miembro"}}
+            {{jerarquia.nombre}}
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class="bmd-label-floating" for="inputCMiembroIdentificacion"><h4>ID Miembro</h4></label>
+                        <label class="bmd-label-floating" for="inputCMiembroIdentificacion">ID Miembro</label>
                         <input type="text" class="form-control" id="inputCMiembroIdentificacion">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-10">
-                        <button type="button" class="btnRol btn-danger" onclick="consultarMiembro()"><h4>Consultar</h4></button>
+                        <button type="button" class="btnRol btn-danger" onclick="consultarMiembro()">Consultar</button>
                     </div>
                 </div>
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCMiembroNombre"><h4>Nombre</h4></label>
+                        <label for="inputCMiembroNombre">Nombre</label>
                         <input type="text" class="form-control" id="inputCMiembroNombre" disabled>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputCMiembroApellido"><h4>Apellido</h4></label>
+                    <label for="inputCMiembroApellido">Apellido</label>
                     <input type="text" class="form-control" id="inputCMiembroApellido" disabled>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="inputCMiembroCedula"><h4>Numero de Identificacion</h4></label>
+                        <label for="inputCMiembroCedula">Numero de Identificacion</label>
                         <input type="text" class="form-control" id="inputCMiembroCedula" disabled>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputCMiembroTelefono"><h4>Telefono</h4></label>
+                        <label for="inputCMiembroTelefono">Telefono</label>
                         <input type="text" class="form-control" id="inputCMiembroTelefono" disabled>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputCMiembroCorreo"><h4>Correo</h4></label>
+                        <label for="inputCMiembroCorreo">Correo</label>
                         <input type="email" class="form-control" id="inputCMiembroCorreo" disabled>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="inputCMiembroProvincia"><h4>Provincia</h4></label>
+                        <label for="inputCMiembroProvincia">Provincia</label>
                         <input type="text" class="form-control" id="inputCMiembroProvincia" disabled>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputCMiembroCanton"><h4>Canton</h4></label>
+                        <label for="inputCMiembroCanton">Canton</label>
                         <input type="text" class="form-control" id="inputCMiembroCanton" disabled>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputCMiembroDistrito"><h4>Distrito</h4></label>
+                        <label for="inputCMiembroDistrito">Distrito</label>
                         <input type="text" class="form-control" id="inputCMiembroDistrito" disabled>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputCMiembroOtra"><h4>Otras Señas</h4></label>
+                    <label for="inputCMiembroOtra">Otras Señas</label>
                     <input type="text" class="form-control" id="inputCMiembroOtra" disabled>
-                </div>
-            </form>
-        {{/ifeq}}
-        
-        {{#ifeq pagina.tipo "Noticias"}}
-            {{pagina.titulo}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCNombre_Noticias"><h4>Nombre Emisor</h4></label>
-                        <input type="text" class="form-control" id="inputCNombre_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputCEstado_Noticias"><h4>Estado</h4></label>
-                        <input type="text" class="form-control" id="inputCEstado_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCFecha_Noticias"><h4>Fecha Emision</h4></label>
-                        <input type="date" class="form-control" id="inputCFecha_Noticias" disabled>
-                    </div>
-                </div>
-                <label><h3>Procedencia</h3></label>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCZona_Noticias"><h4>Zona</h4></label>
-                        <input type="text" class="form-control" id="inputCZona_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCRama_Noticias"><h4>Rama</h4></label>
-                        <input type="text" class="form-control" id="inputCRama_Noticias" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCGrupo_Noticias"><h4>Grupo</h4></label>
-                        <input type="text" class="form-control" id="inputCGrupo_Noticias" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCMensaje_Noticas"><h4>Mensaje</h4></label>
-                        <input type="text" class="form-control" id="inputCMensaje_Noticas" disabled>
-                    </div>
-                </div>
-            </form>
-        {{/ifeq}}
-        
-        {{#ifeq pagina.tipo "NoticiasGeneral"}}
-            {{pagina.titulo}}
-            <body onload="mostrarNoticias()">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6" id="listCNoticias">
-                            <button onclick="actualizarVistaNoticias()" type="button" class="btnRol btn-danger btn-wd btn-lg col-md-6"><h4>original</h4></button>
-                            <br>
-                        </div>
-                    </div>
-                </form>    
-            </body>
-            
-        {{/ifeq}}
-        
-        {{#ifeq pagina.tipo "Aportes"}}
-            {{pagina.titulo}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCNombre_Aportes"><h4>Nombre</h4></label>
-                        <input type="text" class="form-control" id="inputCNombre_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputCTipo_Aportes"><h4>Tipo</h4></label>
-                        <input type="text" class="form-control" id="inputCTipo_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCFecha_Aportes"><h4>Fecha Emision</h4></label>
-                        <input type="date" class="form-control" id="inputCFecha_Aportes" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCMensaje_Aportes"><h4>Mensaje</h4></label>
-                        <input type="text" class="form-control" id="inputCMensaje_Aportes" disabled>
-                    </div>
-                </div>
-            </form>
-        {{/ifeq}}
-
-        {{#ifeq pagina.tipo "AportesAsesor"}}
-            {{pagina.titulo}}
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputCNombre_Aportes"><h4>Nombre</h4></label>
-                        <input type="text" class="form-control" id="inputCNombre_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputCTipo_Aportes"><h4>Tipo</h4></label>
-                        <input type="text" class="form-control" id="inputCTipo_Aportes" disabled>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputCFecha_Aportes"><h4>Fecha Emision</h4></label>
-                        <input type="date" class="form-control" id="inputCFecha_Aportes" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCMensaje_Aportes"><h4>Mensaje</h4></label>
-                        <input type="text" class="form-control" id="inputCMensaje_Aportes" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        {{!-- <label for="inputCMensaje_Aportes"><h4>Mensaje</h4></label> --}}
-                        <button type="button" class="btnRol btn-danger" onclick=""><h4>Generar Reporte</h4></button>
-                        <button type="button" class="btnRol btn-danger" onclick=""><h4>Descargar Aportes</h4></button>
-                    </div>
                 </div>
             </form>
         {{/ifeq}}
