@@ -427,6 +427,21 @@
             </form>
         {{/ifeq}}
         
+        {{#ifeq pagina.tipo "NoticiasGeneral"}}
+            {{pagina.titulo}}
+            <body onload="mostrarNoticias()">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6" id="listCNoticias">
+                            <button onclick="actualizarVistaNoticias()" type="button" class="btnRol btn-danger btn-wd btn-lg col-md-6"><h4>original</h4></button>
+                            <br>
+                        </div>
+                    </div>
+                </form>    
+            </body>
+            
+        {{/ifeq}}
+        
         {{#ifeq pagina.tipo "Aportes"}}
             {{pagina.titulo}}
             <form>

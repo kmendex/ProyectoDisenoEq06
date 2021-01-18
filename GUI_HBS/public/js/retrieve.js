@@ -147,8 +147,7 @@ function verificar() {
                 }
                 if (usuario.user == "Josue") {
                     window.location.href = "/inicio/Jefe";
-                }
-                else {
+                } else {
                     window.location.href = "/inicio/Miembro";
                 }
             }
@@ -179,7 +178,7 @@ function registro(inputSelectName, inputSelectPass, inputSelectCPass) {
             element.password = password;
             usuarios.push(element);
 
-            usuarios.push({user: 'Pedro', password: '123'});
+            usuarios.push({ user: 'Pedro', password: '123' });
 
             alert(usuarios.length);
 
@@ -336,14 +335,15 @@ function definirRama() {
 
 function actualizarRamas(selectInput) {
 
-    var urlJson = '../views/prueba.json';
-    define([
-        'require',
-        '../views/prueba.json'
-    ], function(require) {
-        var json = requirejs('../views/prueba.json');
-        alert(json);
-    });
+    var urlJson = requirejs("../views/prueba.json");
+    console.log(urlJson);
+    // define([
+    //     'require',
+    //     '../views/prueba.json'
+    // ], function(require) {
+    //     var json = '../views/prueba.json');
+    //     alert(json);
+    // });
 
 
     var select1 = document.getElementById(selectInput);
@@ -586,4 +586,27 @@ function definirNoticia() {
     }
 
     return false;
+}
+
+function mostrarNoticias() {
+    var select1 = document.getElementById("listCNoticias");
+
+    let items1 = ['Juan', 'Roberto', 'Michael', 'Brandon', 'Ericka', 'Monica'],
+        miembro = document.getElementById('listCNoticias');
+
+    items1.forEach(function(item) {
+        let button = document.createElement('button');
+        let br = document.createElement('br');
+        button.className = "btnRol btn-danger btn-wd btn-lg col-md-6";
+        button.onclick = "actualizarVistaNoticias()";
+        miembro.appendChild(button);
+        miembro.appendChild(br);
+
+        button.innerHTML += item;
+        br.innerHTML += item;
+    });
+}
+
+function actualizarVistaNoticias() {
+    window.location.href = "/consultar/Jefe/Noticias";
 }
