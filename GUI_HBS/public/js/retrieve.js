@@ -588,6 +588,10 @@ function definirNoticia() {
     return false;
 }
 
+function actualizarVistaNoticias() {
+    window.location.href = "/consultar/Jefe/Noticias";
+}
+
 function mostrarNoticias() {
     var select1 = document.getElementById("listCNoticias");
 
@@ -598,15 +602,13 @@ function mostrarNoticias() {
         let button = document.createElement('button');
         let br = document.createElement('br');
         button.className = "btnRol btn-danger btn-wd btn-lg col-md-6";
-        button.onclick = "actualizarVistaNoticias()";
+        button.addEventListener("click", function onclick(event) {
+            window.location.href = "/consultar/Jefe/Noticias";
+        });
         miembro.appendChild(button);
         miembro.appendChild(br);
 
         button.innerHTML += item;
         br.innerHTML += item;
     });
-}
-
-function actualizarVistaNoticias() {
-    window.location.href = "/consultar/Jefe/Noticias";
 }
