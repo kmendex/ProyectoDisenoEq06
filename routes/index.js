@@ -4,6 +4,12 @@ const login = (req, res) => {
     });
 };
 
+const registro = (req, res) => {
+    res.render('registro', {
+        titulo: 'Pagina Web'
+    });
+};
+
 const inicio = (req, res) => {
     res.render('inicio', {
         pagina: {
@@ -52,6 +58,7 @@ const error = (req, res, next) => {
 
 module.exports = {
     login,
+    registro,
     inicio,
     definir,
     consultar,

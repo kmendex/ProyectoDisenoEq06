@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 
-var indexRouter = require('./api/index');
-var defineRouter = require('./api/define')
-var queryRouter = require('./api/query')
+//var indexRouter = require('./api/index');
+//var defineRouter = require('./api/define')
+//var queryRouter = require('./api/query')
 
 var indexController = require('./routes/index');
 
-var {Controlador} = require("./controllers/Controlador");
+//var { Controlador } = require("../controllers/Controlador");
 
 var app = express();
 
@@ -27,9 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', indexRouter);
-app.use('/api/define', defineRouter);
-app.use('/api/consulta', queryRouter);
+//app.use('/api', indexRouter);
+//app.use('/api/define', defineRouter);
+//app.use('/api/consulta', queryRouter);
 
 app.get("/", indexController.login);
 
@@ -48,7 +48,7 @@ app.use(indexController.error);
 
 // information load
 console.log('...Loading information...');
-Controlador.bringData();
+//Controlador.bringData();
 
 
 // Helper
