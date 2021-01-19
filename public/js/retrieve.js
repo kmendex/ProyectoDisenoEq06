@@ -18,22 +18,21 @@ var gruposGlobales = {
     ValueC: 'Ballenas'
 };
 
-var usuarios = [
-    {
+var usuarios = [{
         user: 'Tony',
-        password:'123'
+        password: '123'
     },
     {
         user: 'Oscar',
-        password:'123'
+        password: '123'
     },
     {
         user: 'Josue',
-        password:'123'
+        password: '123'
     },
     {
         user: 'Kenneth',
-        password:'123'
+        password: '123'
     }
 ]
 
@@ -179,6 +178,7 @@ function verificar() {
     var name = document.querySelector('#inputUsuario').value;
     var password = document.querySelector('#inputContraseña').value;
 
+
     const login = {
         "username": name,
         "pass": password
@@ -260,6 +260,7 @@ function registro(inputSelectName, inputSelectPass, inputSelectCPass) {
     }
 
 }
+
 
 /* ---------------Organizacion--------------- */
 function definirOrganizacion() {
@@ -405,15 +406,28 @@ function definirRama() {
     return false;
 }
 
-function actualizarRamas(selectInput) { 
-    var select1 = document.getElementById(selectInput); 
-    var countOption = select1.options.length; 
- 
-    for (index = 1; index < countOption; index++) { 
-        select1.remove(1); 
-    } 
-    select1.options[select1.options.length] = new Option("Prueba"); 
-} 
+
+function actualizarRamas(selectInput) {
+
+    var urlJson = requirejs("../views/prueba.json");
+    console.log(urlJson);
+    // define([
+    //     'require',
+    //     '../views/prueba.json'
+    // ], function(require) {
+    //     var json = '../views/prueba.json');
+    //     alert(json);
+    // });
+
+
+    var select1 = document.getElementById(selectInput);
+    var countOption = select1.options.length;
+
+    for (index = 1; index < countOption; index++) {
+        select1.remove(1);
+    }
+    select1.options[select1.options.length] = new Option("Prueba");
+}
 
 /* ---------------Grupo--------------- */
 
@@ -488,14 +502,14 @@ function consultarGrupo() {
     }
 }
 
-function actualizarGrupos(selectInput) { 
-    var select1 = document.getElementById(selectInput); 
-    var countOption = select1.options.length; 
- 
-    for (index = 1; index < countOption; index++) { 
-        select1.remove(1); 
-    } 
-    select1.options[select1.options.length] = new Option("Prueba"); 
+function actualizarGrupos(selectInput) {
+    var select1 = document.getElementById(selectInput);
+    var countOption = select1.options.length;
+
+    for (index = 1; index < countOption; index++) {
+        select1.remove(1);
+    }
+    select1.options[select1.options.length] = new Option("Prueba");
 }
 
 /* ---------------Miembro--------------- */
@@ -646,4 +660,32 @@ function definirNoticia() {
     }
 
     return false;
+}
+
+function actualizarVistaNoticias() {
+    window.location.href = "/consultar/Jefe/Noticias";
+}
+
+function mostrarNoticias() {
+    var text = window.location.href;
+    var split = text.split("/");
+    // console.table(split);
+    // console.log("dato: " + split[4]);
+
+    let items1 = ['Noticia#1', 'Noticia#2', 'Noticia#3', 'Noticia#4', 'Noticia#5', 'Noticia#6'],
+        miembro = document.getElementById('listCNoticias');
+
+    items1.forEach(function(item) {
+        let a = document.createElement('a');
+        let br = document.createElement('br');
+        a.className = "btn btn-danger btn-link btn-wd btn-lg";
+
+        a.href = "/consultar/" + split[4] + "/Noticias";
+        miembro.appendChild(a);
+        miembro.appendChild(br);
+
+        // button.innerHTML += item;
+        a.innerHTML += item;
+        br.innerHTML += item;
+    });
 }

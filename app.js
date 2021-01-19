@@ -9,9 +9,10 @@ var homeRouter = require('./api/home');
 var defineRouter = require('./api/define')
 var queryRouter = require('./api/query')
 
+
 var indexController = require('./routes/index');
 
-var {Controlador} = require("./controllers/Controlador");
+//var { Controlador } = require("../controllers/Controlador");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/home', homeRouter);
 app.use('/api/define', defineRouter);
 app.use('/aoi/query', queryRouter);
 
+
 app.get("/", indexController.login);
 
 app.get("/registro", indexController.registro);
@@ -48,7 +50,7 @@ app.use(indexController.error);
 
 // information load
 console.log('...Loading information...');
-Controlador.bringData();
+//Controlador.bringData();
 
 
 // Helper

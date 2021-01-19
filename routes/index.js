@@ -7,6 +7,12 @@ const login = (req, res) => {
     });
 };
 
+const registro = (req, res) => {
+    res.render('registro', {
+        titulo: 'Pagina Web'
+    });
+};
+
 const inicio = (req, res) => {
     let result = Controlador.getCompanyData();
     res.render('inicio', {
@@ -60,6 +66,7 @@ const registro = (req, res, next) => {
 
 module.exports = {
     login,
+    registro,
     inicio,
     definir,
     consultar,
