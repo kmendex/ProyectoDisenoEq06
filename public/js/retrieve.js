@@ -593,22 +593,25 @@ function actualizarVistaNoticias() {
 }
 
 function mostrarNoticias() {
-    var select1 = document.getElementById("listCNoticias");
+    var text = window.location.href;
+    var split = text.split("/");
+    // console.table(split);
+    // console.log("dato: " + split[4]);
 
-    let items1 = ['Juan', 'Roberto', 'Michael', 'Brandon', 'Ericka', 'Monica'],
+    let items1 = ['Noticia#1', 'Noticia#2', 'Noticia#3', 'Noticia#4', 'Noticia#5', 'Noticia#6'],
         miembro = document.getElementById('listCNoticias');
 
     items1.forEach(function(item) {
-        let button = document.createElement('button');
+        let a = document.createElement('a');
         let br = document.createElement('br');
-        button.className = "btnRol btn-danger btn-wd btn-lg col-md-6";
-        button.addEventListener("click", function onclick(event) {
-            window.location.href = "/consultar/Jefe/Noticias";
-        });
-        miembro.appendChild(button);
+        a.className = "btn btn-danger btn-link btn-wd btn-lg";
+
+        a.href = "/consultar/" + split[4] + "/Noticias";
+        miembro.appendChild(a);
         miembro.appendChild(br);
 
-        button.innerHTML += item;
+        // button.innerHTML += item;
+        a.innerHTML += item;
         br.innerHTML += item;
     });
 }
