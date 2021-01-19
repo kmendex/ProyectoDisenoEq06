@@ -4,19 +4,19 @@ import { Direccion } from "../models/Direccion";
 export class CPersona{
   static personas = Array<Persona>();
 
-  static crearPersona (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
+  static crearPersona (id: string, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
     CPersona.personas.push(new Persona(id, nombre, celular, correo, direccion, estado));
   }
   
-  static obtenerPersona (id: number): Persona{
+  static obtenerPersona (id: string): Persona{
     return CPersona.personas.filter(x => x.identificacion == id)[0];
   }
 
-  static cambiarEstado (id: number, estado: eEstado): void {
+  static cambiarEstado (id: string, estado: eEstado): void {
     CPersona.obtenerPersona(id).estado = estado;
   }
   
-  static actualizarDatos (id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
+  static actualizarDatos (id: string, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
     let persona = CPersona.obtenerPersona(id);
     if(nombre !== undefined)
       persona.nombreCompleto = nombre;

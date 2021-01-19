@@ -54,11 +54,16 @@ const error = (req, res, next) => {
     });
 };
 
+const registro = (req, res, next) => {
+    res.render('registro');
+};
+
 module.exports = {
     login,
     inicio,
     definir,
     consultar,
     consultar2,
-    error
+    error,
+    registro
 };

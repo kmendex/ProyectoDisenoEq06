@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 
-var homeRouter = require('./routes/home');
-var defineRouter = require('./routes/define')
-var queryRouter = require('./routes/query')
+var homeRouter = require('./api/home');
+var defineRouter = require('./api/define')
+var queryRouter = require('./api/query')
 
 var indexController = require('./routes/index');
 
@@ -27,9 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/inicio', homeRouter);
-app.use('/define', defineRouter);
-//app.use('/consulta', queryRouter);
+app.use('/api/home', homeRouter);
+app.use('/api/define', defineRouter);
+app.use('/aoi/query', queryRouter);
 
 app.get("/", indexController.login);
 

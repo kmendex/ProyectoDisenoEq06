@@ -48,7 +48,7 @@ var niveles = {
 function cargarProvincias(pro) {
     var select1 = document.getElementById(pro);
 
-    var path = '/define/api/provinces/' + 49; // Costa Rica = 49    
+    var path = '/api/define/provinces/' + 49; // Costa Rica = 49    
     
     $.ajax({
         type: 'GET',
@@ -70,7 +70,7 @@ function cargarCantones(cant,pro) {
     .val('whatever');
     
 
-    var path = '/define/api/cantons/' + pro;
+    var path = '/api/define/cantons/' + pro;
     
     $.ajax({
         type: 'GET',
@@ -91,7 +91,7 @@ function cargarDistritos(dist, cant) {
     .append('<option value="whatever">Distrito</option>')
     .val('whatever');
 
-    var path = '/define/api/districts/' + cant;
+    var path = '/api/define/districts/' + cant;
     
     $.ajax({
         type: 'GET',
@@ -108,27 +108,62 @@ function cargarDistritos(dist, cant) {
 
 
 function cargarZonas(selectInput) {
+
     var select1 = document.getElementById(selectInput);
 
-    for (index in zonasGlobales) {
-        select1.options[select1.options.length] = new Option(zonasGlobales[index], index);
-    }
+    var path = '/api/query/zones/' + 'CRD-01'; // Codigo de la coord
+    
+    $.ajax({
+        type: 'GET',
+        url: path,                                            
+        success: function (data){
+            for (index of data)
+                select1.options[select1.options.length] = new Option(index.name, index.id);                        
+        },
+        dataType : 'json'
+    });       
 }
 
-function cargarRamas(selectInput) {
-    var select1 = document.getElementById(selectInput);
+function cargarRamas(selectInput, zona) {
+    var select1 = document.getElementById(selectInput);    
+    $(select1).find('option')
+    .remove()
+    .end()
+    .append('<option value="whatever">Rama</option>')
+    .val('whatever');
 
-    for (index in ramasGlobales) {
-        select1.options[select1.options.length] = new Option(ramasGlobales[index], index);
-    }
+    var path = '/api/query/branches/' + zona; 
+    
+    $.ajax({
+        type: 'GET',
+        url: path,                                            
+        success: function (data){
+            for (index of data)
+                select1.options[select1.options.length] = new Option(index.name, index.id);                        
+        },
+        dataType : 'json'
+    });       
 }
 
-function cargarGrupos(selectInput) {
-    var select1 = document.getElementById(selectInput);
+function cargarGrupos(selectInput,rama) {
+    var select1 = document.getElementById(selectInput);    
+    $(select1).find('option')
+    .remove()
+    .end()
+    .append('<option value="whatever">Grupo</option>')
+    .val('whatever');
 
-    for (index in gruposGlobales) {
-        select1.options[select1.options.length] = new Option(gruposGlobales[index], index);
-    }
+    var path = '/api/query/groups/' + rama; 
+    
+    $.ajax({
+        type: 'GET',
+        url: path,                                            
+        success: function (data){
+            for (index of data)
+                select1.options[select1.options.length] = new Option(index.name, index.id);                        
+        },
+        dataType : 'json'
+    });       
 }
 
 function cargarNiveles(selectInput) {
@@ -141,15 +176,45 @@ function cargarNiveles(selectInput) {
 
 /* ---------------SignIn--------------- */
 function verificar() {
-    var username = document.querySelector('#inputUsuario').value;
-    var passwords = document.querySelector('#inputContraseña').value;
+    var name = document.querySelector('#inputUsuario').value;
+    var password = document.querySelector('#inputContraseña').value;
 
     const login = {
-        username: username,
-        passwords: passwords
+        "username": name,
+        "pass": password
     };
 
-    usuarios.forEach(usuario => {
+    if (name!='' && password!='') {                
+        $.ajax({
+            type: 'PUT',            
+            url: '/api/home/authenticate',                                    
+            contentType: 'application/json',            
+            data: JSON.stringify(login),
+            dataType : 'json',
+            success: function(dataR){
+                if(dataR!=null){
+                    alert('Usuario aceptado');
+        
+                    //if (usuario.user == "Tony") {
+                        window.location.href = "/inicio/Asesor";
+                    //}
+                    /*if (usuario.user == "Josue") {
+                        window.location.href = "/inicio/Jefe";
+                    }
+                    if (usuario.user == "Oscar") {
+                        window.location.href = "/inicio/Miembro";
+                     }                */
+                }
+                else{
+                    alert("Usuario no encontrado");
+                }
+            }
+        });                                
+    } else {
+        alert("Faltan Datos");
+    }
+
+    /*usuarios.forEach(usuario => {
         if (username == usuario.user && passwords == usuario.password) {
             alert('Usuario aceptado');
             localStorage.setItem("zonaData", JSON.stringify(login));
@@ -163,35 +228,30 @@ function verificar() {
                 window.location.href = "/inicio/Miembro";
             }
         }
-    });
+    });*/
 }
 
 /* ---------------SignUp--------------- */
 function registro(inputSelectName, inputSelectPass, inputSelectCPass) {
-    var name = document.getElementById(inputSelectName).text;
-    var password = document.getElementById(inputSelectPass).text;
-    var confirmPass = document.getElementById(inputSelectCPass).text;
-
+    var name = document.getElementById(inputSelectName).value;
+    var password = document.getElementById(inputSelectPass).value;
+    var confirmPass = document.getElementById(inputSelectCPass).value;    
+    
     const user = {
-        user: name,
-        password: password
+        "username": name,
+        "pass": password
     };
 
-    if (!name && !password && !confirmPass) {
-        if (password == confirmPass) {
-            alert("Usuario creado");
-            localStorage.setItem("usuarios", JSON.stringify(user));
-
-            var element = {};
-            element.user = name;
-            element.password = password;
-            usuarios.push(element);
-
-            usuarios.push({user: 'Pedro', password: '123'});
-
-            alert(usuarios.length);
-
-            window.location.href = "/";
+    if (name!='' && password!='' && confirmPass!='') {  
+        if (password == confirmPass) {            
+            $.ajax({
+                type: 'POST',
+                url: '/api/home/register',                                    
+                contentType: 'application/json',            
+                data: JSON.stringify(user)                
+            });     
+            alert("Usuario creado");                          
+            window.location.href = "/";            
         } else {
             alert("Contraseñas no coinciden");
         }

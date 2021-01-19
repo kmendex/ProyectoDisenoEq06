@@ -15,20 +15,8 @@ export class COrganizacion{
   static async bringData(organizationCode : string){    
     try{
       let result = await db.getOrganization(organizationCode);      
-      if (result != null){
-          // Esto debería cambiarse de alǵun modo...
-          const distritos = new Array<Distrito>();
-          const cantones = new Array<Canton>();
-          const provincias = new Array<Provincia>();
-          const paises = new Array<Pais>();
-
-          distritos.push(new Distrito(2, result.district));
-          cantones.push(new Canton(1, result.canton));
-          provincias.push(new Provincia(3, result.province));
-          paises.push(new Pais(1, result.country));                   
-                          
-          let direccionUnica = new Direccion(paises[0], provincias[0], cantones[0], distritos[0], result.address);
-
+      if (result != null){                                              
+          let direccionUnica = new Direccion(result.country, result.province, result.canton, result.district,result.address);
           this.crearOrganizacion(result.name, result.juridicalCode, result.description, result.logoURL, result.webSite, direccionUnica, result.telephone, result.email, "", "");
       }
   }
@@ -68,7 +56,7 @@ export class COrganizacion{
   
   static getDataToShow(): any {
     return { "nombreCompany" : this._organizacion.nombreCompany, "descripcion": this._organizacion.descripcion,
-      "logoURL" : this._organizacion.logoURL, "provincia" : this._organizacion.direccion.provincia.nombre , "pais" : this._organizacion.direccion.pais.nombre,
+      "logoURL" : this._organizacion.logoURL, "provincia" : this._organizacion.direccion.provincia , "pais" : this._organizacion.direccion.pais,
       "direccion" : this._organizacion.direccion.info, "direccionWeb" : this._organizacion.direccionWeb,
       "logoFace" : this._organizacion.telefono, "logoTwitter" : this._organizacion.correo };
   }

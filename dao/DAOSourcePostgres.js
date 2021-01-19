@@ -67,11 +67,9 @@ module.exports = {
                 let result = await pool.query('SELECT "readCountries"()', callback);
                 return result.rows[0].readCountries;
         },
-        getProvinces : async function (ctrName, callback){
-                console.log(ctrName);
+        getProvinces : async function (ctrName, callback){                
                 let values = [ctrName];
-                let result = await pool.query('SELECT "readProvinces"($1)', values, callback);
-                console.log(result.rows[0].readProvinces);
+                let result = await pool.query('SELECT "readProvinces"($1)', values, callback);                
                 return result.rows[0].readProvinces;
         },
         getCantons : async function (prvName, callback){
@@ -88,6 +86,15 @@ module.exports = {
                 let values = [untCode];
                 let result = await pool.query('SELECT "readBoss"($1)', values, callback);
                 return result.rows[0].readBoss;
+        },
+        registration : async function (username, pass, callback){
+                let values = [username, pass];
+                pool.query('SELECT "registration"($1,$2)', values, callback);
+        },
+        authentication : async function(username, pass, callback){
+                let values = [username, pass];
+                let result = await pool.query('SELECT "authentication"($1,$2)', values, callback);
+                return result.rows[0].authentication;
         }
 
 };

@@ -10,17 +10,27 @@ import { Canton } from "../models/Canton";
 import { Distrito } from "../models/Distrito";
 import { Pais } from "../models/Pais";
 import { Provincia } from "../models/Provincia";
+import { AbstractComponent } from "../models/composite/AbstractComponent";
 
 const db = require("../dao/DAOSourcePostgres");
 
 export class Controlador{
     static async bringData(){
         COrganizacion.bringData('ORG-01');
-    }
 
+        try{
+            let r = await CComposite.cargarComposite('ORG-01');       
+            console.log(r);
+        }
+        catch(error){
+                console.log(error);
+        }
+
+    }
+/*
     //--------------------Definir--------------------//
     static defineCoordination(id: string, nombreCoordinacion: string) {
-        return CComposite.insertarCoordinador(id, nombreCoordinacion);
+        return CComposite.insertarCoordinacion(id, nombreCoordinacion);
     }
 
     static defineZone(id: string, nombreZona: string) {
@@ -34,47 +44,51 @@ export class Controlador{
     static defineGroup(id: string, nombreGrupo: string) {
         return CComposite.insertarGrupo(id, nombreGrupo);
     }
-
+*/
     //--------------------Consultar--------------------//
-    static consultCoordination(coordinacion: string): Array<CompositeComponent> {
+    static consultCoordination(coordinacion: string): Array<AbstractComponent> {
         return CComposite.listarZonas(coordinacion);
     }
 
-    static consultBranch(zona: string): Array<CompositeComponent> {
-        return CComposite.listarRamas(zona);
+    static consultZone(zone: string): Array<AbstractComponent> {
+        return CComposite.listarRamas(zone);
     }
 
-    static consultGroup(grupo: string): Array<CompositeComponent> {
+    static consultBranch(branch: string): Array<AbstractComponent> {
+        return CComposite.listarGrupos(branch);
+    }
+
+    static consultGroup(grupo: string): Array<AbstractComponent> {
         return CComposite.listarGrupos(grupo);
     }
-
+/*
     //--------------------Designar--------------------//
-    static assignAdvisor(id: number, nombre: string) {
+    static assignAdvisor(id: string, nombre: string) {
         CComposite.nombrarAsesor(id, nombre);
     }
 
-    static assignBossZ(id: number, nombre: string) {
+    static assignBossZ(id: string, nombre: string) {
         CComposite.nombrarJefeZ(id, nombre);
     }
 
-    static assignBossB(id: number, nombre: string) {
+    static assignBossB(id: string, nombre: string) {
         CComposite.nombrarJefeR(id, nombre);
     }
 
-    static assignMonitor(id: number, nombre: string) {
+    static assignMonitor(id: string, nombre: string) {
         CComposite.nombrarMonitor(id, nombre);
     }
-
+*/
     //--------------------Persona--------------------//
-    static setPersonas (id: number, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
+    static setPersonas (id: string, nombre: string, celular: number, correo: string, direccion: Direccion, estado: eEstado): void{
         CPersona.crearPersona(id, nombre, celular, correo, direccion, estado);
     }
       
-    static getPersonas (id: number): Persona{
+    static getPersonas (id: string): Persona{
         return CPersona.obtenerPersona(id);
     }
     
-    static updatePerson(id: number, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
+    static updatePerson(id: string, nombre?: string, celular?: number, correo?: string, direccion?: Direccion, estado?: eEstado): void {
         CPersona.actualizarDatos(id, nombre, celular, correo, direccion, estado)
     }
 
@@ -103,7 +117,7 @@ export class Controlador{
         }           
     }
 
-    static async getCantons(prvName : string){
+    static getCantons(prvName : string){
         try{
             return db.getCantons(prvName);
         }   
@@ -112,9 +126,45 @@ export class Controlador{
         }                   
     }
 
-    static async getDistricts(ctnName : string){
+    static getDistricts(ctnName : string){
         try{
             return db.getDistricts(ctnName);
+        }   
+        catch(error){
+            console.log(error);        
+        }                   
+    }
+
+    static getZones(crdCod : string){  
+        let result = [];
+        let zones = this.consultCoordination(crdCod);
+        zones.forEach(zone => {
+            
+        });        
+    }
+
+    static getBranches(zonCod : string){
+       
+    }
+
+    static getGroups(brnCod : string){
+       
+    }
+
+    static registration(username : string, pass: string){
+        try{
+            db.registration(username, pass);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    static authentication(username : string, pass: string){
+        try{
+            let result = db.authentication(username, pass);
+    //        identificationCode
+    //        "verified"
         }   
         catch(error){
             console.log(error);        

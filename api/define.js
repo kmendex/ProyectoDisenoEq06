@@ -4,7 +4,7 @@ var path = require('path');
 
 const {Controlador} = require("../controllers/Controlador");
 
-
+/*
 router.get('/:id', function(req, res, next) {
   let result = Controlador.getCompanyData();
   res.render('definir', {
@@ -19,7 +19,7 @@ router.get('/:id', function(req, res, next) {
           senas: result.direccion
       }
   });   
-});
+});*/
 /*
 router.get('/api', function (req, res, next) {
   console.log('exito');
@@ -47,23 +47,17 @@ router.post('/api', function (req, res, next) {
   res.sendStatus(200);
 });
 
-router.get('/api/provinces/:country', async function (req, res, next) {
-  let cont = req.params.country;
-  console.log(typeof req.params.country);
-  cont = cont + '';
-  console.log(typeof cont);
-  let result = await Controlador.getProvinces(req.params.country); 
-  console.log(result);   
+router.get('/provinces/:country', async function (req, res, next) {
+  let result = await Controlador.getProvinces(req.params.country);   
   res.json(result);
 });
 
-router.get('/api/cantons/:province', async function (req, res, next) {
+router.get('/cantons/:province', async function (req, res, next) {
   let result = await Controlador.getCantons(req.params.province);
   res.json(result);    
 });
 
-router.get('/api/districts/:canton', async function (req, res, next) {
-  console.log(req.params.canton);
+router.get('/districts/:canton', async function (req, res, next) {  
   let result = await Controlador.getDistricts(req.params.canton);    
   res.json(result);  
 });

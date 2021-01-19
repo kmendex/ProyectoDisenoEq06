@@ -21,7 +21,7 @@ export class BranchController {
      *         false si ya existe el ID o el nombre del grupo         
      * Restricciones: N/A
      */
-    public addGroup(id:number, name:string):boolean {
+    public addGroup(id:string, name:string):boolean {
         if(this.branch.isID(id)) {
             return false;
         }
@@ -43,7 +43,7 @@ export class BranchController {
      * Salida: AbstractComponent (grupo)        
      * Restricciones: N/A
      */
-    public getGroupByID(id:number):CompositeComponent {
+    public getGroupByID(id:string):CompositeComponent {
         const abstractComponent = this.branch.getLevel().filter(component => component.getId() == id)[0];
         return (<CompositeComponent>abstractComponent);
     }
@@ -66,7 +66,7 @@ export class BranchController {
      *         false si no existe el grupo        
      * Restricciones: N/A
      */
-    public removeGroup(id:number, name:string):boolean {
+    public removeGroup(id:string, name:string):boolean {
         return this.branch.removeComponent(new CompositeComponent (id, name, Roles.Grupo));
     }
 
@@ -130,7 +130,7 @@ export class BranchController {
             else {
                 const comission = this.getComission().filter(member => (member.getId() == boss.identificacion));
                 if (comission.length > 0) {
-                    this.branch.addComponent(new SimpleComponent(Roles.Jefe, boss));
+                    this.branch.addComponent(new SimpleComponent(boss, Roles.Jefe));
                     return true;
                 }
                 else {

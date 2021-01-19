@@ -21,7 +21,7 @@ export class ZoneController {
      *         false si ya existe el ID o el nombre del rama         
      * Restricciones: N/A
      */
-    public addBranch(id:number, name:string):boolean {
+    public addBranch(id:string, name:string):boolean {
         if(this.zone.isID(id)) {
             return false;
         }
@@ -30,7 +30,7 @@ export class ZoneController {
                 return false;
             }
             else {
-                const newBranch = new CompositeComponent(id, name, Roles.rama);
+                const newBranch = new CompositeComponent(id, name, Roles.Rama);
                 this.zone.addComponent(newBranch);
                 return true;
             }
@@ -43,7 +43,7 @@ export class ZoneController {
      * Salida: AbstractComponent (rama)        
      * Restricciones: N/A
      */
-    public getBranchByID(id:number):CompositeComponent {
+    public getBranchByID(id:string):CompositeComponent {
         const abstractComponent = this.zone.getLevel().filter(component => component.getId() == id)[0];
         return (<CompositeComponent>abstractComponent);
     }
@@ -66,8 +66,8 @@ export class ZoneController {
      *         false si no existe el rama        
      * Restricciones: N/A
      */
-    public removeBranch(id:number, name:string):boolean {
-        return this.zone.removeComponent(new CompositeComponent (id, name, Roles.rama));
+    public removeBranch(id:string, name:string):boolean {
+        return this.zone.removeComponent(new CompositeComponent (id, name, Roles.Rama));
     }
 
     /**
@@ -129,7 +129,7 @@ export class ZoneController {
             else {
                 const comission = this.getComission().filter(member => (member.getId() == boss.identificacion));
                 if (comission.length > 0) {
-                    this.zone.addComponent(new SimpleComponent(Roles.Jefe, boss));
+                    this.zone.addComponent(new SimpleComponent(boss, Roles.Jefe));
                     return true;
                 }
                 else {

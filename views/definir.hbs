@@ -7,29 +7,29 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="bmd-label-floating" for="inputDOrganizacionNombre">Nombre de la Organizacion</label>
-                            <input type="text" class="form-control" id="inputDOrganizacionNombre">{{jerarquia.nombre}}</input>
+                            <input type="text" class="form-control" id="inputDOrganizacionNombre">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="bmd-label-floating" for="inputDOrganizacionAsesor">Asesor General</label>
-                            <input type="text" class="form-control" id="inputDOrganizacionAsesor">{{jerarquia.asesor}}</input>
+                            <input type="text" class="form-control" id="inputDOrganizacionAsesor">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="bmd-label-floating" for="inputDOrganizacionWeb">Direccion Web</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionWeb">{{jerarquia.web}}</input>
+                        <input type="text" class="form-control" id="inputDOrganizacionWeb">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label class="bmd-label-floating" for="inputDOrganizacionCedula">Cedula Juridica</label>
-                            <input type="text" class="form-control" id="inputDOrganizacionCedula">{{jerarquia.cedula}}</input>
+                            <input type="text" class="form-control" id="inputDOrganizacionCedula">
                         </div>
                         <div class="form-group col-md-4">
                             <label class="bmd-label-floating" for="inputDOrganizacionTelefono">Telefono</label>
-                            <input type="text" class="form-control" id="inputDOrganizacionTelefono">{{jerarquia.telefono}}</input>
+                            <input type="text" class="form-control" id="inputDOrganizacionTelefono">
                         </div>
                         <div class="form-group col-md-4">
                             <label class="bmd-label-floating" for="inputDOrganizacionCorreo">Correo</label>
-                            <input type="email" class="form-control" id="inputDOrganizacionCorreo">{{jerarquia.correo}}</input>
+                            <input type="email" class="form-control" id="inputDOrganizacionCorreo">
                         </div>
                     </div>
                     <div class="form-row">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label class="bmd-label-floating" for="inputDOrganizacionOtra">Otras Señas</label>
-                        <input type="text" class="form-control" id="inputDOrganizacionOtra">{{jeraquia.senas}}</input>
+                        <input type="text" class="form-control" id="inputDOrganizacionOtra">
                     </div>
                     <div class="row">
                         <div class="col-md-10">
@@ -123,12 +123,12 @@
 
         {{#ifeq pagina.tipo "Grupo"}}
             {{pagina.titulo}}
-            <body onload="cargarRamas('selectDGrupo_Rama');cargarZonas('selectDGrupo_Zona');">
+            <body onload="cargarZonas('selectDGrupo_Zona');">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="selectDGrupo_Zona">Zona</label>
-                            <select id="selectDGrupo_Zona" class="form-control">
+                            <select id="selectDGrupo_Zona" class="form-control" onchange="if (this.selectedIndex) cargarRamas('selectDGrupo_Rama',this.value);">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
@@ -221,7 +221,7 @@
 
         {{#ifeq pagina.tipo "Rol"}}
             {{pagina.titulo}}
-            <body onload="cargarGrupos('selectDRol_Grupo'); cargarRamas('selectDRol_Rama'); cargarZonas('selectDRol_Zona');">
+            <body onload="cargarZonas('selectDRol_Zona');">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -232,13 +232,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="selectDRol_Zona">Zona</label>
-                            <select id="selectDRol_Zona" class="form-control">
+                            <select id="selectDRol_Zona" class="form-control" onchange="if (this.selectedIndex) cargarRamas('selectDRol_Rama',this.value);">
                                 <option selected>Zonas Disponibles</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="selectDRol_Rama">Rama</label>
-                            <select id="selectDRol_Rama" class="form-control">
+                            <select id="selectDRol_Rama" class="form-control" onchange="if (this.selectedIndex) cargarGrupos('selectDRol_Grupo',this.value);">
                                 <option selected>Ramas Disponibles</option>
                             </select>
                         </div>

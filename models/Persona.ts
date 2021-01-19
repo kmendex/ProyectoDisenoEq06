@@ -9,7 +9,7 @@ export enum eEstado {
 
 export class Persona { 
   //field 
-  private _identificacion:number;
+  private _identificacion:string;
   private _nombreCompleto: string;
   private _celular: number;
   private _correo: string;
@@ -17,7 +17,7 @@ export class Persona {
   private _estado: eEstado;
   
   //constructor 
-  constructor(identificacion: number, nombreCompleto: string, celular: number, correo: string, direccion: Direccion, estado: eEstado) {
+  constructor(identificacion: string, nombreCompleto: string, celular: number, correo: string, direccion: Direccion, estado: eEstado) {
     this._identificacion = identificacion;
     this._nombreCompleto = nombreCompleto;
     this._celular = celular;
@@ -26,11 +26,11 @@ export class Persona {
     this._estado = estado;
   }
 
-  get identificacion (): number{
+  get identificacion (): string{
     return this._identificacion;
   }
 
-  set identificacion (id: number) {
+  set identificacion (id: string) {
     this._identificacion = id;
   }
 

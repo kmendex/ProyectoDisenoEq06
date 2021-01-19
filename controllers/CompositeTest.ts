@@ -19,6 +19,7 @@ import { SimpleComponent } from "../models/composite/SimpleComponent";
 import { CompositeComponent } from "../models/composite/CompositeComponent";
 import { Branch } from "../models/brigde/Branch";
 import { Zone } from "../models/brigde/Zone";
+import { CComposite } from "../controllers/CComposite";
 const db = require("../dao/DAOSourcePostgres");
 
 const pais = new Pais(1, "Costa Rica");
@@ -27,7 +28,7 @@ const canton = new Canton(1, "Central");
 const distrito = new Distrito(2, "Oriental");
 
 const direccionUnica = new Direccion(pais, provincia, canton, distrito, "Los Ángeles");
-
+/*
 const persona0 = new Persona(0,"Miembro0",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const persona1 = new Persona(1,"Miembro1",74479112,"@gmail.com",direccionUnica, eEstado.activo);
 const persona2 = new Persona(2,"Miembro2",74479112,"@gmail.com",direccionUnica, eEstado.activo);
@@ -181,7 +182,7 @@ console.log("***********************Todo Zona***************************\n");
 zona0.getAll().forEach(element => {
     console.log(element.toString(""));
 });
-
+*/
 
 /*grupo0.addMember(persona0);
 grupo0.addMember(persona1);
@@ -208,9 +209,13 @@ console.log(grupo0.composite.getComponent("5",Roles.Monitor).getEnable());*/
 
 //console.clear();
 console.log("BIENVENIDO A LAS PRUEBAS DEL COMPOSITE\n");
-            let r = db.getCoordination('1');
-            let zones = db.getZone(r.code);
-            console.log(zones);
+try{
+let r =  CComposite.cargarComposite('ORG-01');
+console.log(r);
+}
+catch(error){
+    console.log(error);
+}
             /*let zona : any;
             for(zona of zones) {
                 console.log(zona.code);
@@ -293,7 +298,7 @@ console.log(groupController.addBoss(miembro9));//true
 console.log(groupController.addBoss(miembro1));//false
 console.log(groupController.addBoss(miembro5));//false
 console.log(groupController.addBoss(miembro8));//false
-console.log(branchController.getBranch().toString(""));
+console.log(branchController.getBranch().toString(""));*/
 // Grupo 2 (2 Monitores, 3 Miembros)
 /*const componente2 = new SimpleComponent(Roles.Monitor, monitor1);
 const componente3 = new SimpleComponent(Roles.Monitor, monitor2);
